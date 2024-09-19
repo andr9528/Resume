@@ -22,6 +22,7 @@
       https://aka.platform.uno/singleproject-features
     -->
     <UnoFeatures>
+      CSharpMarkup;
       Material;
       Dsp;
       Hosting;
@@ -45,7 +46,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Resume.Localization.Keys\Resume.Localization.Keys.csproj" />
     <ProjectReference Include="..\Resume.MauiControls\Resume.MauiControls.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PRIResource Remove="Strings\en\Resources.resw" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PRIResource Remove="Strings\da\Resources.resw" />
   </ItemGroup>
 
 </Project>

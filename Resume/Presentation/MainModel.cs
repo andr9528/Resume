@@ -1,21 +1,29 @@
+using System.Globalization;
+using Resume.Localization.Keys.Abstraction;
+
 namespace Resume.Presentation;
 
 public partial record MainModel
 {
-    private INavigator _navigator;
+    private readonly INavigator _navigator;
+    private readonly ILocalizationService localizationService;
 
     public MainModel(
-        IStringLocalizer localizer,
-        IOptions<AppConfig> appInfo,
-        INavigator navigator)
+        IStringLocalizer localizer, IOptions<AppConfig> appInfo, INavigator navigator,
+        ILocalizationService localizationService, ILocalizationKeys localizationKeys)
     {
         _navigator = navigator;
+        this.localizationService = localizationService;
         Title = "Main";
         Title += $" - {localizer["ApplicationName"]}";
         Title += $" - {appInfo?.Value?.Environment}";
+        Title += $" - Current Language: {Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride}";
+
+        TestBox = $"{localizer[localizationKeys.Links.FashionHeroGitHubProject]}";
     }
 
     public string? Title { get; }
+    public string? TestBox { get; }
 
     public IState<string> Name => State<string>.Value(this, () => string.Empty);
 
@@ -25,16 +33,20 @@ public partial record MainModel
     {
         0 => "Press Me",
         1 => "Pressed Once!",
-        _ => $"Pressed {_currentCount} times!"
+        _ => $"Pressed {_currentCount} times!",
     });
 
-    public async Task Counter(CancellationToken ct) =>
-        await Count.Update(x => ++x, ct);
-
-    public async Task GoToSecond()
+    public async Task Counter(CancellationToken ct)
     {
-        var name = await Name;
-        await _navigator.NavigateViewModelAsync<SecondModel>(this, data: new Entity(name!));
+        await Count.Update(x => ++x, ct);
     }
 
+    public async Task Test()
+    {
+        CultureInfo currentCulture = localizationService.CurrentCulture;
+        CultureInfo culture =
+            localizationService.SupportedCultures.First(culture => culture.Name != currentCulture.Name);
+        await localizationService.SetCurrentCultureAsync(culture);
+        await _navigator.NavigateViewModelAsync<MainModel>(this);
+    }
 }
