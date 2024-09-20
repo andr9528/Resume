@@ -5,23 +5,20 @@ namespace Resume;
 
 public class Startup
 {
+    public IServiceProvider ServiceProvider { get; private set; }
+
     public void ConfigureApp(IApplicationBuilder builder)
     {
         // Add navigation support for toolkit controls such as TabBar and NavigationView
-        builder.UseToolkitNavigation()
-#if MAUI_EMBEDDING
-            .UseMauiEmbedding<MauiControls.App>(maui => maui
-                .UseMauiControls())
-#endif
-            .Configure(host => host
+        builder.UseToolkitNavigation().UseMauiEmbedding<MauiControls.App>(maui => maui.UseMauiControls()).Configure(
+            host => host
 #if DEBUG
                 // Switch to Development environment when running in DEBUG
                 .UseEnvironment(Environments.Development)
 #endif
                 .UseLogging(ConfigureLogging, true).UseSerilog(true, true)
                 .UseConfiguration(configure: ConfigureConfigurationSource).UseLocalization(ConfigureLocalization)
-                .ConfigureServices(ConfigureAdditionalServices)
-                .UseNavigation(ReactiveViewModelMappings.ViewModelMappings, RegisterRoutes));
+                .ConfigureServices(ConfigureAdditionalServices).UseNavigation(RegisterRoutes));
     }
 
     private void ConfigureLocalization(HostBuilderContext context, IServiceCollection services)
@@ -36,9 +33,10 @@ public class Startup
 
     private void ConfigureAdditionalServices(HostBuilderContext context, IServiceCollection services)
     {
-        // TODO: Register your services
         services.AddSingleton<ILocalizationKeys, LocalizationKeys>();
         services.AddSingleton<ILinks, Links>();
+
+        ServiceProvider = services.BuildServiceProvider();
     }
 
     private void ConfigureLogging(HostBuilderContext context, ILoggingBuilder logBuilder)
@@ -69,11 +67,11 @@ public class Startup
 
     private void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
     {
-        views.Register(new ViewMap(ViewModel: typeof(ShellModel)), new ViewMap<MainPage, MainModel>());
+        views.Register(new ViewMap(ViewModel: typeof(ShellViewModel)), new ViewMap<MainPage, MainViewModel>());
 
-        routes.Register(new RouteMap("", views.FindByViewModel<ShellModel>(), Nested: new RouteMap[]
+        routes.Register(new RouteMap("", views.FindByViewModel<ShellViewModel>(), Nested: new RouteMap[]
         {
-            new("Main", views.FindByViewModel<MainModel>(), true),
+            new("Main", views.FindByViewModel<MainViewModel>(), true),
         }));
     }
 }

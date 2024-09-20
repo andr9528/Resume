@@ -10,7 +10,7 @@ public sealed partial class Shell : UserControl, IContentControlProvider
             .LoadingContentTemplate<object>(_ => new Grid()
                 .RowDefinitions("2*,*").Children(new ProgressRing().Grid(row: 1)
                     .VerticalAlignment(VerticalAlignment.Center).HorizontalAlignment(HorizontalAlignment.Center)
-                    .Height(100).Width(100)))).Background(Theme.Brushes.Background.Default));
+                    .Height(100).Width(100)))).Background(Theme.Brushes.Primary.Inverse.Default));
         ContentControl = splash;
     }
 

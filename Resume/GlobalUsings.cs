@@ -7,8 +7,8 @@ global using Microsoft.Extensions.Options;
 global using Resume.Models;
 global using Resume.Presentation;
 global using Resume.Services.Endpoints;
-#if MAUI_EMBEDDING
 global using Resume.MauiControls;
-#endif
 global using ApplicationExecutionState = Windows.ApplicationModel.Activation.ApplicationExecutionState;
 global using Color = Windows.UI.Color;
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using CommunityToolkit.Mvvm.Input;

@@ -26,7 +26,7 @@ public sealed partial class ColorPaletteOverride : ResourceDictionary
             .Add(Theme.Colors.Error.Container, "#F9DEDC", "#93000A")
             .Add(Theme.Colors.OnError.Default, "#FFFFFF", "#690005")
             .Add(Theme.Colors.OnError.Container, "#410E0B", "#FFDAD6")
-            .Add(Theme.Colors.Background.Default, "#FCFBFF", "#1C1B1F")
+            .Add(Theme.Colors.Background.Default, "#FCFBFF", "#1d0b52")
             .Add(Theme.Colors.OnBackground.Default, "#1C1B1F", "#E5E1E6")
             .Add(Theme.Colors.Surface.Default, "#FFFFFF", "#302D37")
             .Add(Theme.Colors.Surface.Variant, "#F2EFF5", "#47464F")

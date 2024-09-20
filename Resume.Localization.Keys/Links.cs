@@ -5,7 +5,7 @@ namespace Resume.Localization.Keys;
 public record Links : ILinks
 {
     /// <inheritdoc />
-    public string FashionHeroGitHubProject => "Link.FashionHeroGitHubProject";
+    public string FashionHeroGitHubProject => "Link_FashionHeroGitHubProject";
 
     /// <inheritdoc />
     public string Tv2CliptoolGitHubProject { get; }
