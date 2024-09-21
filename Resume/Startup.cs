@@ -1,5 +1,6 @@
 using Resume.Localization.Keys;
 using Resume.Localization.Keys.Abstraction;
+using Resume.Localization.Services;
 
 namespace Resume;
 
@@ -35,6 +36,7 @@ public class Startup
     {
         services.AddSingleton<ILocalizationKeys, LocalizationKeys>();
         services.AddSingleton<ILinks, Links>();
+        services.AddSingleton<ILocaleService, LocaleService>();
 
         ServiceProvider = services.BuildServiceProvider();
     }

@@ -22,7 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resume.Localization.Keys", "Resume.Localization.Keys\Resume.Localization.Keys.csproj", "{9C62F972-99C8-415B-90B2-AA0BE159B710}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resume.Localization", "Resume.Localization\Resume.Localization.csproj", "{9C62F972-99C8-415B-90B2-AA0BE159B710}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

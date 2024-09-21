@@ -1,12 +1,12 @@
 using System.Globalization;
 using Resume.Localization.Keys.Abstraction;
+using Resume.Localization.Services;
 
 namespace Resume.Presentation;
 
 public partial class MainViewModel : ObservableObject
 {
-    private readonly INavigator navigator;
-    private readonly ILocalizationService localizationService;
+    private readonly ILocaleService localeService;
 
     [ObservableProperty] private string? testBox = "Testing Bindings";
 
@@ -14,20 +14,18 @@ public partial class MainViewModel : ObservableObject
 
     [ObservableProperty] private string counterText = "Press Me";
 
-    public MainViewModel(
-        IStringLocalizer localizer, IOptions<AppConfig> appInfo, INavigator navigator,
-        ILocalizationService localizationService, ILocalizationKeys localizationKeys)
+    public MainViewModel(IOptions<AppConfig> appInfo, ILocalizationKeys localizationKeys, ILocaleService localeService)
     {
-        this.navigator = navigator;
-        this.localizationService = localizationService;
+        this.localeService = localeService;
 
         Title = "Main";
-        Title += $" - {localizer["ApplicationName"]}";
+        Title += $" - {localeService.GetLocalizedString("ApplicationName")}";
         Title += $" - {appInfo?.Value?.Environment}";
+        Title += $" - Current Language: {localeService.GetCurrentCulture().Name}";
         TestCommand = new AsyncRelayCommand(Test);
         Counter = new RelayCommand(OnCount);
 
-        TestBox = $"{localizer[localizationKeys.Links.FashionHeroGitHubProject]}";
+        TestBox = $"{localeService.GetLocalizedString(localizationKeys.Links.FashionHeroGitHubProject)}";
     }
 
     public string? Title { get; }
@@ -38,13 +36,8 @@ public partial class MainViewModel : ObservableObject
 
     internal async Task Test()
     {
-        CultureInfo currentCulture = localizationService.CurrentCulture;
-        CultureInfo culture =
-            localizationService.SupportedCultures.First(culture => culture.Name != currentCulture.Name);
-        await localizationService.SetCurrentCultureAsync(culture);
-        await navigator.NavigateViewModelAsync<MainViewModel>(this);
+        await localeService.ToggleLanguage<MainViewModel>(this);
     }
-
 
     private void OnCount()
     {
