@@ -1,4 +1,4 @@
-namespace Resume.Localization.Keys.Abstraction;
+namespace Resume.Localization.Abstractions;
 
 public interface ILinks
 {

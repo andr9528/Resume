@@ -1,12 +1,14 @@
 using System.Globalization;
-using Resume.Localization.Keys.Abstraction;
-using Resume.Localization.Services;
+using Resume.Localization.Abstractions;
+using Resume.Localization;
+using Resume.Services.Abstractions;
 
 namespace Resume.Presentation;
 
 public partial class MainViewModel : ObservableObject
 {
     private readonly ILocaleService localeService;
+    private readonly INavigator navigator;
 
     [ObservableProperty] private string? testBox = "Testing Bindings";
 
@@ -14,9 +16,12 @@ public partial class MainViewModel : ObservableObject
 
     [ObservableProperty] private string counterText = "Press Me";
 
-    public MainViewModel(IOptions<AppConfig> appInfo, ILocalizationKeys localizationKeys, ILocaleService localeService)
+    public MainViewModel(
+        IOptions<AppConfig> appInfo, ILocalizationCategories localizationCategories, ILocaleService localeService,
+        INavigator navigator)
     {
         this.localeService = localeService;
+        this.navigator = navigator;
 
         Title = "Main";
         Title += $" - {localeService.GetLocalizedString("ApplicationName")}";
@@ -25,7 +30,7 @@ public partial class MainViewModel : ObservableObject
         TestCommand = new AsyncRelayCommand(Test);
         Counter = new RelayCommand(OnCount);
 
-        TestBox = $"{localeService.GetLocalizedString(localizationKeys.Links.FashionHeroGitHubProject)}";
+        TestBox = $"{localeService.GetLocalizedString(localizationCategories.Links.FashionHeroGitHubProject)}";
     }
 
     public string? Title { get; }
@@ -34,9 +39,9 @@ public partial class MainViewModel : ObservableObject
 
     public ICommand Counter { get; }
 
-    internal async Task Test()
+    private async Task Test()
     {
-        await localeService.ToggleLanguage<MainViewModel>(this);
+        await localeService.ToggleLanguage<MainViewModel>(this, navigator);
     }
 
     private void OnCount()

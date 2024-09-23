@@ -1,11 +1,13 @@
-namespace Resume.Services.Endpoints;
+using Microsoft.Extensions.Logging;
 
-internal class DebugHttpHandler : DelegatingHandler
+namespace Resume.Services;
+
+internal class DebugHttpHandlerService : DelegatingHandler
 {
     private readonly ILogger _logger;
 
-    public DebugHttpHandler(ILogger<DebugHttpHandler> logger, HttpMessageHandler? innerHandler = null) : base(
-        innerHandler ?? new HttpClientHandler())
+    public DebugHttpHandlerService(ILogger<DebugHttpHandlerService> logger, HttpMessageHandler? innerHandler = null) :
+        base(innerHandler ?? new HttpClientHandler())
     {
         _logger = logger;
     }

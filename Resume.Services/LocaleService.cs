@@ -2,23 +2,23 @@ using System.Globalization;
 using System.Resources;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Extensions.Logging;
+using Resume.Services.Abstractions;
 
-namespace Resume.Localization.Services;
+namespace Resume.Services;
 
 public class LocaleService : ILocaleService
 {
-    private readonly INavigator navigator;
     private readonly ILocalizationService localizationService;
     private readonly ILogger<LocaleService> logger;
     private readonly ResourceManager resourceManager;
 
-    public LocaleService(INavigator navigator, ILocalizationService localizationService, ILogger<LocaleService> logger)
+    public LocaleService(ILocalizationService localizationService, ILogger<LocaleService> logger)
     {
-        this.navigator = navigator;
         this.localizationService = localizationService;
         this.logger = logger;
 
-        resourceManager = new ResourceManager($"Resume.Localization.Strings.Resources", GetType().Assembly);
+        resourceManager = new ResourceManager($"Resume.Localization.Strings.Resources",
+            typeof(Localization.Strings.Resources).Assembly);
     }
 
     /// <inheritdoc />
@@ -30,7 +30,7 @@ public class LocaleService : ILocaleService
     }
 
     /// <inheritdoc />
-    public async Task ToggleLanguage<TModel>(object caller) where TModel : ObservableObject
+    public async Task ToggleLanguage<TModel>(object caller, INavigator navigator) where TModel : ObservableObject
     {
         CultureInfo currentCulture = GetCurrentCulture();
         CultureInfo culture =

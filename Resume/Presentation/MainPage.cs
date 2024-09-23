@@ -17,7 +17,7 @@ public sealed partial class MainPage : Page
         {
             new TextBox().Text("Does this Render?"),
             new Button().Content("Test Button").AutomationProperties(automationId: "TestButton")
-                .Command(() => vm.Test()),
+                .Command(() => vm.TestCommand),
             new TextBox().Text(x => x.Binding(() => vm.TestBox).Mode(BindingMode.TwoWay))
                 .PlaceholderText("Awaiting Test Text..."),
         };

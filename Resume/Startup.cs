@@ -1,6 +1,7 @@
+using Resume.Localization.Abstractions;
 using Resume.Localization.Keys;
-using Resume.Localization.Keys.Abstraction;
-using Resume.Localization.Services;
+using Resume.Services;
+using Resume.Services.Abstractions;
 
 namespace Resume;
 
@@ -34,8 +35,11 @@ public class Startup
 
     private void ConfigureAdditionalServices(HostBuilderContext context, IServiceCollection services)
     {
-        services.AddSingleton<ILocalizationKeys, LocalizationKeys>();
+        // Localization Hierarchy
+        services.AddSingleton<ILocalizationCategories, LocalizationCategories>();
         services.AddSingleton<ILinks, Links>();
+
+        // Business Logic Services
         services.AddSingleton<ILocaleService, LocaleService>();
 
         ServiceProvider = services.BuildServiceProvider();

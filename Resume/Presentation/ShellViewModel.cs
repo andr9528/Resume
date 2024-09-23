@@ -1,6 +1,6 @@
 namespace Resume.Presentation;
 
-public class ShellViewModel
+public class ShellViewModel : ObservableObject
 {
     private readonly INavigator _navigator;
 

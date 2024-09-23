@@ -18,12 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" />
-    <PackageReference Include="Uno.Extensions.Localization" />
-    <PackageReference Include="Uno.Extensions.Navigation" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Strings\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
