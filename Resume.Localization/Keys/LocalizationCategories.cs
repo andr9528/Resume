@@ -5,10 +5,14 @@ namespace Resume.Localization.Keys;
 public record LocalizationCategories : ILocalizationCategories
 {
     /// <inheritdoc />
-    public ILinks Links { get; }
+    public ILinkKeys LinkKeys { get; }
 
-    public LocalizationCategories(ILinks links)
+    /// <inheritdoc />
+    public IProfileKeys ProfileKeys { get; }
+
+    public LocalizationCategories(ILinkKeys linkKeys, IProfileKeys profileKeys)
     {
-        Links = links;
+        LinkKeys = linkKeys;
+        ProfileKeys = profileKeys;
     }
 }

@@ -120,4 +120,11 @@
   <data name="ApplicationName" xml:space="preserve">
     <value>Resume-da</value>
   </data>
+  <data name="Profile_Description" xml:space="preserve">
+    <value>Jeg er en lærenem logisk tænkende udvikler, med erfaring i C# / .Net. Jeg har også under min seneste stilling ved Tv2 Danmark fået erfaring med TypeScript / React. Fra min uddannelse og stilling ved Tv2 Danmark har jeg også fået erfaring i udvikling under SCRUM.
+
+Som baggrund har jeg en Datamatiker og oven på den en Bachelor i Softwareudvikling. Denne uddannelse sammen med min logiske sans, tillader mig at forstå andre kodesprog i en vis grad, også selvom jeg ingen tidligere erfaring har med dem.
+
+Når jeg udvikler stræber jeg efter at overholde principperne DRY og SOLID, så godt som muligt. Med disse principper i fokus, føler jeg at kode får en god kvalitet.</value>
+  </data>
 </root>

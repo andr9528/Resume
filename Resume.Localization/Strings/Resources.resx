@@ -120,4 +120,16 @@
   <data name="Link_FashionHeroGitHubProject" xml:space="preserve">
     <value>https://github.com/FashionHeroOnGit/PortalProject</value>
   </data>
+  <data name="Link_Tv2CliptoolGitHubProject" xml:space="preserve">
+    <value>https://github.com/tv2/casparcg-cliptool</value>
+  </data>
+  <data name="Link_Tv2SofieAngularGitHubProject" xml:space="preserve">
+    <value>https://github.com/tv2/ng-sofie</value>
+  </data>
+  <data name="Link_Tv2SofieServerGitHubProject" xml:space="preserve">
+    <value>https://github.com/tv2/sofie-server</value>
+  </data>
+  <data name="Profile_Name" xml:space="preserve">
+    <value>André Steenhoff Madsen</value>
+  </data>
 </root>

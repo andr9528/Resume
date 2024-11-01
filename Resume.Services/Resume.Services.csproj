@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Resume.Entities\Resume.Entities.csproj" />
     <ProjectReference Include="..\Resume.Localization\Resume.Localization.csproj" />
   </ItemGroup>
 

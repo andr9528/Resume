@@ -12,15 +12,14 @@ public class Startup
     public void ConfigureApp(IApplicationBuilder builder)
     {
         // Add navigation support for toolkit controls such as TabBar and NavigationView
-        builder.UseToolkitNavigation().UseMauiEmbedding<MauiControls.App>(maui => maui.UseMauiControls()).Configure(
-            host => host
+        builder.UseToolkitNavigation().Configure(host => host
 #if DEBUG
-                // Switch to Development environment when running in DEBUG
-                .UseEnvironment(Environments.Development)
+            // Switch to Development environment when running in DEBUG
+            .UseEnvironment(Environments.Development)
 #endif
-                .UseLogging(ConfigureLogging, true).UseSerilog(true, true)
-                .UseConfiguration(configure: ConfigureConfigurationSource).UseLocalization(ConfigureLocalization)
-                .ConfigureServices(ConfigureAdditionalServices).UseNavigation(RegisterRoutes));
+            .UseLogging(ConfigureLogging, true).UseSerilog(true, true)
+            .UseConfiguration(configure: ConfigureConfigurationSource).UseLocalization(ConfigureLocalization)
+            .ConfigureServices(ConfigureAdditionalServices).UseNavigation(RegisterRoutes));
     }
 
     private void ConfigureLocalization(HostBuilderContext context, IServiceCollection services)
@@ -37,10 +36,12 @@ public class Startup
     {
         // Localization Hierarchy
         services.AddSingleton<ILocalizationCategories, LocalizationCategories>();
-        services.AddSingleton<ILinks, Links>();
+        services.AddSingleton<ILinkKeys, LinkKeys>();
+        services.AddSingleton<IProfileKeys, ProfileKeys>();
 
         // Business Logic Services
         services.AddSingleton<ILocaleService, LocaleService>();
+        services.AddSingleton<IEntityService, EntityService>();
 
         ServiceProvider = services.BuildServiceProvider();
     }

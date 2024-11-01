@@ -47,8 +47,19 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Resume.Localization\Resume.Localization.csproj" />
-    <ProjectReference Include="..\Resume.MauiControls\Resume.MauiControls.csproj" />
     <ProjectReference Include="..\Resume.Services\Resume.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Update="Presentation\Header.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </AdditionalFiles>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Presentation\Header.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
 </Project>

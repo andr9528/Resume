@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Resume.Entities\Resume.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Strings\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
