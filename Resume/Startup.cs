@@ -9,17 +9,50 @@ public class Startup
 {
     public IServiceProvider ServiceProvider { get; private set; }
 
-    public void ConfigureApp(IApplicationBuilder builder)
+    public void ConfigureServices(IServiceCollection services)
     {
+        Console.WriteLine($"Configuring Services...");
+
+        // Localization Hierarchy
+        services.AddSingleton<ILocalizationCategories, LocalizationCategories>();
+        services.AddSingleton<ILinkKeys, LinkKeys>();
+        services.AddSingleton<IProfileKeys, ProfileKeys>();
+
+        // Business Logic Services
+        services.AddSingleton<ILocaleService, LocaleService>();
+        services.AddSingleton<IEntityService, EntityService>();
+
+        try
+        {
+            var exception =
+                new NullReferenceException($"Failed to build Service Provider inside '{nameof(Startup)}' class.");
+            ServiceProvider = services.BuildServiceProvider() ?? throw exception;
+
+            if (ServiceProvider == null)
+            {
+                throw new NullReferenceException($"Service Provider became null immediately after assignment",
+                    exception);
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
+    public IApplicationBuilder ConfigureApp(IApplicationBuilder app)
+    {
+        Console.WriteLine($"Configuring Application...");
+
         // Add navigation support for toolkit controls such as TabBar and NavigationView
-        builder.UseToolkitNavigation().Configure(host => host
+        return app.Configure(host => host
 #if DEBUG
             // Switch to Development environment when running in DEBUG
             .UseEnvironment(Environments.Development)
 #endif
             .UseLogging(ConfigureLogging, true).UseSerilog(true, true)
-            .UseConfiguration(configure: ConfigureConfigurationSource).UseLocalization(ConfigureLocalization)
-            .ConfigureServices(ConfigureAdditionalServices).UseNavigation(RegisterRoutes));
+            .UseConfiguration(configure: ConfigureConfigurationSource).UseLocalization(ConfigureLocalization));
     }
 
     private void ConfigureLocalization(HostBuilderContext context, IServiceCollection services)
@@ -30,20 +63,6 @@ public class Startup
     private IHostBuilder ConfigureConfigurationSource(IConfigBuilder configBuilder)
     {
         return configBuilder.EmbeddedSource<App>().Section<AppConfig>();
-    }
-
-    private void ConfigureAdditionalServices(HostBuilderContext context, IServiceCollection services)
-    {
-        // Localization Hierarchy
-        services.AddSingleton<ILocalizationCategories, LocalizationCategories>();
-        services.AddSingleton<ILinkKeys, LinkKeys>();
-        services.AddSingleton<IProfileKeys, ProfileKeys>();
-
-        // Business Logic Services
-        services.AddSingleton<ILocaleService, LocaleService>();
-        services.AddSingleton<IEntityService, EntityService>();
-
-        ServiceProvider = services.BuildServiceProvider();
     }
 
     private void ConfigureLogging(HostBuilderContext context, ILoggingBuilder logBuilder)
@@ -70,15 +89,5 @@ public class Startup
         //logBuilder.HotReloadCoreLogLevel(LogLevel.Information);
         //// Debug JS interop
         //logBuilder.WebAssemblyLogLevel(LogLevel.Debug);
-    }
-
-    private void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
-    {
-        views.Register(new ViewMap(ViewModel: typeof(ShellViewModel)), new ViewMap<MainPage, MainViewModel>());
-
-        routes.Register(new RouteMap("", views.FindByViewModel<ShellViewModel>(), Nested: new RouteMap[]
-        {
-            new("Main", views.FindByViewModel<MainViewModel>(), true),
-        }));
     }
 }

@@ -1,6 +1,5 @@
 using System.Globalization;
 using System.Resources;
-using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Extensions.Logging;
 using Resume.Services.Abstractions;
 
@@ -17,6 +16,7 @@ public class LocaleService : ILocaleService
         this.localizationService = localizationService;
         this.logger = logger;
 
+        Console.WriteLine($"Getting new Resource Manager");
         resourceManager = new ResourceManager($"Resume.Localization.Strings.Resources",
             typeof(Localization.Strings.Resources).Assembly);
     }
@@ -30,7 +30,7 @@ public class LocaleService : ILocaleService
     }
 
     /// <inheritdoc />
-    public async Task ToggleLanguage<TModel>(object caller, INavigator navigator) where TModel : ObservableObject
+    public async Task ToggleLanguage()
     {
         CultureInfo currentCulture = GetCurrentCulture();
         CultureInfo culture =
@@ -38,7 +38,6 @@ public class LocaleService : ILocaleService
 
         logger.LogInformation($"Changing language to: {culture.Name}");
         await localizationService.SetCurrentCultureAsync(culture);
-        await navigator.NavigateViewModelAsync<TModel>(caller, Qualifiers.ClearBackStack);
     }
 
     public CultureInfo GetCurrentCulture()

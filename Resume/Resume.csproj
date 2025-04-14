@@ -29,13 +29,11 @@
       Toolkit;
       Logging;
       LoggingSerilog;
-      MauiEmbedding;
       Mvvm;
       Configuration;
       Http;
       Serialization;
       Localization;
-      Navigation;
       ThemeService;
     </UnoFeatures>
   </PropertyGroup>
