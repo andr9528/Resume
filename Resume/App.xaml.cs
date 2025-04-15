@@ -19,9 +19,10 @@ public partial class App : Application
     protected IHost? Host { get; private set; }
     public Startup Startup { get; private set; }
 
-    protected override async void OnLaunched(LaunchActivatedEventArgs args)
+    protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
         Startup = new Startup();
+
         // Load WinUI Resources
         Resources.Build(r => r.Merged(new XamlControlsResources()));
 
@@ -30,7 +31,16 @@ public partial class App : Application
             r => r.Merged(new MaterialToolkitTheme(new ColorPaletteOverride(), new MaterialFontsOverride())));
         IApplicationBuilder builder = this.CreateBuilder(args);
 
-        Startup.ConfigureApp(builder).Configure(host => host.ConfigureServices(Startup.ConfigureServices));
+        Startup.ConfigureApp(builder).Configure(host =>
+        {
+            Console.WriteLine($"Executing {nameof(IApplicationBuilder)}.{nameof(IApplicationBuilder.Configure)}.");
+            host.ConfigureServices(collection =>
+            {
+                // Not being run ???
+                Console.WriteLine($"Executing {nameof(IHostBuilder)}.{nameof(IHostBuilder.ConfigureServices)}.");
+                Startup.ConfigureServices(collection);
+            });
+        });
 
         MainWindow = builder.Window;
 
@@ -38,6 +48,9 @@ public partial class App : Application
         MainWindow.EnableHotReload();
 #endif
         MainWindow.SetWindowIcon();
+
+        Console.WriteLine($"Building Host...");
+        Host = builder.Build();
 
         // Do not repeat app initialization when the Window already has content,
         // just ensure that the window is active

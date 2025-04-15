@@ -11,19 +11,20 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        Console.WriteLine($"Configuring Services...");
-
-        // Localization Hierarchy
-        services.AddSingleton<ILocalizationCategories, LocalizationCategories>();
-        services.AddSingleton<ILinkKeys, LinkKeys>();
-        services.AddSingleton<IProfileKeys, ProfileKeys>();
-
-        // Business Logic Services
-        services.AddSingleton<ILocaleService, LocaleService>();
-        services.AddSingleton<IEntityService, EntityService>();
-
         try
         {
+            Console.WriteLine($"Configuring Services...");
+
+            // Localization Hierarchy
+            services.AddSingleton<ILocalizationCategories, LocalizationCategories>();
+            services.AddSingleton<ILinkKeys, LinkKeys>();
+            services.AddSingleton<IProfileKeys, ProfileKeys>();
+
+            // Business Logic Services
+            services.AddSingleton<ILocaleService, LocaleService>();
+            services.AddSingleton<IEntityService, EntityService>();
+
+
             var exception =
                 new NullReferenceException($"Failed to build Service Provider inside '{nameof(Startup)}' class.");
             ServiceProvider = services.BuildServiceProvider() ?? throw exception;
