@@ -15,6 +15,7 @@ public class Startup
         services.AddSingleton<ILocalizationCategories, LocalizationCategories>();
         services.AddSingleton<ILinkKeys, LinkKeys>();
         services.AddSingleton<IProfileKeys, ProfileKeys>();
+        services.AddSingleton<IUserInterfaceKeys, UserInterfaceKeys>();
 
         // Business Logic Services
         services.AddSingleton<ILocaleService, LocaleService>();

@@ -10,9 +10,13 @@ public record LocalizationCategories : ILocalizationCategories
     /// <inheritdoc />
     public IProfileKeys ProfileKeys { get; }
 
-    public LocalizationCategories(ILinkKeys linkKeys, IProfileKeys profileKeys)
+    /// <inheritdoc />
+    public IUserInterfaceKeys UserInterfaceKeys { get; }
+
+    public LocalizationCategories(ILinkKeys linkKeys, IProfileKeys profileKeys, IUserInterfaceKeys userInterfaceKeys)
     {
         LinkKeys = linkKeys;
         ProfileKeys = profileKeys;
+        UserInterfaceKeys = userInterfaceKeys;
     }
 }

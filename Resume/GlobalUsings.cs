@@ -6,7 +6,6 @@ global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Options;
 global using Resume.Models;
 global using Resume.Presentation;
-global using Resume.Services.Endpoints;
 global using ApplicationExecutionState = Windows.ApplicationModel.Activation.ApplicationExecutionState;
 global using Color = Windows.UI.Color;
 global using CommunityToolkit.Mvvm.ComponentModel;

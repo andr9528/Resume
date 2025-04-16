@@ -26,7 +26,15 @@ public class LocaleService : ILocaleService
     {
         CultureInfo currentCulture = GetCurrentCulture();
 
-        return resourceManager.GetString(key, currentCulture) ?? key;
+        string? localizedString = resourceManager.GetString(key, currentCulture);
+
+        if (!string.IsNullOrWhiteSpace(localizedString))
+        {
+            return localizedString;
+        }
+
+        Console.WriteLine($"Failed to get a localized string for '{key}'...");
+        return key;
     }
 
     /// <inheritdoc />

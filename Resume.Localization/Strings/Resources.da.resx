@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,8 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ApplicationName" xml:space="preserve">
-    <value>Resume-da</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Link_FashionHeroGitHubProject" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="Profile_Description" xml:space="preserve">
     <value>Jeg er en lærenem logisk tænkende udvikler, med erfaring i C# / .Net. Jeg har også under min seneste stilling ved Tv2 Danmark fået erfaring med TypeScript / React. Fra min uddannelse og stilling ved Tv2 Danmark har jeg også fået erfaring i udvikling under SCRUM.
@@ -126,5 +127,8 @@
 Som baggrund har jeg en Datamatiker og oven på den en Bachelor i Softwareudvikling. Denne uddannelse sammen med min logiske sans, tillader mig at forstå andre kodesprog i en vis grad, også selvom jeg ingen tidligere erfaring har med dem.
 
 Når jeg udvikler stræber jeg efter at overholde principperne DRY og SOLID, så godt som muligt. Med disse principper i fokus, føler jeg at kode får en god kvalitet.</value>
+  </data>
+  <data name="UserInterface_Title" xml:space="preserve">
+    <value>&#x8;</value>
   </data>
 </root>

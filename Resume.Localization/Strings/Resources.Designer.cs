@@ -104,5 +104,14 @@ namespace Resume.Localization.Strings {
                 return ResourceManager.GetString("Profile_Name", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resume.
+        /// </summary>
+        public static string UserInterface_Title {
+            get {
+                return ResourceManager.GetString("UserInterface_Title", resourceCulture);
+            }
+        }
     }
 }
