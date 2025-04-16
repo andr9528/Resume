@@ -9,51 +9,31 @@ public class Startup
 {
     public IServiceProvider ServiceProvider { get; private set; }
 
-    public void ConfigureServices(IServiceCollection services)
+    private void ConfigureServices(IServiceCollection services)
     {
-        try
-        {
-            Console.WriteLine($"Configuring Services...");
+        // Localization Hierarchy
+        services.AddSingleton<ILocalizationCategories, LocalizationCategories>();
+        services.AddSingleton<ILinkKeys, LinkKeys>();
+        services.AddSingleton<IProfileKeys, ProfileKeys>();
 
-            // Localization Hierarchy
-            services.AddSingleton<ILocalizationCategories, LocalizationCategories>();
-            services.AddSingleton<ILinkKeys, LinkKeys>();
-            services.AddSingleton<IProfileKeys, ProfileKeys>();
-
-            // Business Logic Services
-            services.AddSingleton<ILocaleService, LocaleService>();
-            services.AddSingleton<IEntityService, EntityService>();
+        // Business Logic Services
+        services.AddSingleton<ILocaleService, LocaleService>();
+        services.AddSingleton<IEntityService, EntityService>();
 
 
-            var exception =
-                new NullReferenceException($"Failed to build Service Provider inside '{nameof(Startup)}' class.");
-            ServiceProvider = services.BuildServiceProvider() ?? throw exception;
-
-            if (ServiceProvider == null)
-            {
-                throw new NullReferenceException($"Service Provider became null immediately after assignment",
-                    exception);
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
+        ServiceProvider = services.BuildServiceProvider();
     }
 
-    public IApplicationBuilder ConfigureApp(IApplicationBuilder app)
+    public void ConfigureApp(IApplicationBuilder app)
     {
-        Console.WriteLine($"Configuring Application...");
-
-        // Add navigation support for toolkit controls such as TabBar and NavigationView
-        return app.Configure(host => host
 #if DEBUG
-            // Switch to Development environment when running in DEBUG
-            .UseEnvironment(Environments.Development)
+        app.Configure(host => host.UseEnvironment(Environments.Development));
 #endif
-            .UseLogging(ConfigureLogging, true).UseSerilog(true, true)
-            .UseConfiguration(configure: ConfigureConfigurationSource).UseLocalization(ConfigureLocalization));
+
+        app.Configure(host => host.UseLogging(ConfigureLogging, true)).Configure(host => host.UseSerilog(true, true))
+            .Configure(host => host.UseConfiguration(configure: ConfigureConfigurationSource))
+            .Configure(host => host.UseLocalization(ConfigureLocalization))
+            .Configure(host => host.ConfigureServices(ConfigureServices));
     }
 
     private void ConfigureLocalization(HostBuilderContext context, IServiceCollection services)
