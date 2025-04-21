@@ -1,7 +1,7 @@
-using Resume.Entities.Abstractions;
-
 namespace Resume.Localization.Abstractions;
 
-public interface IProfileKeys : IProfile
+public interface IProfileKeys
 {
+    string Description { get; init; }
+    string Name { get; init; }
 }
