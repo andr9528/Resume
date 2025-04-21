@@ -1,5 +1,3 @@
-using Resume.Entities;
-using Resume.Entities.Abstractions;
 using Resume.Localization.Abstractions;
 using Resume.Services.Abstractions;
 
@@ -14,15 +12,5 @@ public class EntityService : IEntityService
     {
         this.localeService = localeService;
         this.categories = categories;
-    }
-
-    /// <inheritdoc />
-    public IProfile GetProfile()
-    {
-        return new Profile()
-        {
-            Description = localeService.GetLocalizedString(categories.ProfileKeys.Description),
-            Name = localeService.GetLocalizedString(categories.ProfileKeys.Name),
-        };
     }
 }

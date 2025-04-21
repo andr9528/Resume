@@ -16,11 +16,16 @@ public class Startup
         services.AddSingleton<ILinkKeys, LinkKeys>();
         services.AddSingleton<IProfileKeys, ProfileKeys>();
         services.AddSingleton<IUserInterfaceKeys, UserInterfaceKeys>();
+        services.AddSingleton<IEmploymentKeys, EmploymentKeys>();
+        services.AddSingleton<IEducationKeys, EducationKeys>();
+        services.AddSingleton<IGeneralInformationKeys, GeneralInformationKeys>();
+        services.AddSingleton<ILanguageKeys, LanguageKeys>();
+        services.AddSingleton<IReferencesKeys, ReferencesKeys>();
+        services.AddSingleton<IProjectKeys, ProjectKeys>();
 
         // Business Logic Services
         services.AddSingleton<ILocaleService, LocaleService>();
         services.AddSingleton<IEntityService, EntityService>();
-
 
         ServiceProvider = services.BuildServiceProvider();
     }
