@@ -61,43 +61,286 @@ namespace Resume.Localization.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Education_Description_Bachelor {
+            get {
+                return ResourceManager.GetString("Education_Description_Bachelor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Education_Description_Htx {
+            get {
+                return ResourceManager.GetString("Education_Description_Htx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Education_Description_Software {
+            get {
+                return ResourceManager.GetString("Education_Description_Software", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Education_Grade_Bachelor {
+            get {
+                return ResourceManager.GetString("Education_Grade_Bachelor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Education_Grade_Htx {
+            get {
+                return ResourceManager.GetString("Education_Grade_Htx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Education_Grade_Software {
+            get {
+                return ResourceManager.GetString("Education_Grade_Software", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Employment_Employer_Apps4All {
+            get {
+                return ResourceManager.GetString("Employment_Employer_Apps4All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Employment_Employer_Tv2 {
+            get {
+                return ResourceManager.GetString("Employment_Employer_Tv2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Employment_Job_Title_Apps4All {
+            get {
+                return ResourceManager.GetString("Employment_Job_Title_Apps4All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Employment_Job_Title_Tv2 {
+            get {
+                return ResourceManager.GetString("Employment_Job_Title_Tv2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Employment_Work_Description_Apps4All {
+            get {
+                return ResourceManager.GetString("Employment_Work_Description_Apps4All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Employment_Work_Description_Tv2 {
+            get {
+                return ResourceManager.GetString("Employment_Work_Description_Tv2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string General_Information_Country {
+            get {
+                return ResourceManager.GetString("General_Information_Country", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Language_Danish_Language {
+            get {
+                return ResourceManager.GetString("Language_Danish_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Language_English_Language {
+            get {
+                return ResourceManager.GetString("Language_English_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Language_German_Language {
+            get {
+                return ResourceManager.GetString("Language_German_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to https://github.com/FashionHeroOnGit/PortalProject.
         /// </summary>
-        public static string Link_FashionHeroGitHubProject {
+        public static string Link_Fashion_Hero_GitHub_Project {
             get {
-                return ResourceManager.GetString("Link_FashionHeroGitHubProject", resourceCulture);
+                return ResourceManager.GetString("Link_Fashion_Hero_GitHub_Project", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://github.com/andr9528/gaio.
+        /// </summary>
+        public static string Link_Noergaard_Mikkelsen_GitHub_Project {
+            get {
+                return ResourceManager.GetString("Link_Noergaard_Mikkelsen_GitHub_Project", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://github.com/andr9528.
+        /// </summary>
+        public static string Link_Personal_Github {
+            get {
+                return ResourceManager.GetString("Link_Personal_Github", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://www.linkedin.com/in/andr%C3%A9-steenhoff-madsen-65a22698/.
+        /// </summary>
+        public static string Link_Personal_LinkedIn {
+            get {
+                return ResourceManager.GetString("Link_Personal_LinkedIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://andr9528.github.io/.
+        /// </summary>
+        public static string Link_Personal_Page {
+            get {
+                return ResourceManager.GetString("Link_Personal_Page", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Link_Remark_GitHub {
+            get {
+                return ResourceManager.GetString("Link_Remark_GitHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Link_Remark_LinkedIn {
+            get {
+                return ResourceManager.GetString("Link_Remark_LinkedIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Link_Remark_Personal_Page {
+            get {
+                return ResourceManager.GetString("Link_Remark_Personal_Page", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Link_Title_GitHub {
+            get {
+                return ResourceManager.GetString("Link_Title_GitHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Link_Title_LinkedIn {
+            get {
+                return ResourceManager.GetString("Link_Title_LinkedIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Link_Title_Personal_Page {
+            get {
+                return ResourceManager.GetString("Link_Title_Personal_Page", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to https://github.com/tv2/casparcg-cliptool.
         /// </summary>
-        public static string Link_Tv2CliptoolGitHubProject {
+        public static string Link_Tv2_Cliptool_GitHub_Project {
             get {
-                return ResourceManager.GetString("Link_Tv2CliptoolGitHubProject", resourceCulture);
+                return ResourceManager.GetString("Link_Tv2_Cliptool_GitHub_Project", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to https://github.com/tv2/ng-sofie.
         /// </summary>
-        public static string Link_Tv2SofieAngularGitHubProject {
+        public static string Link_Tv2_Sofie_Angular_GitHub_Project {
             get {
-                return ResourceManager.GetString("Link_Tv2SofieAngularGitHubProject", resourceCulture);
+                return ResourceManager.GetString("Link_Tv2_Sofie_Angular_GitHub_Project", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to https://github.com/tv2/sofie-server.
         /// </summary>
-        public static string Link_Tv2SofieServerGitHubProject {
+        public static string Link_Tv2_Sofie_Server_GitHub_Project {
             get {
-                return ResourceManager.GetString("Link_Tv2SofieServerGitHubProject", resourceCulture);
+                return ResourceManager.GetString("Link_Tv2_Sofie_Server_GitHub_Project", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to André Steenhoff Madsen.
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Profile_Description {
+            get {
+                return ResourceManager.GetString("Profile_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string Profile_Name {
             get {
@@ -106,11 +349,83 @@ namespace Resume.Localization.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resume.
+        ///   Looks up a localized string similar to .
         /// </summary>
-        public static string UserInterface_Title {
+        public static string Project_Oni_Modding_Description {
             get {
-                return ResourceManager.GetString("UserInterface_Title", resourceCulture);
+                return ResourceManager.GetString("Project_Oni_Modding_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Project_Oni_Modding_Title {
+            get {
+                return ResourceManager.GetString("Project_Oni_Modding_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Project_Tower_Defence_Dev_Description {
+            get {
+                return ResourceManager.GetString("Project_Tower_Defence_Dev_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Project_Tower_Defence_Dev_Title {
+            get {
+                return ResourceManager.GetString("Project_Tower_Defence_Dev_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Project_Tracker_Description {
+            get {
+                return ResourceManager.GetString("Project_Tracker_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Project_Tracker_Title {
+            get {
+                return ResourceManager.GetString("Project_Tracker_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string References_Company_Name_Tv2 {
+            get {
+                return ResourceManager.GetString("References_Company_Name_Tv2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string User_Interface_Skills_Header {
+            get {
+                return ResourceManager.GetString("User_Interface_Skills_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string User_Interface_Title {
+            get {
+                return ResourceManager.GetString("User_Interface_Title", resourceCulture);
             }
         }
     }

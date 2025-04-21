@@ -118,8 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Link_FashionHeroGitHubProject" type="System.Resources.ResXNullRef, System.Windows.Forms">
+  <data name="Link_Fashion_Hero_GitHub_Project" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
+  </data>
+  <data name="Profile_Name" xml:space="preserve">
+    <value>André Steenhoff Madsen</value>
+  </data>
+  <data name="User_Interface_Title" xml:space="preserve">
+    <value>Resume</value>
   </data>
   <data name="Profile_Description" xml:space="preserve">
     <value>Jeg er en lærenem logisk tænkende udvikler, med erfaring i C# / .Net. Jeg har også under min seneste stilling ved Tv2 Danmark fået erfaring med TypeScript / React. Fra min uddannelse og stilling ved Tv2 Danmark har jeg også fået erfaring i udvikling under SCRUM.
@@ -128,7 +134,126 @@ Som baggrund har jeg en Datamatiker og oven på den en Bachelor i Softwareudvikl
 
 Når jeg udvikler stræber jeg efter at overholde principperne DRY og SOLID, så godt som muligt. Med disse principper i fokus, føler jeg at kode får en god kvalitet.</value>
   </data>
-  <data name="UserInterface_Title" xml:space="preserve">
-    <value>&#x8;</value>
+  <data name="Project_Tracker_Title" xml:space="preserve">
+    <value>Sporings Applikation</value>
+  </data>
+  <data name="Project_Tracker_Description" xml:space="preserve">
+    <value>Et højt modulært program til at holde styr på en række forskellige ting, defineret af de moduler der bliver lavet.
+  Programmet vil blive lavet med C#, Entity Framework Core og Uno Platform som frontend.
+  Planlagte moduler inkludere madplanlægning, budget og tidsforbrug.</value>
+  </data>
+  <data name="Project_Tower_Defence_Dev_Title" xml:space="preserve">
+    <value>Roguelike Tårn Forsvars Spil</value>
+  </data>
+  <data name="Project_Tower_Defence_Dev_Description" xml:space="preserve">
+    <value>Jeg har et spil i tankerne som jeg gerne vil langsomt begynde på.
+  Har på nuværende tidspunkt en længere række noter omkring spillet, men ikke noget aktuel kode til det.
+  Jeg har et ønske om at bruge Godot som den valgte game engine, hovedsageligt på grund af dens brug af C#, samt den kontrovers angående Unity som skete i løbet af 2023.
+  Spillet vil være under genren Tower Defence / Rougelike, med inspiration fra en række mytologier, da jeg elsker spillet 'Age of Mythology'.</value>
+  </data>
+  <data name="Project_Oni_Modding_Title" xml:space="preserve">
+    <value>Oxygen Not Included Modding</value>
+  </data>
+  <data name="Project_Oni_Modding_Description" xml:space="preserve">
+    <value>Jeg har nogle ideer til nogle mods til mit nuværende favorit spil, Oxygen Not Included, som jeg gerne vil bruge lidt tid på at bringe til live, hvis muligt.
+  Nogle af disse ideer har jeg delt med andre moddere af spillet, og vil derfor muligvis kunne sparre med dem, hvis jeg har brug for det.
+  Spillet er udviklet med Unity, derfor bliver C# brugt, som er en fordel.
+  Modders interaction med spillet sker gennem 'Harmony', som jeg gerne vil lære om, da jeg muligvis kan bruge det til mit eget spil.</value>
+  </data>
+  <data name="Education_Grade_Bachelor" xml:space="preserve">
+    <value>Professionsbachelor i Software Udvikling</value>
+  </data>
+  <data name="Education_Grade_Software" xml:space="preserve">
+    <value>Datamatiker</value>
+  </data>
+  <data name="Education_Grade_Htx" xml:space="preserve">
+    <value>Højere Teknisk Eksamen</value>
+  </data>
+  <data name="Education_Description_Bachelor" xml:space="preserve">
+    <value>Fag jeg præsterede specielt godt i inkluderer .Net Core, Database og Test.</value>
+  </data>
+  <data name="Education_Description_Software" xml:space="preserve">
+    <value>Lærte at læse og skabe en længere række UML modeller i forbindelse med at blive oplært i udvikling ved brug af SCRUM.</value>
+  </data>
+  <data name="Education_Description_Htx" xml:space="preserve">
+    <value>Var del af en lille klasse på Teknologi og Design linjen.</value>
+  </data>
+  <data name="Employment_Employer_Apps4All" xml:space="preserve">
+    <value>Apps4All</value>
+  </data>
+  <data name="Employment_Employer_Tv2" xml:space="preserve">
+    <value>Tv2 Danmark</value>
+  </data>
+  <data name="Employment_Job_Title_Apps4All" xml:space="preserve">
+    <value>Mobil Udvikler</value>
+  </data>
+  <data name="Employment_Job_Title_Tv2" xml:space="preserve">
+    <value>Software Udvikler</value>
+  </data>
+  <data name="Employment_Work_Description_Apps4All" xml:space="preserve">
+    <value>Min primære arbejdsopgave var at udvikle nye mobil applikationer egnet til Android, til brug på Point-of-Sale enheder.
+  Udviklingen af mobil applikationer gjorde jeg gennem Xamarin Forms.
+  Dertil udviklede jeg også nogle Microservices til at understøtte mobil applikationerne.
+  Microservicerne blev sat i funktion via Google Cloud.</value>
+  </data>
+  <data name="Employment_Work_Description_Tv2" xml:space="preserve">
+    <value>Denne stilling sluttede på grund af min kontrakt udløb, og ikke kunne blive fornyet, ikke på grund af jeg blev fyret.
+  Jeg deltog i et team af udviklere hvor vi ved brug af SCRUM, udviklede og forbedrede på en række interne værktøjer, hvor nogle af dem er Open Source.
+  Siden min kontrakt udløb er nogle af projekterne blevet ændret til Closed Source, men jeg har hørt at det er kun en midlertidig ændring.
+  På Cliptool projektet, genskrev jeg frontend siden af programmet, hovedsageligt for at begrænse antallet af komponenter per fil til en.
+  Omskrivningen betød også at en bedre fil struktur blev påført projektet, da det før var besværligt at finde komponenter man havde brug for at rette i.
+  Under omskrivning blev backenden også rettet, hovedsageligt for at bedre gemme ændringer til indstillinger mellem sessioner, end det blev gjort før.
+  I forbindelse med omskrivningen fik jeg også rettet en række fejl, og introduceret muligheden for at skjule valgte filer fra brugergrænsefladen.
+  På Sofie projektet, hjalp jeg med at skabe dele af backenden relateret til interaktionen med den underliggende Mongo database, samt den frontend rettede præsentationslag.
+  Jeg hjalp også med at flytte dele af den virksomheds specifikke kode fra det gamle repository over i den nye struktur.
+  Alt i alt, så er jeg gået fra ikke at have rørt eller anvendt TypeScript, til nu at føle mig lige så komfortabel i det som i C#.</value>
+  </data>
+  <data name="General_Information_Country" xml:space="preserve">
+    <value>Danmark</value>
+  </data>
+  <data name="Language_Danish_Language" xml:space="preserve">
+    <value>Dansk</value>
+  </data>
+  <data name="Language_English_Language" xml:space="preserve">
+    <value>Engelsk</value>
+  </data>
+  <data name="Language_German_Language" xml:space="preserve">
+    <value>Tysk</value>
+  </data>
+  <data name="Link_Remark_GitHub" xml:space="preserve">
+    <value>Tag et kig på min tidligere kode.</value>
+  </data>
+  <data name="Link_Remark_LinkedIn" xml:space="preserve">
+    <value>Tag dig ikke af at linket ser lidt underligt ud, LinkedIn kan ikke lide min apostrof.</value>
+  </data>
+  <data name="Link_Remark_Personal_Page" xml:space="preserve">
+    <value>Til at se dette CV online.</value>
+  </data>
+  <data name="References_Company_Name_Tv2" xml:space="preserve">
+    <value>Tv2 Danmark</value>
+  </data>
+  <data name="User_Interface_Skills_Header" xml:space="preserve">
+    <value>Evner</value>
+  </data>
+  <data name="Link_Title_Personal_Page" xml:space="preserve">
+    <value>Personlig hjemmeside</value>
+  </data>
+  <data name="Link_Title_LinkedIn" xml:space="preserve">
+    <value>LinkedIn</value>
+  </data>
+  <data name="Link_Title_GitHub" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="Link_Personal_Github" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Link_Noergaard_Mikkelsen_GitHub_Project" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Link_Personal_LinkedIn" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Link_Personal_Page" xml:space="preserve">
+    <value />
   </data>
 </root>
