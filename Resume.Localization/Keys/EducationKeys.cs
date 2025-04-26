@@ -22,5 +22,10 @@ public record EducationKeys : IEducationKeys
 
     /// <inheritdoc />
     public string DescriptionHtx { get; init; } = nameof(Resources.Education_Description_Htx);
-}
 
+    /// <inheritdoc />
+    public string SchoolNameHtx { get; init; } = nameof(Resources.Education_School_Name_Htx);
+
+    /// <inheritdoc />
+    public string SchoolNameUcl { get; init; } = nameof(Resources.Education_School_Name_Ucl);
+}

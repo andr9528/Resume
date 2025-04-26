@@ -117,9 +117,45 @@ namespace Resume.Localization.Strings {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string Education_School_Name_Htx {
+            get {
+                return ResourceManager.GetString("Education_School_Name_Htx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Education_School_Name_Ucl {
+            get {
+                return ResourceManager.GetString("Education_School_Name_Ucl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string Employment_Employer_Apps4All {
             get {
                 return ResourceManager.GetString("Employment_Employer_Apps4All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Employment_Employer_Fashionhero_Internship {
+            get {
+                return ResourceManager.GetString("Employment_Employer_Fashionhero_Internship", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Employment_Employer_Noergaard_Mikkelsen_Internship {
+            get {
+                return ResourceManager.GetString("Employment_Employer_Noergaard_Mikkelsen_Internship", resourceCulture);
             }
         }
         
@@ -144,6 +180,24 @@ namespace Resume.Localization.Strings {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string Employment_Job_Title_Fashionhero_Internship {
+            get {
+                return ResourceManager.GetString("Employment_Job_Title_Fashionhero_Internship", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Employment_Job_Title_Noergaard_Mikkelsen_Internship {
+            get {
+                return ResourceManager.GetString("Employment_Job_Title_Noergaard_Mikkelsen_Internship", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string Employment_Job_Title_Tv2 {
             get {
                 return ResourceManager.GetString("Employment_Job_Title_Tv2", resourceCulture);
@@ -156,6 +210,24 @@ namespace Resume.Localization.Strings {
         public static string Employment_Work_Description_Apps4All {
             get {
                 return ResourceManager.GetString("Employment_Work_Description_Apps4All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Employment_Work_Description_Fashionhero_Internship {
+            get {
+                return ResourceManager.GetString("Employment_Work_Description_Fashionhero_Internship", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Employment_Work_Description_Noergaard_Mikkelsen_Internship {
+            get {
+                return ResourceManager.GetString("Employment_Work_Description_Noergaard_Mikkelsen_Internship", resourceCulture);
             }
         }
         
@@ -399,6 +471,15 @@ namespace Resume.Localization.Strings {
         public static string Project_Tracker_Title {
             get {
                 return ResourceManager.GetString("Project_Tracker_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string References_Company_Name_Noergaard_Mikkelsen {
+            get {
+                return ResourceManager.GetString("References_Company_Name_Noergaard_Mikkelsen", resourceCulture);
             }
         }
         

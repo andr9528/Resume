@@ -169,6 +169,12 @@ When I develop I strive to adhere to the DRY and SOLID principles as much as pos
   <data name="Education_Grade_Software" xml:space="preserve">
     <value>Computer Science</value>
   </data>
+  <data name="Education_School_Name_Htx" xml:space="preserve">
+    <value>Svendborg Erhversskole</value>
+  </data>
+  <data name="Education_School_Name_Ucl" xml:space="preserve">
+    <value>University College Lillebaelt</value>
+  </data>
   <data name="Education_Grade_Htx" xml:space="preserve">
     <value>Higher Technical Exam</value>
   </data>
@@ -233,6 +239,9 @@ When I develop I strive to adhere to the DRY and SOLID principles as much as pos
     <value>To view this CV online.</value>
   </data>
   <data name="References_Company_Name_Tv2" xml:space="preserve">
+    <value>Noergaard Mikkelsen</value>
+  </data>
+  <data name="References_Company_Name_Noergaard_Mikkelsen" xml:space="preserve">
     <value>Tv2 Denmark</value>
   </data>
   <data name="User_Interface_Skills_Header" xml:space="preserve">
@@ -258,5 +267,38 @@ When I develop I strive to adhere to the DRY and SOLID principles as much as pos
   </data>
   <data name="Link_Personal_Page" xml:space="preserve">
     <value />
+  </data>
+  <data name="Employment_Employer_Fashionhero_Internship" xml:space="preserve">
+    <value>Fashionhero</value>
+  </data>
+  <data name="Employment_Job_Title_Fashionhero_Internship" xml:space="preserve">
+    <value>Software Developer</value>
+  </data>
+  <data name="Employment_Job_Title_Noergaard_Mikkelsen_Internship" xml:space="preserve">
+    <value>Software Developer</value>
+  </data>
+  <data name="Employment_Work_Description_Fashionhero_Internship" xml:space="preserve">
+    <value>This position was a one month Company Internship. 
+
+Using C#, i worked on developing a program to load their storage, exported to an Xml file, into a local database.
+
+The loaded storage would then be export to a Xml in another format, for use by other sites to sell products from us.
+
+During this work i made use of Entity Framework Core to write to a Sqlite database</value>
+  </data>
+  <data name="Employment_Work_Description_Noergaard_Mikkelsen_Internship" xml:space="preserve">
+    <value>This position was a one month Company Internship.
+
+Using C# and Uno Platform as the frontend framework, i developed a program to register prompts for AI's. 
+
+These Prompts were then able to be executed on registered AI's, starting with ChatGPT.
+Afterwards the AI's response would be saved, for use to generate statistics with.
+
+The aim of the program was to collect quantitative data on how AI's respond to the same Prompts, before Noergaard Mikkelsen starts to apply changes to their customers websides, in an attempt to influence AI's responses.
+
+The program is open source, and a version of it can be found on my GitHub profile, through the link below.</value>
+  </data>
+  <data name="Employment_Employer_Noergaard_Mikkelsen_Internship" xml:space="preserve">
+    <value>Noergaard Mikkelsen</value>
   </data>
 </root>

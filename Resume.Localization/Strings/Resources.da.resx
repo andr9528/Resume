@@ -166,6 +166,12 @@ Når jeg udvikler stræber jeg efter at overholde principperne DRY og SOLID, så
   <data name="Education_Grade_Software" xml:space="preserve">
     <value>Datamatiker</value>
   </data>
+  <data name="Education_School_Name_Htx" xml:space="preserve">
+    <value>Svendborg Erhversskole</value>
+  </data>
+  <data name="Education_School_Name_Ucl" xml:space="preserve">
+    <value>University College Lillebælt</value>
+  </data>
   <data name="Education_Grade_Htx" xml:space="preserve">
     <value>Højere Teknisk Eksamen</value>
   </data>
@@ -230,6 +236,9 @@ Når jeg udvikler stræber jeg efter at overholde principperne DRY og SOLID, så
     <value>Til at se dette CV online.</value>
   </data>
   <data name="References_Company_Name_Tv2" xml:space="preserve">
+    <value>Nørgård Mikkelsen</value>
+  </data>
+  <data name="References_Company_Name_Noergaard_Mikkelsen" xml:space="preserve">
     <value>Tv2 Danmark</value>
   </data>
   <data name="User_Interface_Skills_Header" xml:space="preserve">
@@ -255,5 +264,35 @@ Når jeg udvikler stræber jeg efter at overholde principperne DRY og SOLID, så
   </data>
   <data name="Link_Personal_Page" xml:space="preserve">
     <value />
+  </data>
+  <data name="Employment_Employer_Fashionhero_Internship" xml:space="preserve">
+    <value>Fashionhero</value>
+  </data>
+  <data name="Employment_Job_Title_Fashionhero_Internship" xml:space="preserve">
+    <value>Software Udvikler</value>
+  </data>
+  <data name="Employment_Job_Title_Noergaard_Mikkelsen_Internship" xml:space="preserve">
+    <value>Software Udvikler</value>
+  </data>
+  <data name="Employment_Work_Description_Fashionhero_Internship" xml:space="preserve">
+    <value>Denne stilling var en, en-måneds virksomhedpraktik.
+
+Ved brug af C#, arbejdet jeg på at udvikle et program der kunne loade deres lagerdata, fra den eksportered Xml fil, ind i en local Database.
+
+Det indlæste lager ville derefter kunne blive eksporteret til en Xml fil i et andet format, til brug for at få en anden side til at sælge vores produkter for os.
+
+Under dette arbejde gjorde jeg brug af Entity Framework Core til at skrive til den Sqlite Database jeg gjorde brug af.</value>
+  </data>
+  <data name="Employment_Work_Description_Noergaard_Mikkelsen_Internship" xml:space="preserve">
+    <value>Denne stilling var en, en-måneds virksomhedpraktik.
+
+Ved brug af C# og Uno Platform from frontend framework, udviklet jeg et program til at registrere Prompts til AI's. Disse prompts kunne så blive sendt afsted til registrerede AI's, med udgangspunk i Open AI's ChatGPT, hvorefter deres svar bliver gemt til at danne statistik over.
+
+Programmets endelige mål var at indsamle kvantitativ data på hvordan AI's svarer på den samme prompt, før at Nørgård Mikkelsen begynder at påvirke deres svar via justeringer på deres kunders sider.
+
+Projektet er Open Source, og en udgave kan blive set på min GitHub profil her.</value>
+  </data>
+  <data name="Employment_Employer_Noergaard_Mikkelsen_Internship" xml:space="preserve">
+    <value>Nørgård Mikkelsen</value>
   </data>
 </root>

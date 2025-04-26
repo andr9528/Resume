@@ -8,4 +8,6 @@ public interface IEducationKeys
     string DescriptionBachelor { get; }
     string DescriptionSoftware { get; }
     string DescriptionHtx { get; }
+    string SchoolNameHtx { get; }
+    string SchoolNameUcl { get; }
 }
