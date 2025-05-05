@@ -57,6 +57,12 @@ public class EntityService : IEntityService
                 StartDate = new DateTime(2022, 4, 1),
                 EndDate = new DateTime(2023, 12, 31),
                 WorkDescription = localeService.GetLocalizedString(categories.EmploymentKeys.WorkDescriptionTv2),
+                Links = new List<string>()
+                {
+                    localeService.GetLocalizedString(categories.LinkKeys.Tv2CliptoolGitHubProject),
+                    localeService.GetLocalizedString(categories.LinkKeys.Tv2SofieServerGitHubProject),
+                    localeService.GetLocalizedString(categories.LinkKeys.Tv2SofieAngularGitHubProject),
+                },
             },
             new Employment()
             {
@@ -67,6 +73,10 @@ public class EntityService : IEntityService
                 EndDate = new DateTime(2024, 5, 31),
                 WorkDescription =
                     localeService.GetLocalizedString(categories.EmploymentKeys.WorkDescriptionFashionheroInternship),
+                Links = new List<string>()
+                {
+                    localeService.GetLocalizedString(categories.LinkKeys.FashionHeroGitHubProject),
+                },
             },
             new Employment()
             {
@@ -80,10 +90,15 @@ public class EntityService : IEntityService
                 WorkDescription =
                     localeService.GetLocalizedString(categories.EmploymentKeys
                         .WorkDescriptionNoergaardMikkelsenInternship),
+                Links = new List<string>()
+                {
+                    localeService.GetLocalizedString(categories.LinkKeys.NoergaardMikkelsenGitHubProject),
+                },
             },
         };
 
         employments.Sort();
+        employments.Reverse();
         return employments;
     }
 
@@ -96,7 +111,7 @@ public class EntityService : IEntityService
             {
                 Name = "C#",
                 Importance = 100,
-                Expertise = SkillLevel.EXPERT,
+                Expertise = SkillLevel.EXPERIENCED,
             },
             new Skill()
             {

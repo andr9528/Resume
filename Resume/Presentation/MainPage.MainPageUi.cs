@@ -1,3 +1,4 @@
+using Resume.Localization.Abstractions;
 using Resume.Presentation.Core;
 using Resume.Presentation.Factory;
 using Resume.Services.Abstractions;
@@ -8,15 +9,11 @@ public sealed partial class MainPage
 {
     public class MainPageUi : BaseUi<MainPageLogic, MainPageViewModel>
     {
-        private readonly ILocaleService localeService;
-        private readonly IEntityService entityService;
-
         public MainPageUi(
             MainPageLogic logic, MainPageViewModel viewModel, ILocaleService localeService,
-            IEntityService entityService) : base(logic, viewModel)
+            ILocalizationCategories categories, IEntityService entityService) : base(logic, viewModel, localeService,
+            categories, entityService)
         {
-            this.localeService = localeService;
-            this.entityService = entityService;
         }
 
         /// <inheritdoc />
@@ -98,6 +95,7 @@ public sealed partial class MainPage
             var frame = new Frame {Background = new SolidColorBrush(Colors.White),};
 
             Logic.RegisterContentFrameFrame(frame);
+            frame.Navigate(typeof(ReadOnlyPage));
 
             return frame;
         }

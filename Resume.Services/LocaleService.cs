@@ -7,6 +7,7 @@ namespace Resume.Services;
 
 public class LocaleService : ILocaleService
 {
+    private const string RESOURCE_MANAGER_PATH = "Resume.Localization.Strings.Resources";
     private readonly ILocalizationService localizationService;
     private readonly ILogger<LocaleService> logger;
     private readonly ResourceManager resourceManager;
@@ -17,8 +18,7 @@ public class LocaleService : ILocaleService
         this.logger = logger;
 
         Console.WriteLine($"Getting new Resource Manager");
-        resourceManager = new ResourceManager($"Resume.Localization.Strings.Resources",
-            typeof(Localization.Strings.Resources).Assembly);
+        resourceManager = new ResourceManager(RESOURCE_MANAGER_PATH, typeof(Localization.Strings.Resources).Assembly);
     }
 
     /// <inheritdoc />
@@ -33,7 +33,7 @@ public class LocaleService : ILocaleService
             return localizedString;
         }
 
-        Console.WriteLine($"Failed to get a localized string for '{key}'...");
+        Console.WriteLine($"Failed to get a localized string for '{key}' in culture '{currentCulture.Name}'...");
         return key;
     }
 

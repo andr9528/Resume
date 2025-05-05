@@ -16,7 +16,7 @@ public sealed partial class MainPage : BasePage
         DataContext = new MainPageViewModel();
 
         var logic = new MainPageLogic((MainPageViewModel) DataContext, localeService, appInfo, categories);
-        var ui = new MainPageUi(logic, (MainPageViewModel) DataContext, localeService, entityService);
+        var ui = new MainPageUi(logic, (MainPageViewModel) DataContext, localeService, categories, entityService);
 
         this.Background(Theme.Brushes.Background.Default).Content(ui.CreateContentGrid());
     }

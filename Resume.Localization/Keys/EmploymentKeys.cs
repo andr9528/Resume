@@ -41,9 +41,9 @@ public record EmploymentKeys : IEmploymentKeys
 
     /// <inheritdoc />
     public string WorkDescriptionFashionheroInternship { get; init; } =
-        nameof(Resources.Employment_Job_Title_Fashionhero_Internship);
+        nameof(Resources.Employment_Work_Description_Fashionhero_Internship);
 
     /// <inheritdoc />
     public string WorkDescriptionNoergaardMikkelsenInternship { get; init; } =
-        nameof(Resources.Employment_Job_Title_Fashionhero_Internship);
+        nameof(Resources.Employment_Work_Description_Noergaard_Mikkelsen_Internship);
 }
