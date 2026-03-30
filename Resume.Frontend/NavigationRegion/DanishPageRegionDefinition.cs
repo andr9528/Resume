@@ -1,5 +1,6 @@
 using System.Drawing;
 using Resume.Abstraction.Enums;
+using Resume.Abstraction.Interfaces.Services;
 using Resume.Frontend.Abstraction;
 using Resume.Frontend.Presentation;
 
@@ -8,7 +9,6 @@ namespace Resume.Frontend.NavigationRegion;
 public class DanishPageRegionDefinition : IPageRegion
 {
     private readonly ILogger<DanishPageRegionDefinition> logger;
-    private UIElement? region;
 
     public DanishPageRegionDefinition(ILogger<DanishPageRegionDefinition> logger)
     {
@@ -24,13 +24,12 @@ public class DanishPageRegionDefinition : IPageRegion
     /// <inheritdoc />
     public UIElement CreateControl(IServiceProvider services)
     {
-        logger.LogInformation($"Changing page to: Danish {nameof(StructureBorder)}");
-        if (region != null)
-        {
-            return region;
-        }
+        ILocaleService localeService = services.GetService<ILocaleService>() ??
+                                       throw new ArgumentException(
+                                           $"Expected to get an implementation of {nameof(ILocaleService)}");
+        localeService.SetLanguage(LanguageType.DANISH);
 
-        region = ActivatorUtilities.CreateInstance<StructureBorder>(services, LanguageType.DANISH);
-        return region;
+        logger.LogInformation($"Changing page to: Danish {nameof(StructureBorder)}");
+        return ActivatorUtilities.CreateInstance<StructureBorder>(services, LanguageType.DANISH);
     }
 }

@@ -1,4 +1,5 @@
 using Resume.Abstraction.Enums;
+using Resume.Abstraction.Interfaces.Services;
 using Resume.Frontend.Abstraction;
 using Resume.Frontend.Presentation;
 
@@ -7,7 +8,6 @@ namespace Resume.Frontend.NavigationRegion;
 public class EnglishPageRegionDefinition : IPageRegion
 {
     private readonly ILogger<EnglishPageRegionDefinition> logger;
-    private UIElement? region;
 
     public EnglishPageRegionDefinition(ILogger<EnglishPageRegionDefinition> logger)
     {
@@ -23,13 +23,12 @@ public class EnglishPageRegionDefinition : IPageRegion
     /// <inheritdoc />
     public UIElement CreateControl(IServiceProvider services)
     {
-        logger.LogInformation($"Changing page to: English {nameof(StructureBorder)}");
-        if (region != null)
-        {
-            return region;
-        }
+        ILocaleService localeService = services.GetService<ILocaleService>() ??
+                                       throw new ArgumentException(
+                                           $"Expected to get an implementation of {nameof(ILocaleService)}");
+        localeService.SetLanguage(LanguageType.ENGLISH);
 
-        region = ActivatorUtilities.CreateInstance<StructureBorder>(services, LanguageType.ENGLISH);
-        return region;
+        logger.LogInformation($"Changing page to: English {nameof(StructureBorder)}");
+        return ActivatorUtilities.CreateInstance<StructureBorder>(services, LanguageType.ENGLISH);
     }
 }
