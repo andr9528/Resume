@@ -1,4 +1,4 @@
-using Resume.Entities.Frontend;
+using Resume.Models.Frontend;
 
 namespace Resume.Tests;
 

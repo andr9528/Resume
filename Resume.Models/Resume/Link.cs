@@ -1,6 +1,6 @@
 using Resume.Abstraction.Interfaces.Resume;
 
-namespace Resume.Entities.Resume;
+namespace Resume.Models.Resume;
 
 public class Link : ILink
 {

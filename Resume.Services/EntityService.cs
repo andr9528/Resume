@@ -3,6 +3,7 @@ using Resume.Abstraction.Interfaces.Keys;
 using Resume.Abstraction.Interfaces.Resume;
 using Resume.Entities;
 using Resume.Entities.Resume;
+using Resume.Models.Resume;
 using Resume.Services.Abstractions;
 
 namespace Resume.Services;

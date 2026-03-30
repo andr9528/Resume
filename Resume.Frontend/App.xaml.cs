@@ -1,6 +1,6 @@
 using Resume.Frontend.Styles;
 using Uno.Resizetizer;
-using MainPage = Resume.Frontend.Presentation.MainPage;
+using MainPage = Resume.Frontend.MainPage;
 
 namespace Resume.Frontend;
 

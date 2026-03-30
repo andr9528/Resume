@@ -17,6 +17,6 @@ public partial class StructureBorder : Border
         var ui = new StructureBorderUi(logic, (StructureBorderViewModel) DataContext, localeService, categories,
             entityService);
 
-        this.Background(Theme.Brushes.Background.Default).Content(ui.CreateScrollView());
+        this.Background(Theme.Brushes.Background.Default).Child(ui.CreateScrollView());
     }
 }

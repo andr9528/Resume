@@ -1,8 +1,8 @@
 using Resume.Abstraction.Interfaces.Keys;
-using Resume.Entities.Frontend;
 using Resume.Frontend.Abstraction;
 using Resume.Frontend.NavigationRegion;
 using Resume.Localization.Keys;
+using Resume.Models.Frontend;
 using Resume.Services;
 using Resume.Services.Abstractions;
 using Resume.Startup;

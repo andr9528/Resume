@@ -1,7 +1,7 @@
 using Resume.Frontend.Abstraction;
 using Resume.Frontend.Presentation.Factory;
 
-namespace Resume.Frontend;
+namespace Resume.Frontend.Presentation;
 
 /// <summary>
 /// Page navigation menu that hosts "regions" (pages) and swaps Content based on selection.

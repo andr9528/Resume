@@ -1,7 +1,7 @@
 using Resume.Abstraction.Enums;
 using Resume.Abstraction.Interfaces.Resume;
 
-namespace Resume.Entities.Resume;
+namespace Resume.Models.Resume;
 
 public class Language : ILanguage
 {

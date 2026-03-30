@@ -1,4 +1,4 @@
-namespace Resume.Entities.Frontend;
+namespace Resume.Models.Frontend;
 
 public record AppConfig
 {
