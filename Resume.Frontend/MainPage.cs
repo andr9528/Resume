@@ -1,4 +1,5 @@
 using Resume.Frontend.Extensions;
+using Resume.Frontend.Presentation;
 using Resume.Frontend.Presentation.Factory;
 
 namespace Resume.Frontend;
@@ -17,7 +18,7 @@ public sealed partial class MainPage : Page
 
     private void AddElementsToGrid(Grid contentGrid)
     {
-        var selector = ActivatorUtilities.CreateInstance<Presentation.PageSelector>(App.Startup.ServiceProvider);
+        var selector = ActivatorUtilities.CreateInstance<PageSelector>(App.Startup.ServiceProvider);
 
         contentGrid.Children.Add(selector.SetRow(0).SetColumn(0));
     }

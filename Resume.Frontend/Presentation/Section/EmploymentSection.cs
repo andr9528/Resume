@@ -1,19 +1,17 @@
 using Resume.Abstraction.Interfaces.Keys;
-using Resume.Services.Abstractions;
+using Resume.Abstraction.Interfaces.Services;
 
 namespace Resume.Frontend.Presentation.Section;
 
-public partial class EmploymentSection : StackPanel
+public partial class EmploymentSection : Border
 {
-    public EmploymentSection(
-        IEntityService entityService, ILocaleService localeService, ILocalizationCategories categories)
+    public EmploymentSection(IEntityService entityService)
     {
         DataContext = new EmploymentSectionViewModel();
 
         var logic = new EmploymentSectionLogic((EmploymentSectionViewModel)DataContext);
-        var ui = new EmploymentSectionUi(logic, (EmploymentSectionViewModel)DataContext, localeService, categories,
-            entityService);
+        var ui = new EmploymentSectionUi(logic, (EmploymentSectionViewModel) DataContext, entityService);
 
-        this.Background(Theme.Brushes.Background.Default).Children.Add(ui.CreateContentGrid());
+        this.Background(Theme.Brushes.Background.Default).Child(ui.CreateContentGrid());
     }
 }

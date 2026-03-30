@@ -1,25 +1,20 @@
-using Resume.Abstraction.Interfaces.Keys;
-using Resume.Services.Abstractions;
+using Resume.Abstraction.Interfaces.Services;
 
 namespace Resume.Frontend.Presentation.Core;
 
 public abstract class BaseUi<TLogic, TViewModel> where TLogic : class where TViewModel : class
 {
-    protected BaseUi(
-        TLogic logic, TViewModel viewModel, ILocaleService localeService, ILocalizationCategories categories,
-        IEntityService entityService)
+    protected BaseUi(TLogic logic, TViewModel viewModel, IEntityService entityService)
     {
         Logic = logic;
         ViewModel = viewModel;
-        LocaleService = localeService;
-        LocaleCategories = categories;
         EntityService = entityService;
     }
 
     protected TLogic Logic { get; }
     protected TViewModel ViewModel { get; }
-    public ILocaleService LocaleService { get; }
-    public ILocalizationCategories LocaleCategories { get; }
+
+    //public ILocalizationCategories LocaleCategories { get; }
     public IEntityService EntityService { get; }
 
     public Grid CreateContentGrid()

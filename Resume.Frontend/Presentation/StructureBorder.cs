@@ -1,7 +1,7 @@
 using Resume.Abstraction.Enums;
 using Resume.Abstraction.Interfaces.Keys;
+using Resume.Abstraction.Interfaces.Services;
 using Resume.Frontend.Presentation.Core;
-using Resume.Services.Abstractions;
 
 namespace Resume.Frontend.Presentation;
 

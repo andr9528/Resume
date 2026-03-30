@@ -1,8 +1,7 @@
-using Resume.Abstraction.Interfaces.Keys;
 using Resume.Abstraction.Interfaces.Resume;
+using Resume.Abstraction.Interfaces.Services;
 using Resume.Frontend.Presentation.Core;
 using Resume.Frontend.Presentation.Factory;
-using Resume.Services.Abstractions;
 
 namespace Resume.Frontend.Presentation.Section;
 
@@ -12,9 +11,8 @@ public partial class EmploymentSection
     {
         /// <inheritdoc />
         public EmploymentSectionUi(
-            EmploymentSectionLogic logic, EmploymentSectionViewModel viewModel, ILocaleService localeService,
-            ILocalizationCategories categories, IEntityService entityService) : base(logic, viewModel, localeService,
-            categories, entityService)
+            EmploymentSectionLogic logic, EmploymentSectionViewModel viewModel, IEntityService entityService) : base(
+            logic, viewModel, entityService)
         {
         }
 
@@ -102,7 +100,7 @@ public partial class EmploymentSection
         {
             return new TextBlock
             {
-                Text = "HEADER",
+                Text = employment.JobTitle,
                 FontSize = 18,
                 Margin = new Thickness(0, 0, 0, 10),
             };

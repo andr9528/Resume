@@ -1,7 +1,7 @@
 using Resume.Abstraction.Interfaces.Keys;
+using Resume.Abstraction.Interfaces.Services;
 using Resume.Frontend.Presentation.Core;
 using Resume.Frontend.Presentation.Section;
-using Resume.Services.Abstractions;
 
 namespace Resume.Frontend.Presentation;
 
@@ -11,8 +11,7 @@ public partial class StructureBorder
     {
         public StructureBorderUi(
             StructureBorderLogic logic, StructureBorderViewModel viewModel, ILocaleService localeService,
-            ILocalizationCategories categories, IEntityService entityService) : base(logic, viewModel, localeService,
-            categories, entityService)
+            ILocalizationCategories categories, IEntityService entityService) : base(logic, viewModel, entityService)
         {
         }
 
@@ -29,8 +28,7 @@ public partial class StructureBorder
 
         protected override void AddControlsToGrid(Grid grid)
         {
-            EmploymentSection employmentSection = new EmploymentSection(EntityService, LocaleService, LocaleCategories)
-                .Grid(row: 0, column: 0);
+            EmploymentSection employmentSection = new EmploymentSection(EntityService).Grid(row: 0, column: 0);
 
             grid.Children.Add(employmentSection);
         }
