@@ -31,9 +31,9 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.3.1
 
-      - name: Build Resume (Debug)
+      - name: Build Resume.Frontend (Debug)
         shell: pwsh
-        run: msbuild ./Resume/Resume.csproj /r
+        run: msbuild ./Resume.Frontend/Resume.Frontend.csproj /r
 
   unit_test:
     name: Unit Tests
