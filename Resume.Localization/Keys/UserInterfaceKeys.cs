@@ -1,4 +1,4 @@
-using Resume.Localization.Abstractions;
+using Resume.Abstraction.Interfaces.Keys;
 using Resume.Localization.Strings;
 
 namespace Resume.Localization.Keys;

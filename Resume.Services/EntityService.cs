@@ -1,8 +1,8 @@
 using Resume.Abstraction.Enums;
-using Resume.Abstraction.Interfaces;
+using Resume.Abstraction.Interfaces.Keys;
+using Resume.Abstraction.Interfaces.Resume;
 using Resume.Entities;
 using Resume.Entities.Resume;
-using Resume.Localization.Abstractions;
 using Resume.Services.Abstractions;
 
 namespace Resume.Services;

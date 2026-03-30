@@ -1,6 +1,6 @@
 using Resume.Abstraction.Enums;
 
-namespace Resume.Abstraction.Interfaces;
+namespace Resume.Abstraction.Interfaces.Resume;
 
 public interface ISkill : IImportance
 {

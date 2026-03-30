@@ -1,4 +1,4 @@
-namespace Resume.Localization.Abstractions;
+namespace Resume.Abstraction.Interfaces.Keys;
 
 public interface ILocalizationCategories
 {

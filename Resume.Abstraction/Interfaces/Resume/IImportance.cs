@@ -1,4 +1,4 @@
-namespace Resume.Abstraction.Interfaces;
+namespace Resume.Abstraction.Interfaces.Resume;
 
 public interface IImportance : IComparable<IImportance>
 {
