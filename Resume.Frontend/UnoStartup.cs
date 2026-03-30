@@ -1,16 +1,26 @@
 using Resume.Abstraction.Interfaces.Keys;
+using Resume.Abstraction.Interfaces.Services;
 using Resume.Frontend.Abstraction;
 using Resume.Frontend.NavigationRegion;
 using Resume.Localization.Keys;
 using Resume.Models.Frontend;
 using Resume.Services;
-using Resume.Services.Abstractions;
 using Resume.Startup;
+using Resume.Startup.Modules;
+using Path = System.IO.Path;
 
 namespace Resume.Frontend;
 
 public class UnoStartup : ModularStartup<IApplicationBuilder>
 {
+    public UnoStartup()
+    {
+        AddModule(new LoggingStartupModule(new[]
+        {
+            LogTarget.BROWSER_CONSOLE,
+        }));
+    }
+
     protected override void ConfigureServices(IServiceCollection services)
     {
         base.ConfigureServices(services);

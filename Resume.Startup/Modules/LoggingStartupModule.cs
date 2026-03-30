@@ -2,7 +2,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Resume.Abstraction.Interfaces.Startup;
 using Serilog;
+using Serilog.Configuration;
+using Serilog.Core;
 using Serilog.Events;
+using Serilog.Formatting.Display;
 
 namespace Resume.Startup.Modules;
 
@@ -11,11 +14,26 @@ public class LoggingStartupModule : IServiceStartupModule
     private const string LOG_PATTERN =
         "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u}] [{SourceContext}] {Scope} {Message:lj}{NewLine}{Exception}";
 
-    public static string LogDirectory = null!;
+    private readonly string? logDirectory;
+    private readonly IReadOnlyCollection<LogTarget> logTargets;
 
-    public LoggingStartupModule(string applicationDataPath)
+    public LoggingStartupModule(IEnumerable<LogTarget> logTargets, string? applicationDataPath = null)
     {
-        LogDirectory = Path.Combine(applicationDataPath, "Logs");
+        var enumerable = logTargets.ToList();
+        this.logTargets = enumerable.Distinct().ToArray();
+
+        if (!enumerable.Any())
+            throw new ArgumentException("At least one log target must be supplied.", nameof(logTargets));
+
+        if (!enumerable.Contains(LogTarget.FILE))
+            return;
+
+        if (string.IsNullOrWhiteSpace(applicationDataPath))
+            throw new ArgumentException(
+                $"'{nameof(applicationDataPath)}' must be supplied when using {LogTarget.FILE}.",
+                nameof(applicationDataPath));
+
+        logDirectory = Path.Combine(applicationDataPath, "Logs");
     }
 
     /// <inheritdoc />
@@ -26,12 +44,7 @@ public class LoggingStartupModule : IServiceStartupModule
         level = LogEventLevel.Debug;
 #endif
 
-        LoggerConfiguration configuration = new LoggerConfiguration().Enrich.FromLogContext();
-        configuration = AddWriteToSegments(configuration);
-        configuration = ConfigureMinimumLevel(configuration);
-        configuration = AddLevelOverwrites(configuration);
-
-        Log.Logger = configuration.CreateLogger();
+        ConfigureSerilog();
 
         services.AddLogging(x =>
         {
@@ -39,18 +52,36 @@ public class LoggingStartupModule : IServiceStartupModule
             x.AddSerilog(Log.Logger);
         });
 
-        var todayFileName = $"log-{DateTime.Now:yyyyMMdd}.log";
-        string fullPath = Path.Combine(LogDirectory, todayFileName);
-
-        if (File.Exists(fullPath))
-        {
-            File.AppendAllText(fullPath, Environment.NewLine);
-            File.AppendAllText(fullPath, Environment.NewLine);
-            File.AppendAllText(fullPath, Environment.NewLine);
-        }
+        WriteFileGap();
 
         var logger = services.BuildServiceProvider().GetService<ILogger<LoggingStartupModule>>();
         logger?.LogDebug("Completed Configuration of Logging Services.");
+    }
+
+    private void ConfigureSerilog()
+    {
+        LoggerConfiguration configuration = new LoggerConfiguration().Enrich.FromLogContext();
+        configuration = AddWriteToSegments(configuration, logTargets);
+        configuration = ConfigureMinimumLevel(configuration);
+        configuration = AddLevelOverwrites(configuration);
+
+        Log.Logger = configuration.CreateLogger();
+    }
+
+    private void WriteFileGap()
+    {
+        if (!logTargets.Contains(LogTarget.FILE))
+            return;
+
+        var todayFileName = $"log-{DateTime.Now:yyyyMMdd}.log";
+        string fullPath = Path.Combine(logDirectory!, todayFileName);
+
+        if (!File.Exists(fullPath))
+            return;
+
+        File.AppendAllText(fullPath, Environment.NewLine);
+        File.AppendAllText(fullPath, Environment.NewLine);
+        File.AppendAllText(fullPath, Environment.NewLine);
     }
 
     private LoggerConfiguration ConfigureMinimumLevel(LoggerConfiguration configuration)
@@ -60,19 +91,30 @@ public class LoggingStartupModule : IServiceStartupModule
         return configuration;
     }
 
-    private LoggerConfiguration AddWriteToSegments(LoggerConfiguration configuration)
+    private LoggerConfiguration AddWriteToSegments(LoggerConfiguration configuration, IEnumerable<LogTarget> targets)
     {
         var level = LogEventLevel.Information;
 #if DEBUG
         level = LogEventLevel.Debug;
 #endif
 
-        string logPath = Path.Combine(LogDirectory, "log-.log");
+        foreach (LogTarget logTarget in targets)
+        {
+            configuration = logTarget switch
+            {
+                LogTarget.CONSOLE => configuration.WriteTo.Console(outputTemplate: LOG_PATTERN),
 
-        configuration = configuration.WriteTo.Console(outputTemplate: LOG_PATTERN);
-        configuration = configuration.WriteTo.File(logPath, outputTemplate: LOG_PATTERN, shared: true,
-            flushToDiskInterval: TimeSpan.FromMinutes(1), restrictedToMinimumLevel: level, retainedFileCountLimit: 7,
-            rollingInterval: RollingInterval.Day);
+                LogTarget.BROWSER_CONSOLE => configuration.WriteTo.BrowserConsoleSimple(LOG_PATTERN),
+                // Not Supported on BrowserWASM - yet.
+                //LogTarget.BROWSER_CONSOLE => configuration.WriteTo.BrowserConsole(outputTemplate: LOG_PATTERN),
+
+                LogTarget.FILE => configuration.WriteTo.File(Path.Combine(logDirectory!, "log-.log"),
+                    outputTemplate: LOG_PATTERN, shared: true, flushToDiskInterval: TimeSpan.FromMinutes(1),
+                    restrictedToMinimumLevel: level, retainedFileCountLimit: 7, rollingInterval: RollingInterval.Day),
+
+                var _ => throw new ArgumentOutOfRangeException(nameof(targets), logTarget, "Unsupported log target."),
+            };
+        }
 
         return configuration;
     }
@@ -91,5 +133,39 @@ public class LoggingStartupModule : IServiceStartupModule
         configuration = configuration.MinimumLevel.Override("Microsoft.Extensions.Http", LogEventLevel.Warning);
 
         return configuration;
+    }
+}
+
+public enum LogTarget
+{
+    CONSOLE = 0,
+    BROWSER_CONSOLE = 1,
+    FILE = 2,
+}
+
+public class BrowserConsoleSink : ILogEventSink
+{
+    private readonly MessageTemplateTextFormatter _formatter;
+
+    public BrowserConsoleSink(string outputTemplate)
+    {
+        _formatter = new MessageTemplateTextFormatter(outputTemplate);
+    }
+
+    public void Emit(LogEvent logEvent)
+    {
+        using var writer = new StringWriter();
+        _formatter.Format(logEvent, writer);
+
+        Console.WriteLine(writer.ToString());
+    }
+}
+
+public static class BrowserConsoleSinkExtensions
+{
+    public static LoggerConfiguration BrowserConsoleSimple(
+        this LoggerSinkConfiguration sinkConfiguration, string outputTemplate)
+    {
+        return sinkConfiguration.Sink(new BrowserConsoleSink(outputTemplate));
     }
 }
