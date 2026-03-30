@@ -5,12 +5,12 @@ using Resume.Services.Abstractions;
 
 namespace Resume.Frontend.Presentation;
 
-public partial class ReadOnlyPage
+public partial class StructureBorder
 {
-    private class ReadOnlyPageUi : BaseUi<ReadOnlyPageLogic, ReadOnlyPageViewModel>
+    private class StructureBorderUi : BaseUi<StructureBorderLogic, StructureBorderViewModel>
     {
-        public ReadOnlyPageUi(
-            ReadOnlyPageLogic logic, ReadOnlyPageViewModel viewModel, ILocaleService localeService,
+        public StructureBorderUi(
+            StructureBorderLogic logic, StructureBorderViewModel viewModel, ILocaleService localeService,
             ILocalizationCategories categories, IEntityService entityService) : base(logic, viewModel, localeService,
             categories, entityService)
         {

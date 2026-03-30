@@ -18,11 +18,11 @@ public partial class App : Application
 
     protected Window? MainWindow { get; private set; }
     protected IHost? Host { get; private set; }
-    public Startup Startup { get; private set; }
+    public static UnoStartup Startup { get; private set; }
 
     protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
-        Startup = new Startup();
+        Startup = new UnoStartup();
 
         // Load WinUI Resources
         Resources.Build(r => r.Merged(new XamlControlsResources()));
@@ -32,7 +32,8 @@ public partial class App : Application
             r.Merged(new MaterialToolkitTheme(new ColorPaletteOverride(), new MaterialFontsOverride())));
         IApplicationBuilder builder = this.CreateBuilder(args);
 
-        Startup.ConfigureApp(builder);
+        Startup.SetupApplication(builder)
+            .Configure(host => host.ConfigureServices(collection => Startup.SetupServices(collection)));
 
         MainWindow = builder.Window;
 
