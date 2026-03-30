@@ -1,7 +1,7 @@
-using Resume.Entities.Abstractions.Enums;
-using Resume.Entities.Abstractions.Interfaces;
+using Resume.Abstraction.Enums;
+using Resume.Abstraction.Interfaces;
 
-namespace Resume.Entities;
+namespace Resume.Entities.Resume;
 
 public class Language : ILanguage
 {
