@@ -35,12 +35,12 @@ public partial class ReadOnlyPage
             grid.Children.Add(employmentSection);
         }
 
-        internal ScrollView CreateScrollView()
+        internal ScrollViewer CreateScrollView()
         {
-            var scrollView = new ScrollView
+            var scrollView = new ScrollViewer
             {
-                HorizontalScrollBarVisibility = ScrollingScrollBarVisibility.Hidden,
-                VerticalScrollBarVisibility = ScrollingScrollBarVisibility.Visible,
+                HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden,
+                VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
                 Margin = new Thickness(80, 0),
             };
 
