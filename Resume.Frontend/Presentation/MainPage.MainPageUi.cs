@@ -84,7 +84,7 @@ public sealed partial class MainPage
             titleTextBlock.SetBinding(TextBlock.TextProperty, new Binding
             {
                 Source = ViewModel,
-                Path = new PropertyPath(nameof(Resume.Presentation.MainPage.MainPageViewModel.Title)),
+                Path = new PropertyPath(nameof(MainPageViewModel.Title)),
             });
 
             return titleTextBlock;

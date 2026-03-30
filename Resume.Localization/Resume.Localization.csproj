@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Resume.Entities\Resume.Entities.csproj" />
+    <ProjectReference Include="..\Resume.Abstraction\Resume.Abstraction.csproj" />
   </ItemGroup>
 
   <ItemGroup>

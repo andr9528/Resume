@@ -8,13 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" />
-    <PackageReference Include="Refit" />
     <PackageReference Include="Uno.Extensions.Localization" />
     <PackageReference Include="Uno.Extensions.Navigation" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Resume.Entities\Resume.Models.csproj" />
+    <ProjectReference Include="..\Resume.Models\Resume.Models.csproj" />
     <ProjectReference Include="..\Resume.Localization\Resume.Localization.csproj" />
   </ItemGroup>
 
