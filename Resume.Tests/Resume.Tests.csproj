@@ -19,6 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Resume.Entities\Resume.Entities.csproj" />
+    <ProjectReference Include="..\Resume.Entities\Resume.Models.csproj" />
   </ItemGroup>
 </Project>
