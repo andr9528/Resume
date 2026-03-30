@@ -27,14 +27,20 @@ public class LocaleService : ILocaleService
     {
         CultureInfo currentCulture = GetCurrentCulture();
 
+        logger.LogDebug("CurrentCulture: {CurrentCulture}, CurrentUICulture: {CurrentUICulture}",
+            CultureInfo.CurrentCulture.Name, CultureInfo.CurrentUICulture.Name);
+        logger.LogInformation("Getting '{Key}' from LocalizationService Culture '{Culture}'.", key,
+            currentCulture.Name);
+
         string? localizedString = resourceManager.GetString(key, currentCulture);
 
         if (!string.IsNullOrWhiteSpace(localizedString))
         {
+            logger.LogDebug("Got value for '{Key}' - {Value}", key, localizedString);
             return localizedString;
         }
 
-        logger.LogInformation($"Failed to get a localized string for '{key}' in culture '{currentCulture.Name}'...");
+        logger.LogWarning($"Failed to get a localized string for '{key}' in culture '{currentCulture.Name}'...");
         return key;
     }
 

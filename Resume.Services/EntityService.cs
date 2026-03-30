@@ -62,8 +62,6 @@ public class EntityService : IEntityService
                 Links = new List<string>
                 {
                     localeService.GetLocalizedString(categories.LinkKeys.Tv2CliptoolGitHubProject),
-                    localeService.GetLocalizedString(categories.LinkKeys.Tv2SofieServerGitHubProject),
-                    localeService.GetLocalizedString(categories.LinkKeys.Tv2SofieAngularGitHubProject),
                 },
             },
             new Employment

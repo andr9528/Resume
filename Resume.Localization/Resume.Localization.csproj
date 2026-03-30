@@ -7,17 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Strings\Resources.da.resx">
-      <IsDefaultItem>true</IsDefaultItem>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Strings\Resources.en.resx">
-      <IsDefaultItem>true</IsDefaultItem>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Resume.Abstraction\Resume.Abstraction.csproj" />
   </ItemGroup>
 
@@ -30,6 +19,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Strings\Resources.da.resx">
+      <IsDefaultItem>true</IsDefaultItem>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Strings\Resources.en.resx">
+      <IsDefaultItem>true</IsDefaultItem>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Strings\Resources.resx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
