@@ -1,8 +1,9 @@
+using Resume.Entities.Frontend;
+using Resume.Frontend.Presentation.Core;
 using Resume.Localization.Abstractions;
-using Resume.Presentation.Core;
 using Resume.Services.Abstractions;
 
-namespace Resume.Presentation;
+namespace Resume.Frontend.Presentation;
 
 public sealed partial class MainPage
 {

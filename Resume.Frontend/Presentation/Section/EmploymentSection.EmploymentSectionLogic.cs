@@ -1,6 +1,6 @@
-using Resume.Presentation.Core;
+using Resume.Frontend.Presentation.Core;
 
-namespace Resume.Presentation.Section;
+namespace Resume.Frontend.Presentation.Section;
 
 public partial class EmploymentSection
 {

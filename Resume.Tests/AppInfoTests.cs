@@ -1,3 +1,5 @@
+using Resume.Entities.Frontend;
+
 namespace Resume.Tests;
 
 public class AppInfoTests
@@ -10,7 +12,7 @@ public class AppInfoTests
     [Test]
     public void AppInfoCreation()
     {
-        var appInfo = new AppConfig { Environment = "Test" };
+        var appInfo = new AppConfig { Environment = "Test", };
 
         appInfo.Should().NotBeNull();
         appInfo.Environment.Should().Be("Test");

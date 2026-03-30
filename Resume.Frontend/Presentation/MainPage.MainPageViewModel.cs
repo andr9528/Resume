@@ -1,4 +1,4 @@
-namespace Resume.Presentation;
+namespace Resume.Frontend.Presentation;
 
 public sealed partial class MainPage
 {
@@ -6,7 +6,6 @@ public sealed partial class MainPage
     {
         [ObservableProperty] private string? testBox = "Testing Bindings";
         [ObservableProperty] private string? title;
-
 
         public MainPageViewModel()
         {

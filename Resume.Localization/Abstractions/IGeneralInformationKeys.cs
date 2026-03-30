@@ -4,4 +4,3 @@ public interface IGeneralInformationKeys
 {
     string Country { get; }
 }
-

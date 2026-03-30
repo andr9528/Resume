@@ -14,4 +14,3 @@ public record LanguageKeys : ILanguageKeys
     /// <inheritdoc />
     public string GermanLanguage { get; init; } = nameof(Resources.Language_German_Language);
 }
-

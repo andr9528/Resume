@@ -1,4 +1,4 @@
-namespace Resume.Styles;
+namespace Resume.Frontend.Styles;
 
 public sealed class MaterialFontsOverride : ResourceDictionary
 {

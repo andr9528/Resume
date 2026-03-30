@@ -1,6 +1,6 @@
-using Resume.Presentation.Core;
+using Resume.Frontend.Presentation.Core;
 
-namespace Resume.Presentation;
+namespace Resume.Frontend.Presentation;
 
 public partial class ReadOnlyPage
 {

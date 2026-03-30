@@ -6,4 +6,3 @@ public interface ILanguageKeys
     string EnglishLanguage { get; }
     string GermanLanguage { get; }
 }
-

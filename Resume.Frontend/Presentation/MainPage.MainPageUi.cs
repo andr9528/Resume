@@ -1,9 +1,9 @@
+using Resume.Frontend.Presentation.Core;
+using Resume.Frontend.Presentation.Factory;
 using Resume.Localization.Abstractions;
-using Resume.Presentation.Core;
-using Resume.Presentation.Factory;
 using Resume.Services.Abstractions;
 
-namespace Resume.Presentation;
+namespace Resume.Frontend.Presentation;
 
 public sealed partial class MainPage
 {
@@ -84,7 +84,7 @@ public sealed partial class MainPage
             titleTextBlock.SetBinding(TextBlock.TextProperty, new Binding
             {
                 Source = ViewModel,
-                Path = new PropertyPath(nameof(ViewModel.Title)),
+                Path = new PropertyPath(nameof(Resume.Presentation.MainPage.MainPageViewModel.Title)),
             });
 
             return titleTextBlock;
@@ -92,7 +92,7 @@ public sealed partial class MainPage
 
         private Frame CreateContentFrame()
         {
-            var frame = new Frame {Background = new SolidColorBrush(Colors.White),};
+            var frame = new Frame { Background = new SolidColorBrush(Colors.White), };
 
             Logic.RegisterContentFrameFrame(frame);
             frame.Navigate(typeof(ReadOnlyPage));

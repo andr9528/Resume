@@ -1,7 +1,8 @@
-using Resume.Styles;
+using Resume.Frontend.Styles;
 using Uno.Resizetizer;
+using MainPage = Resume.Frontend.Presentation.MainPage;
 
-namespace Resume;
+namespace Resume.Frontend;
 
 public partial class App : Application
 {
@@ -27,8 +28,8 @@ public partial class App : Application
         Resources.Build(r => r.Merged(new XamlControlsResources()));
 
         // Load Uno.UI.Toolkit and Material Resources
-        Resources.Build(
-            r => r.Merged(new MaterialToolkitTheme(new ColorPaletteOverride(), new MaterialFontsOverride())));
+        Resources.Build(r =>
+            r.Merged(new MaterialToolkitTheme(new ColorPaletteOverride(), new MaterialFontsOverride())));
         IApplicationBuilder builder = this.CreateBuilder(args);
 
         Startup.ConfigureApp(builder);

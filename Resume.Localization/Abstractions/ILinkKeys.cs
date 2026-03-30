@@ -1,3 +1,5 @@
+namespace Resume.Localization.Abstractions;
+
 public interface ILinkKeys
 {
     string FashionHeroGitHubProject { get; }

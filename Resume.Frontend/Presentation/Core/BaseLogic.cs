@@ -1,4 +1,4 @@
-namespace Resume.Presentation.Core;
+namespace Resume.Frontend.Presentation.Core;
 
 public abstract class BaseLogic<TViewModel> where TViewModel : class
 {

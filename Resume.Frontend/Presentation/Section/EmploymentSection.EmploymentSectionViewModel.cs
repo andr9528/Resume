@@ -1,4 +1,4 @@
-namespace Resume.Presentation.Section;
+namespace Resume.Frontend.Presentation.Section;
 
 public partial class EmploymentSection
 {

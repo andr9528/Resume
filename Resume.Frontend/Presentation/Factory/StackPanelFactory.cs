@@ -1,4 +1,4 @@
-namespace Resume.Presentation.Factory;
+namespace Resume.Frontend.Presentation.Factory;
 
 public static class StackPanelFactory
 {

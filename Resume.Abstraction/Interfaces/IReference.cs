@@ -1,4 +1,4 @@
-namespace Resume.Entities.Abstractions.Interfaces;
+namespace Resume.Abstraction.Interfaces;
 
 public interface IReference : IImportance, IVisibility
 {

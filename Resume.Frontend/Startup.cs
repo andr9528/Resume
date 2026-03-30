@@ -1,9 +1,10 @@
+using Resume.Entities.Frontend;
 using Resume.Localization.Abstractions;
 using Resume.Localization.Keys;
 using Resume.Services;
 using Resume.Services.Abstractions;
 
-namespace Resume;
+namespace Resume.Frontend;
 
 public class Startup
 {

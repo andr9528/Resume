@@ -1,13 +1,14 @@
+using Resume.Entities.Frontend;
 using Resume.Localization.Abstractions;
 using Resume.Services.Abstractions;
 
-namespace Resume.Presentation.Core;
+namespace Resume.Frontend.Presentation.Core;
 
 public abstract class BasePage : Page
 {
     protected BasePage()
     {
-        App = (App) Application.Current;
+        App = (App)Application.Current;
 
         try
         {

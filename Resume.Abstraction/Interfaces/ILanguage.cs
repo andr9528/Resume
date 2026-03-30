@@ -1,6 +1,6 @@
-using Resume.Entities.Abstractions.Enums;
+using Resume.Abstraction.Enums;
 
-namespace Resume.Entities.Abstractions.Interfaces;
+namespace Resume.Abstraction.Interfaces;
 
 public interface ILanguage : IImportance
 {

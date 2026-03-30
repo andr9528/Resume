@@ -1,4 +1,4 @@
-namespace Resume.Presentation;
+namespace Resume.Frontend.Presentation;
 
 public partial class ReadOnlyPage
 {

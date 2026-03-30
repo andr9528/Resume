@@ -1,10 +1,10 @@
-using Resume.Entities.Abstractions.Interfaces;
+using Resume.Abstraction.Interfaces;
+using Resume.Frontend.Presentation.Core;
+using Resume.Frontend.Presentation.Factory;
 using Resume.Localization.Abstractions;
-using Resume.Presentation.Core;
-using Resume.Presentation.Factory;
 using Resume.Services.Abstractions;
 
-namespace Resume.Presentation.Section;
+namespace Resume.Frontend.Presentation.Section;
 
 public partial class EmploymentSection
 {
@@ -64,7 +64,7 @@ public partial class EmploymentSection
                 return null;
             }
 
-            var listView = new ListView()
+            var listView = new ListView
             {
                 HorizontalAlignment = HorizontalAlignment.Left,
             };
@@ -90,7 +90,7 @@ public partial class EmploymentSection
         private TextBlock BuildPiecePeriod(IEmployment employment)
         {
             string end = employment.EndDate != null ? $"{employment.EndDate:MMM yyyy}" : "TEMP";
-            return new TextBlock()
+            return new TextBlock
             {
                 Text = $"{employment.StartDate:MMM yyyy} - {end}",
                 FontSize = 14,
@@ -100,7 +100,7 @@ public partial class EmploymentSection
 
         private TextBlock BuildPieceHeader(IEmployment employment)
         {
-            return new TextBlock()
+            return new TextBlock
             {
                 Text = "HEADER",
                 FontSize = 18,

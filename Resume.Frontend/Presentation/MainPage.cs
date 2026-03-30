@@ -1,8 +1,8 @@
+using Resume.Frontend.Presentation.Core;
 using Resume.Localization.Abstractions;
-using Resume.Presentation.Core;
 using Resume.Services.Abstractions;
 
-namespace Resume.Presentation;
+namespace Resume.Frontend.Presentation;
 
 public sealed partial class MainPage : BasePage
 {
@@ -15,8 +15,8 @@ public sealed partial class MainPage : BasePage
 
         DataContext = new MainPageViewModel();
 
-        var logic = new MainPageLogic((MainPageViewModel) DataContext, localeService, appInfo, categories);
-        var ui = new MainPageUi(logic, (MainPageViewModel) DataContext, localeService, categories, entityService);
+        var logic = new MainPageLogic((MainPageViewModel)DataContext, localeService, appInfo, categories);
+        var ui = new MainPageUi(logic, (MainPageViewModel)DataContext, localeService, categories, entityService);
 
         this.Background(Theme.Brushes.Background.Default).Content(ui.CreateContentGrid());
     }

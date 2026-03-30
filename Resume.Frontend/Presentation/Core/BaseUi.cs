@@ -1,8 +1,7 @@
 using Resume.Localization.Abstractions;
 using Resume.Services.Abstractions;
-using Serilog;
 
-namespace Resume.Presentation.Core;
+namespace Resume.Frontend.Presentation.Core;
 
 public abstract class BaseUi<TLogic, TViewModel> where TLogic : class where TViewModel : class
 {

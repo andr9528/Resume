@@ -1,7 +1,7 @@
 using Resume.Localization.Abstractions;
 using Resume.Services.Abstractions;
 
-namespace Resume.Presentation.Section;
+namespace Resume.Frontend.Presentation.Section;
 
 public partial class EmploymentSection : StackPanel
 {
@@ -10,8 +10,8 @@ public partial class EmploymentSection : StackPanel
     {
         DataContext = new EmploymentSectionViewModel();
 
-        var logic = new EmploymentSectionLogic((EmploymentSectionViewModel) DataContext);
-        var ui = new EmploymentSectionUi(logic, (EmploymentSectionViewModel) DataContext, localeService, categories,
+        var logic = new EmploymentSectionLogic((EmploymentSectionViewModel)DataContext);
+        var ui = new EmploymentSectionUi(logic, (EmploymentSectionViewModel)DataContext, localeService, categories,
             entityService);
 
         this.Background(Theme.Brushes.Background.Default).Children.Add(ui.CreateContentGrid());

@@ -1,9 +1,9 @@
+using Resume.Frontend.Presentation.Core;
+using Resume.Frontend.Presentation.Section;
 using Resume.Localization.Abstractions;
-using Resume.Presentation.Core;
-using Resume.Presentation.Section;
 using Resume.Services.Abstractions;
 
-namespace Resume.Presentation;
+namespace Resume.Frontend.Presentation;
 
 public partial class ReadOnlyPage
 {

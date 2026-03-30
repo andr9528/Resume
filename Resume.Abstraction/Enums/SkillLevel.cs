@@ -1,4 +1,4 @@
-namespace Resume.Entities.Abstractions.Enums;
+namespace Resume.Abstraction.Enums;
 
 public enum SkillLevel
 {
