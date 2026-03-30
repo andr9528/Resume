@@ -1,5 +1,5 @@
+using Resume.Abstraction.Interfaces.Keys;
 using Resume.Entities.Frontend;
-using Resume.Localization.Abstractions;
 using Resume.Services.Abstractions;
 
 namespace Resume.Frontend.Presentation.Core;

@@ -1,4 +1,4 @@
-using Resume.Abstraction.Interfaces;
+using Resume.Abstraction.Interfaces.Resume;
 
 namespace Resume.Entities.Resume;
 
