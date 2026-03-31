@@ -21,14 +21,22 @@ public class EnglishPageRegionDefinition : IPageRegion
     public IconElement Icon => new SymbolIcon(Symbol.Flag);
 
     /// <inheritdoc />
-    public UIElement CreateControl(IServiceProvider services)
+    public async Task<UIElement> CreateControl(IServiceProvider services)
     {
-        ILocaleService localeService = services.GetService<ILocaleService>() ??
-                                       throw new ArgumentException(
-                                           $"Expected to get an implementation of {nameof(ILocaleService)}");
-        localeService.SetLanguage(LanguageType.ENGLISH);
+        try
+        {
+            ILocaleService localeService = services.GetService<ILocaleService>() ??
+                                           throw new ArgumentException(
+                                               $"Expected to get an implementation of {nameof(ILocaleService)}");
+            await localeService.SetLanguage(LanguageType.ENGLISH);
 
-        logger.LogInformation($"Changing page to: English {nameof(StructureBorder)}");
-        return ActivatorUtilities.CreateInstance<StructureBorder>(services, LanguageType.ENGLISH);
+            logger.LogInformation($"Changing page to: English {nameof(StructureFrame)}");
+            return ActivatorUtilities.CreateInstance<StructureFrame>(services);
+        }
+        catch (Exception e)
+        {
+            logger.LogError(e, $"Exception caught when attempting to change page to '{DisplayName}'");
+            throw;
+        }
     }
 }

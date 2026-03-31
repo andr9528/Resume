@@ -22,14 +22,22 @@ public class DanishPageRegionDefinition : IPageRegion
     public IconElement Icon => new SymbolIcon(Symbol.Flag);
 
     /// <inheritdoc />
-    public UIElement CreateControl(IServiceProvider services)
+    public async Task<UIElement> CreateControl(IServiceProvider services)
     {
-        ILocaleService localeService = services.GetService<ILocaleService>() ??
-                                       throw new ArgumentException(
-                                           $"Expected to get an implementation of {nameof(ILocaleService)}");
-        localeService.SetLanguage(LanguageType.DANISH);
+        try
+        {
+            ILocaleService localeService = services.GetService<ILocaleService>() ??
+                                           throw new ArgumentException(
+                                               $"Expected to get an implementation of {nameof(ILocaleService)}");
+            await localeService.SetLanguage(LanguageType.DANISH);
 
-        logger.LogInformation($"Changing page to: Danish {nameof(StructureBorder)}");
-        return ActivatorUtilities.CreateInstance<StructureBorder>(services, LanguageType.DANISH);
+            logger.LogInformation($"Changing page to: Danish {nameof(StructureFrame)}");
+            return ActivatorUtilities.CreateInstance<StructureFrame>(services);
+        }
+        catch (Exception e)
+        {
+            logger.LogError(e, $"Exception caught when attempting to change page to '{DisplayName}'");
+            throw;
+        }
     }
 }
