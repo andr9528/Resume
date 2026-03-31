@@ -1,17 +1,15 @@
-using Resume.Abstraction.Interfaces.Keys;
 using Resume.Abstraction.Interfaces.Services;
 using Resume.Frontend.Presentation.Core;
 using Resume.Frontend.Presentation.Section;
 
 namespace Resume.Frontend.Presentation;
 
-public partial class StructureBorder
+public partial class StructureFrame
 {
-    private class StructureBorderUi : BaseUi<StructureBorderLogic, StructureBorderViewModel>
+    private class StructureFrameUi : BaseUi<StructureFrameLogic, StructureFrameViewModel>
     {
-        public StructureBorderUi(
-            StructureBorderLogic logic, StructureBorderViewModel viewModel, ILocaleService localeService,
-            ILocalizationCategories categories, IEntityService entityService) : base(logic, viewModel, entityService)
+        public StructureFrameUi(StructureFrameLogic logic, StructureFrameViewModel viewModel, IEntityService entityService) : base(logic,
+            viewModel, entityService)
         {
         }
 
