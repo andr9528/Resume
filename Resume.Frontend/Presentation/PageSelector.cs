@@ -1,4 +1,5 @@
 using Resume.Frontend.Abstraction;
+using Resume.Frontend.Extensions;
 using Resume.Frontend.Presentation.Factory;
 
 namespace Resume.Frontend.Presentation;
@@ -6,24 +7,24 @@ namespace Resume.Frontend.Presentation;
 /// <summary>
 /// Page navigation menu that hosts "regions" (pages) and swaps Content based on selection.
 /// </summary>
-public sealed partial class PageSelector : NavigationView
+public sealed partial class PageSelector : Page
 {
+    private const double PANE_COLUMN_WEIGHT = 10d;
     private readonly IServiceProvider serviceProvider;
+
     private ListView menuList = null!;
+    private Frame contentFrame = null!;
+    private Frame paneFrame = null!;
 
     public PageSelector(IServiceProvider sp, IEnumerable<IPageRegion> regionDefinitions)
     {
         serviceProvider = sp ?? throw new ArgumentNullException(nameof(sp));
 
-        IsBackButtonVisible = NavigationViewBackButtonVisible.Collapsed;
-        IsPaneToggleButtonVisible = false;
-        IsSettingsVisible = false;
-
-        PaneDisplayMode = NavigationViewPaneDisplayMode.LeftCompact;
-        CompactPaneLength = 160;
+        Margin = new Thickness(0);
 
         var regions = CreateMenuList(regionDefinitions ?? throw new ArgumentNullException(nameof(regionDefinitions)));
-        PaneCustomContent = CreatePaneCustomContentGrid();
+
+        Content = CreatePageContentGrid();
 
         if (regions.Any())
         {
@@ -31,7 +32,40 @@ public sealed partial class PageSelector : NavigationView
         }
     }
 
-    private Grid CreatePaneCustomContentGrid()
+    private void CreateFrames()
+    {
+        contentFrame = new Frame();
+        paneFrame = new Frame
+        {
+            Content = CreatePaneContentGrid(),
+        };
+    }
+
+    private Grid CreatePageContentGrid()
+    {
+        CreateFrames();
+
+        Grid pageRoot = GridFactory.CreateDefaultGrid();
+
+        pageRoot.HorizontalAlignment = HorizontalAlignment.Stretch;
+        pageRoot.VerticalAlignment = VerticalAlignment.Stretch;
+        pageRoot.Margin = new Thickness(0);
+        pageRoot.Padding = new Thickness(0);
+
+        const double contentColumnWeight = 100 - PANE_COLUMN_WEIGHT;
+
+        pageRoot.ColumnDefinitions.Add(new ColumnDefinition
+            {Width = new GridLength(PANE_COLUMN_WEIGHT, GridUnitType.Star),});
+        pageRoot.ColumnDefinitions.Add(new ColumnDefinition
+            {Width = new GridLength(contentColumnWeight, GridUnitType.Star),});
+
+        pageRoot.Children.Add(paneFrame.SetColumn(0));
+        pageRoot.Children.Add(contentFrame.SetColumn(1));
+
+        return pageRoot;
+    }
+
+    private Grid CreatePaneContentGrid()
     {
         var paneRoot = GridFactory.CreateDefaultGrid();
 
@@ -39,6 +73,7 @@ public sealed partial class PageSelector : NavigationView
         paneRoot.HorizontalAlignment = HorizontalAlignment.Stretch;
         paneRoot.VerticalAlignment = VerticalAlignment.Stretch;
         paneRoot.Margin = new Thickness(0);
+        paneRoot.Padding = new Thickness(0);
 
         paneRoot.Children.Add(menuList);
 
@@ -56,9 +91,9 @@ public sealed partial class PageSelector : NavigationView
             ItemsSource = regions,
             ItemTemplate = CreateMenuItemTemplate(),
             ItemContainerStyle = CreateMenuItemStyle(),
-            Margin = new Thickness(10), // keep inner padding if you want
             HorizontalAlignment = HorizontalAlignment.Stretch,
-            VerticalAlignment = VerticalAlignment.Stretch,
+            VerticalAlignment = VerticalAlignment.Top,
+            Margin = new Thickness(5),
         };
 
         menuList.SelectionChanged += MenuList_SelectionChanged;
@@ -69,7 +104,7 @@ public sealed partial class PageSelector : NavigationView
     {
         if (menuList.SelectedItem is IPageRegion region)
         {
-            DispatcherQueue.TryEnqueue(() => Content = region.CreateControl(serviceProvider));
+            DispatcherQueue.TryEnqueue(() => contentFrame.Content = region.CreateControl(serviceProvider).Result);
         }
     }
 
@@ -77,13 +112,12 @@ public sealed partial class PageSelector : NavigationView
     {
         return new DataTemplate(() =>
         {
-            var grid = new Grid
-            {
-                Width = CompactPaneLength,
-            };
+            Grid templateGrid = GridFactory.CreateDefaultGrid();
+            templateGrid.HorizontalAlignment = HorizontalAlignment.Stretch;
+            templateGrid.Margin = new Thickness(0);
 
-            grid.ColumnDefinitions.Add(new ColumnDefinition {Width = new GridLength(30),});
-            grid.ColumnDefinitions.Add(new ColumnDefinition {Width = new GridLength(1, GridUnitType.Star),});
+            templateGrid.ColumnDefinitions.Add(new ColumnDefinition {Width = new GridLength(30),});
+            templateGrid.ColumnDefinitions.Add(new ColumnDefinition {Width = new GridLength(1, GridUnitType.Star),});
 
             var iconPresenter = new ContentPresenter
             {
@@ -99,17 +133,16 @@ public sealed partial class PageSelector : NavigationView
                 VerticalAlignment = VerticalAlignment.Center,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 Margin = new Thickness(5, 0, 0, 0),
+                TextWrapping = TextWrapping.NoWrap,
+                TextTrimming = TextTrimming.CharacterEllipsis,
             };
             text.SetBinding(TextBlock.TextProperty,
                 new Binding {Path = new PropertyPath(nameof(IPageRegion.DisplayName)),});
 
-            grid.Children.Add(iconPresenter);
-            Grid.SetColumn(iconPresenter, 0);
+            templateGrid.Children.Add(iconPresenter.SetColumn(0));
+            templateGrid.Children.Add(text.SetColumn(1));
 
-            grid.Children.Add(text);
-            Grid.SetColumn(text, 1);
-
-            return grid;
+            return templateGrid;
         });
     }
 
@@ -118,9 +151,9 @@ public sealed partial class PageSelector : NavigationView
         var style = new Style(typeof(ListViewItem));
         style.Setters.Add(new Setter(BackgroundProperty, new SolidColorBrush(Colors.Transparent)));
         style.Setters.Add(new Setter(BorderThicknessProperty, new Thickness(0)));
-        style.Setters.Add(new Setter(PaddingProperty, new Thickness(10)));
-        style.Setters.Add(new Setter(HorizontalContentAlignmentProperty, HorizontalAlignment.Stretch));
+        style.Setters.Add(new Setter(PaddingProperty, new Thickness(4, 2, 4, 2)));
         style.Setters.Add(new Setter(ForegroundProperty, new SolidColorBrush(Colors.White)));
+        style.Setters.Add(new Setter(HorizontalContentAlignmentProperty, HorizontalAlignment.Stretch));
         return style;
     }
 }

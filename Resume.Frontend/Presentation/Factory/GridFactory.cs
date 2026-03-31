@@ -10,7 +10,7 @@ public static class GridFactory
         {
             Margin = new Thickness(2),
             IsTabStop = false,
-            Background = GetBackgroundBrush(false),
+            Background = GetBackgroundBrush(true),
         };
     }
 

@@ -15,5 +15,5 @@ public interface IPageRegion
     /// <summary>
     /// Creates the region control (usually a Border wrapping the UI grid).
     /// </summary>
-    UIElement CreateControl(IServiceProvider services);
+    Task<UIElement> CreateControl(IServiceProvider services);
 }
