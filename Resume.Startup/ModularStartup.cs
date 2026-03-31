@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Resume.Abstraction.Interfaces.Startup;
 
 namespace Resume.Startup;
@@ -7,6 +8,7 @@ public abstract class ModularStartup<TApplicationBuilder>
 {
     private readonly ICollection<IServiceStartupModule> serviceModules;
     private readonly ICollection<IApplicationStartupModule<TApplicationBuilder>> applicationModules;
+    private readonly Queue<Action<ILogger>> delayedLogActions = new();
 
     protected ModularStartup()
     {
@@ -16,6 +18,34 @@ public abstract class ModularStartup<TApplicationBuilder>
 
     public IServiceCollection Services { get; protected set; } = null!;
     public IServiceProvider ServiceProvider { get; protected set; } = null!;
+
+    protected void QueueStartupLog(Action<ILogger> logAction)
+    {
+        ArgumentNullException.ThrowIfNull(logAction);
+        delayedLogActions.Enqueue(logAction);
+    }
+
+    public void FlushStartupLogs()
+    {
+        ArgumentNullException.ThrowIfNull(ServiceProvider);
+
+        var loggerFactory = ServiceProvider.GetRequiredService<ILoggerFactory>();
+        ILogger logger = loggerFactory.CreateLogger(GetType());
+
+        while (delayedLogActions.Count > 0)
+        {
+            var action = delayedLogActions.Dequeue();
+
+            try
+            {
+                action(logger);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "A delayed startup log action failed.");
+            }
+        }
+    }
 
     protected virtual void ConfigureServices(IServiceCollection services)
     {
@@ -44,6 +74,7 @@ public abstract class ModularStartup<TApplicationBuilder>
         {
             serviceModules.Add(serviceModule);
             wasRegistered = true;
+            QueueStartupLog(logger => logger.LogDebug($"Registered '{serviceModule.Name}' as Service Startup module."));
         }
 
         if (module is IApplicationStartupModule<TApplicationBuilder> applicationModule &&
@@ -51,6 +82,8 @@ public abstract class ModularStartup<TApplicationBuilder>
         {
             applicationModules.Add(applicationModule);
             wasRegistered = true;
+            QueueStartupLog(logger =>
+                logger.LogDebug($"Registered '{applicationModule.Name}' as Application Startup module."));
         }
 
         if (!wasRegistered)
@@ -63,12 +96,15 @@ public abstract class ModularStartup<TApplicationBuilder>
 
     public void SetupServices(IServiceCollection? services = null)
     {
+        QueueStartupLog(logger => logger.LogDebug($"Setting up services..."));
+
         Services = services ?? new ServiceCollection();
 
         ConfigureServices(Services);
 
         foreach (IServiceStartupModule module in serviceModules)
         {
+            QueueStartupLog(logger => logger.LogDebug($"Configuring services for: {module.Name}"));
             module.ConfigureServices(Services);
         }
 
@@ -78,11 +114,13 @@ public abstract class ModularStartup<TApplicationBuilder>
     public TApplicationBuilder SetupApplication(TApplicationBuilder app)
     {
         ArgumentNullException.ThrowIfNull(app);
+        QueueStartupLog(logger => logger.LogDebug($"Setting up application..."));
 
         ConfigureApplication(app);
 
         foreach (var module in applicationModules)
         {
+            QueueStartupLog(logger => logger.LogDebug($"Configuring Application for: {module.Name}"));
             module.ConfigureApplication(app);
         }
 

@@ -53,10 +53,10 @@ public class LoggingStartupModule : IServiceStartupModule
         });
 
         WriteFileGap();
-
-        var logger = services.BuildServiceProvider().GetService<ILogger<LoggingStartupModule>>();
-        logger?.LogDebug("Completed Configuration of Logging Services.");
     }
+
+    /// <inheritdoc />
+    public string Name => "Logging Module";
 
     private void ConfigureSerilog()
     {

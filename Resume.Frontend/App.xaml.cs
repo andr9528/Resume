@@ -37,9 +37,9 @@ public partial class App : Application
 
         MainWindow = builder.Window;
 
-#if DEBUG
-        MainWindow.EnableHotReload();
-#endif
+//#if DEBUG
+//        MainWindow.UseStudio();
+//#endif
         MainWindow.SetWindowIcon();
 
         Host = builder.Build();
@@ -62,6 +62,7 @@ public partial class App : Application
             rootFrame.Navigate(typeof(MainPage));
         }
 
+        Startup.FlushStartupLogs();
         // Ensure the current window is active
         MainWindow.Activate();
     }
