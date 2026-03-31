@@ -7,7 +7,6 @@ using Resume.Models.Frontend;
 using Resume.Services;
 using Resume.Startup;
 using Resume.Startup.Modules;
-using Path = System.IO.Path;
 
 namespace Resume.Frontend;
 
@@ -40,6 +39,7 @@ public class UnoStartup : ModularStartup<IApplicationBuilder>
         // Business Logic Services
         services.AddSingleton<ILocaleService, LocaleService>();
         services.AddSingleton<IEntityService, EntityService>();
+        services.AddSingleton<IAppLocalizationService, AppLocalizationService>();
 
         // Language Regions
         services.AddSingleton<IPageRegion, DanishPageRegionDefinition>();
@@ -55,14 +55,7 @@ public class UnoStartup : ModularStartup<IApplicationBuilder>
         app.Configure(host => host.UseEnvironment(Environments.Development));
 #endif
 
-        app.Configure(host => host.UseConfiguration(configure: ConfigureConfigurationSource))
-            .Configure(host => host.UseLocalization(ConfigureLocalization));
-
-    }
-
-    private void ConfigureLocalization(HostBuilderContext context, IServiceCollection services)
-    {
-        // Enables localization (see appsettings.json for supported languages)
+        app.Configure(host => host.UseConfiguration(configure: ConfigureConfigurationSource));
     }
 
     private IHostBuilder ConfigureConfigurationSource(IConfigBuilder configBuilder)

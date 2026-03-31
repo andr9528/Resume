@@ -9,11 +9,11 @@ namespace Resume.Services;
 public class LocaleService : ILocaleService
 {
     private const string RESOURCE_MANAGER_PATH = "Resume.Localization.Strings.Resources";
-    private readonly ILocalizationService localizationService;
+    private readonly IAppLocalizationService localizationService;
     private readonly ILogger<LocaleService> logger;
     private readonly ResourceManager resourceManager;
 
-    public LocaleService(ILocalizationService localizationService, ILogger<LocaleService> logger)
+    public LocaleService(IAppLocalizationService localizationService, ILogger<LocaleService> logger)
     {
         this.localizationService = localizationService;
         this.logger = logger;
@@ -50,14 +50,15 @@ public class LocaleService : ILocaleService
         CultureInfo currentCulture = GetCurrentCulture();
 
         string language = GetSupportedCulturesFromEnum(type);
-        CultureInfo targetCulture = localizationService.SupportedCultures.First(culture => culture.Name == language);
 
-        logger.LogInformation($"Attempting to change language from '{targetCulture.Name}' to '{targetCulture.Name}'.");
+        logger.LogDebug("Attempting to resolve language '{Language}'. Supported cultures: {Cultures}", language,
+            string.Join(", ", localizationService.SupportedCultures.Select(c => c.Name)));
+        CultureInfo targetCulture = localizationService.SupportedCultures.First(culture => culture.Name == language);
 
         if (Equals(currentCulture, targetCulture))
             return;
 
-        logger.LogInformation($"Changing language to: {targetCulture.Name}");
+        logger.LogInformation($"Attempting to change language from '{targetCulture.Name}' to '{targetCulture.Name}'.");
         await localizationService.SetCurrentCultureAsync(targetCulture);
     }
 
