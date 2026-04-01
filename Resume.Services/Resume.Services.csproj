@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Resume.Models\Resume.Models.csproj" />
-    <ProjectReference Include="..\Resume.Localization\Resume.Localization.csproj" />
   </ItemGroup>
 
 </Project>

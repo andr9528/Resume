@@ -17,8 +17,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resume.Localization", "Resume.Localization\Resume.Localization.csproj", "{9C62F972-99C8-415B-90B2-AA0BE159B710}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resume.Services", "Resume.Services\Resume.Services.csproj", "{590528E1-6ECF-4FE9-B718-ED2580BBB067}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resume.Models", "Resume.Models\Resume.Models.csproj", "{C3669310-77A3-4F46-A9B2-FDB11BB780AB}"
@@ -45,10 +43,6 @@ Global
 		{5C1D846A-0AF1-4A97-8F40-1D6F05CC82D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C1D846A-0AF1-4A97-8F40-1D6F05CC82D6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5C1D846A-0AF1-4A97-8F40-1D6F05CC82D6}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{9C62F972-99C8-415B-90B2-AA0BE159B710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C62F972-99C8-415B-90B2-AA0BE159B710}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C62F972-99C8-415B-90B2-AA0BE159B710}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C62F972-99C8-415B-90B2-AA0BE159B710}.Release|Any CPU.Build.0 = Release|Any CPU
 		{590528E1-6ECF-4FE9-B718-ED2580BBB067}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{590528E1-6ECF-4FE9-B718-ED2580BBB067}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{590528E1-6ECF-4FE9-B718-ED2580BBB067}.Release|Any CPU.ActiveCfg = Release|Any CPU

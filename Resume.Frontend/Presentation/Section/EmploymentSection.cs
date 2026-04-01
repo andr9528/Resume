@@ -1,4 +1,3 @@
-using Resume.Abstraction.Interfaces.Keys;
 using Resume.Abstraction.Interfaces.Services;
 
 namespace Resume.Frontend.Presentation.Section;

@@ -4,7 +4,6 @@
 
     <OutputType>Exe</OutputType>
     <UnoSingleProject>true</UnoSingleProject>
-
     <!-- Display name -->
     <ApplicationTitle>Resume</ApplicationTitle>
     <!-- App Identifier -->
@@ -44,7 +43,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Resume.Localization\Resume.Localization.csproj" />
     <ProjectReference Include="..\Resume.Services\Resume.Services.csproj" />
     <ProjectReference Include="..\Resume.Startup\Resume.Startup.csproj" />
   </ItemGroup>

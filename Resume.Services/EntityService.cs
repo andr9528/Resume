@@ -1,9 +1,10 @@
 using Resume.Abstraction.Enums;
-using Resume.Abstraction.Interfaces.Keys;
+using Resume.Abstraction.Enums.Keys;
 using Resume.Abstraction.Interfaces.Resume;
 using Resume.Abstraction.Interfaces.Services;
 using Resume.Entities;
 using Resume.Entities.Resume;
+using Resume.Models.Extensions;
 using Resume.Models.Resume;
 
 namespace Resume.Services;
@@ -11,12 +12,10 @@ namespace Resume.Services;
 public class EntityService : IEntityService
 {
     private readonly ILocaleService localeService;
-    private readonly ILocalizationCategories categories;
 
-    public EntityService(ILocaleService localeService, ILocalizationCategories categories)
+    public EntityService(ILocaleService localeService)
     {
         this.localeService = localeService;
-        this.categories = categories;
     }
 
     /// <inheritdoc />
@@ -30,7 +29,7 @@ public class EntityService : IEntityService
             Email = "andre@steenhoff.dk",
             City = "Odense V",
             Address = "Duftrankevej 17 2. mf",
-            Country = localeService.GetLocalizedString(categories.GeneralInformationKeys.Country),
+            Country = localeService.GetLocalizedString(GeneralInformationKey.COUNTRY.ToKey()),
             PhoneNumber = 22287257,
             PostalCode = 5200,
             DateOfBirth = new DateTime(1996, 2, 3),
@@ -45,54 +44,54 @@ public class EntityService : IEntityService
             new Employment
             {
                 City = "Svendborg",
-                Employer = localeService.GetLocalizedString(categories.EmploymentKeys.EmployerApps4All),
-                JobTitle = localeService.GetLocalizedString(categories.EmploymentKeys.JobTitleApps4All),
+                Employer = localeService.GetLocalizedString(EmploymentKey.EMPLOYER_APPS4ALL.ToKey()),
+                JobTitle = localeService.GetLocalizedString(EmploymentKey.JOB_TITLE_APPS4ALL.ToKey()),
                 StartDate = new DateTime(2020, 10, 1),
                 EndDate = new DateTime(2020, 12, 31),
-                WorkDescription = localeService.GetLocalizedString(categories.EmploymentKeys.WorkDescriptionApps4All),
+                WorkDescription = localeService.GetLocalizedString(EmploymentKey.WORK_DESCRIPTION_APPS4ALL.ToKey()),
             },
             new Employment
             {
                 City = "Odense",
-                Employer = localeService.GetLocalizedString(categories.EmploymentKeys.EmployerTv2),
-                JobTitle = localeService.GetLocalizedString(categories.EmploymentKeys.JobTitleTv2),
+                Employer = localeService.GetLocalizedString(EmploymentKey.EMPLOYER_TV2.ToKey()),
+                JobTitle = localeService.GetLocalizedString(EmploymentKey.JOB_TITLE_TV2.ToKey()),
                 StartDate = new DateTime(2022, 4, 1),
                 EndDate = new DateTime(2023, 12, 31),
-                WorkDescription = localeService.GetLocalizedString(categories.EmploymentKeys.WorkDescriptionTv2),
+                WorkDescription = localeService.GetLocalizedString(EmploymentKey.WORK_DESCRIPTION_TV2.ToKey()),
                 Links = new List<string>
                 {
-                    localeService.GetLocalizedString(categories.LinkKeys.Tv2CliptoolGitHubProject),
+                    localeService.GetLocalizedString(LinkKey.TV2_CLIPTOOL_GITHUB_PROJECT.ToKey()),
                 },
             },
             new Employment
             {
                 City = "Odense",
-                Employer = localeService.GetLocalizedString(categories.EmploymentKeys.EmployerFashionheroInternship),
-                JobTitle = localeService.GetLocalizedString(categories.EmploymentKeys.JobTitleFashionheroInternship),
+                Employer = localeService.GetLocalizedString(EmploymentKey.EMPLOYER_FASHIONHERO_INTERNSHIP.ToKey()),
+                JobTitle = localeService.GetLocalizedString(EmploymentKey.JOB_TITLE_FASHIONHERO_INTERNSHIP.ToKey()),
                 StartDate = new DateTime(2024, 5, 6),
                 EndDate = new DateTime(2024, 5, 31),
                 WorkDescription =
-                    localeService.GetLocalizedString(categories.EmploymentKeys.WorkDescriptionFashionheroInternship),
+                    localeService.GetLocalizedString(EmploymentKey.WORK_DESCRIPTION_FASHIONHERO_INTERNSHIP.ToKey()),
                 Links = new List<string>
                 {
-                    localeService.GetLocalizedString(categories.LinkKeys.FashionHeroGitHubProject),
+                    localeService.GetLocalizedString(LinkKey.FASHION_HERO_GITHUB_PROJECT.ToKey()),
                 },
             },
             new Employment
             {
                 City = "Odense",
-                Employer = localeService.GetLocalizedString(categories.EmploymentKeys
-                    .EmployerNoergaardMikkelsenInternship),
-                JobTitle = localeService.GetLocalizedString(categories.EmploymentKeys
-                    .JobTitleNoergaardMikkelsenInternship),
+                Employer = localeService.GetLocalizedString(
+                    EmploymentKey.EMPLOYER_NOERGAARD_MIKKELSEN_INTERNSHIP.ToKey()),
+                JobTitle = localeService.GetLocalizedString(
+                    EmploymentKey.JOB_TITLE_NOERGAARD_MIKKELSEN_INTERNSHIP.ToKey()),
                 StartDate = new DateTime(2025, 3, 17),
                 EndDate = new DateTime(2025, 4, 11),
                 WorkDescription =
-                    localeService.GetLocalizedString(categories.EmploymentKeys
-                        .WorkDescriptionNoergaardMikkelsenInternship),
+                    localeService.GetLocalizedString(
+                        EmploymentKey.WORK_DESCRIPTION_NOERGAARD_MIKKELSEN_INTERNSHIP.ToKey()),
                 Links = new List<string>
                 {
-                    localeService.GetLocalizedString(categories.LinkKeys.NoergaardMikkelsenGitHubProject),
+                    localeService.GetLocalizedString(LinkKey.NOERGAARD_MIKKELSEN_GITHUB_PROJECT.ToKey()),
                 },
             },
         };
@@ -199,23 +198,23 @@ public class EntityService : IEntityService
             new Link
             {
                 Importance = 100,
-                Title = localeService.GetLocalizedString(categories.LinkKeys.TitleGitHub),
-                Remark = localeService.GetLocalizedString(categories.LinkKeys.RemarkGitHub),
-                Url = localeService.GetLocalizedString(categories.LinkKeys.PersonalGithub),
+                Title = localeService.GetLocalizedString(LinkKey.TITLE_GITHUB.ToKey()),
+                Remark = localeService.GetLocalizedString(LinkKey.REMARK_GITHUB.ToKey()),
+                Url = localeService.GetLocalizedString(LinkKey.PERSONAL_GITHUB.ToKey()),
             },
             new Link
             {
                 Importance = 80,
-                Title = localeService.GetLocalizedString(categories.LinkKeys.TitleLinkedIn),
-                Remark = localeService.GetLocalizedString(categories.LinkKeys.RemarkLinkedIn),
-                Url = localeService.GetLocalizedString(categories.LinkKeys.PersonalLinkedIn),
+                Title = localeService.GetLocalizedString(LinkKey.TITLE_LINKEDIN.ToKey()),
+                Remark = localeService.GetLocalizedString(LinkKey.REMARK_LINKEDIN.ToKey()),
+                Url = localeService.GetLocalizedString(LinkKey.PERSONAL_LINKEDIN.ToKey()),
             },
             new Link
             {
                 Importance = 90,
-                Title = localeService.GetLocalizedString(categories.LinkKeys.TitlePersonalPage),
-                Remark = localeService.GetLocalizedString(categories.LinkKeys.RemarkPersonalPage),
-                Url = localeService.GetLocalizedString(categories.LinkKeys.PersonalPage),
+                Title = localeService.GetLocalizedString(LinkKey.TITLE_PERSONAL_PAGE.ToKey()),
+                Remark = localeService.GetLocalizedString(LinkKey.REMARK_PERSONAL_PAGE.ToKey()),
+                Url = localeService.GetLocalizedString(LinkKey.PERSONAL_PAGE.ToKey()),
             },
         };
 
@@ -232,7 +231,7 @@ public class EntityService : IEntityService
             new Reference
             {
                 Name = "Henrik Dudek",
-                Company = localeService.GetLocalizedString(categories.ReferencesKeys.CompanyNameTv2),
+                Company = localeService.GetLocalizedString(ReferencesKey.COMPANY_NAME_TV2.ToKey()),
                 Email = "hedu@tv2.dk",
                 Importance = 50,
                 IsShown = false,
@@ -240,7 +239,7 @@ public class EntityService : IEntityService
             new Reference
             {
                 Name = "Jeppe Hamming",
-                Company = localeService.GetLocalizedString(categories.ReferencesKeys.CompanyNameNoergaardMikkelsen),
+                Company = localeService.GetLocalizedString(ReferencesKey.COMPANY_NAME_NOERGAARD_MIKKELSEN.ToKey()),
                 Email = "jeppe.hamming@nmic.dk",
                 Importance = 70,
                 IsShown = true,
@@ -258,19 +257,19 @@ public class EntityService : IEntityService
         {
             new Language
             {
-                Name = localeService.GetLocalizedString(categories.LanguageKeys.DanishLanguage),
+                Name = localeService.GetLocalizedString(LanguageKey.DANISH_LANGUAGE.ToKey()),
                 Level = LanguageLevel.NATIVE_SPEAKER,
                 Importance = 100,
             },
             new Language
             {
-                Name = localeService.GetLocalizedString(categories.LanguageKeys.EnglishLanguage),
+                Name = localeService.GetLocalizedString(LanguageKey.ENGLISH_LANGUAGE.ToKey()),
                 Level = LanguageLevel.HIGHLY_PROFICIENT,
                 Importance = 80,
             },
             new Language
             {
-                Name = localeService.GetLocalizedString(categories.LanguageKeys.GermanLanguage),
+                Name = localeService.GetLocalizedString(LanguageKey.GERMAN_LANGUAGE.ToKey()),
                 Level = LanguageLevel.WORKING_KNOWLEDGE,
                 Importance = 50,
             },
@@ -288,27 +287,27 @@ public class EntityService : IEntityService
             new Education
             {
                 City = "Odense",
-                Grade = localeService.GetLocalizedString(categories.EducationKeys.GradeBachelor),
-                Description = localeService.GetLocalizedString(categories.EducationKeys.DescriptionBachelor),
-                SchoolName = localeService.GetLocalizedString(categories.EducationKeys.SchoolNameUcl),
+                Grade = localeService.GetLocalizedString(EducationKey.GRADE_BACHELOR.ToKey()),
+                Description = localeService.GetLocalizedString(EducationKey.DESCRIPTION_BACHELOR.ToKey()),
+                SchoolName = localeService.GetLocalizedString(EducationKey.SCHOOL_NAME_UCL.ToKey()),
                 StartDate = new DateTime(2019, 2, 1),
                 EndDate = new DateTime(2020, 6, 19),
             },
             new Education
             {
                 City = "Odense",
-                Grade = localeService.GetLocalizedString(categories.EducationKeys.GradeSoftware),
-                Description = localeService.GetLocalizedString(categories.EducationKeys.DescriptionSoftware),
-                SchoolName = localeService.GetLocalizedString(categories.EducationKeys.SchoolNameUcl),
+                Grade = localeService.GetLocalizedString(EducationKey.GRADE_SOFTWARE.ToKey()),
+                Description = localeService.GetLocalizedString(EducationKey.DESCRIPTION_SOFTWARE.ToKey()),
+                SchoolName = localeService.GetLocalizedString(EducationKey.SCHOOL_NAME_UCL.ToKey()),
                 StartDate = new DateTime(2016, 9, 1),
                 EndDate = new DateTime(2019, 1, 31),
             },
             new Education
             {
                 City = "Svendborg",
-                Grade = localeService.GetLocalizedString(categories.EducationKeys.GradeHtx),
-                Description = localeService.GetLocalizedString(categories.EducationKeys.DescriptionHtx),
-                SchoolName = localeService.GetLocalizedString(categories.EducationKeys.SchoolNameHtx),
+                Grade = localeService.GetLocalizedString(EducationKey.GRADE_HTX.ToKey()),
+                Description = localeService.GetLocalizedString(EducationKey.DESCRIPTION_HTX.ToKey()),
+                SchoolName = localeService.GetLocalizedString(EducationKey.SCHOOL_NAME_HTX.ToKey()),
                 StartDate = new DateTime(2013, 9, 1),
                 EndDate = new DateTime(2016, 6, 17),
             },
@@ -325,20 +324,20 @@ public class EntityService : IEntityService
         {
             new Project
             {
-                Name = localeService.GetLocalizedString(categories.ProjectKeys.TrackerDescription),
-                Description = localeService.GetLocalizedString(categories.ProjectKeys.TrackerDescription),
+                Name = localeService.GetLocalizedString(ProjectKey.TRACKER_TITLE.ToKey()),
+                Description = localeService.GetLocalizedString(ProjectKey.TRACKER_DESCRIPTION.ToKey()),
                 Importance = 100,
             },
             new Project
             {
-                Name = localeService.GetLocalizedString(categories.ProjectKeys.OniModdingTitle),
-                Description = localeService.GetLocalizedString(categories.ProjectKeys.OniModdingDescription),
+                Name = localeService.GetLocalizedString(ProjectKey.ONI_MODDING_TITLE.ToKey()),
+                Description = localeService.GetLocalizedString(ProjectKey.ONI_MODDING_DESCRIPTION.ToKey()),
                 Importance = 90,
             },
             new Project
             {
-                Name = localeService.GetLocalizedString(categories.ProjectKeys.TowerDefenceDevTitle),
-                Description = localeService.GetLocalizedString(categories.ProjectKeys.TowerDefenceDevDescription),
+                Name = localeService.GetLocalizedString(ProjectKey.TOWER_DEFENCE_DEV_TITLE.ToKey()),
+                Description = localeService.GetLocalizedString(ProjectKey.TOWER_DEFENCE_DEV_DESCRIPTION.ToKey()),
                 Importance = 80,
             },
         };

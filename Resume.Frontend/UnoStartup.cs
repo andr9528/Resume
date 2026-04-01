@@ -1,8 +1,6 @@
-using Resume.Abstraction.Interfaces.Keys;
 using Resume.Abstraction.Interfaces.Services;
 using Resume.Frontend.Abstraction;
 using Resume.Frontend.NavigationRegion;
-using Resume.Localization.Keys;
 using Resume.Models.Frontend;
 using Resume.Services;
 using Resume.Startup;
@@ -24,22 +22,9 @@ public class UnoStartup : ModularStartup<IApplicationBuilder>
     {
         base.ConfigureServices(services);
 
-        // Localization Hierarchy
-        services.AddSingleton<ILocalizationCategories, LocalizationCategories>();
-        services.AddSingleton<ILinkKeys, LinkKeys>();
-        services.AddSingleton<IProfileKeys, ProfileKeys>();
-        services.AddSingleton<IUserInterfaceKeys, UserInterfaceKeys>();
-        services.AddSingleton<IEmploymentKeys, EmploymentKeys>();
-        services.AddSingleton<IEducationKeys, EducationKeys>();
-        services.AddSingleton<IGeneralInformationKeys, GeneralInformationKeys>();
-        services.AddSingleton<ILanguageKeys, LanguageKeys>();
-        services.AddSingleton<IReferencesKeys, ReferencesKeys>();
-        services.AddSingleton<IProjectKeys, ProjectKeys>();
-
         // Business Logic Services
         services.AddSingleton<ILocaleService, LocaleService>();
         services.AddSingleton<IEntityService, EntityService>();
-        services.AddSingleton<IAppLocalizationService, AppLocalizationService>();
 
         // Language Regions
         services.AddSingleton<IPageRegion, DanishPageRegionDefinition>();

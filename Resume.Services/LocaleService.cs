@@ -1,5 +1,4 @@
 using System.Globalization;
-using System.Resources;
 using Microsoft.Extensions.Logging;
 using Resume.Abstraction.Enums;
 using Resume.Abstraction.Interfaces.Services;
@@ -8,72 +7,85 @@ namespace Resume.Services;
 
 public class LocaleService : ILocaleService
 {
-    private const string RESOURCE_MANAGER_PATH = "Resume.Localization.Strings.Resources";
-    private readonly IAppLocalizationService localizationService;
     private readonly ILogger<LocaleService> logger;
-    private readonly ResourceManager resourceManager;
+    private LanguageType currentLanguage = LanguageType.ENGLISH;
 
-    public LocaleService(IAppLocalizationService localizationService, ILogger<LocaleService> logger)
+    public LocaleService(ILogger<LocaleService> logger)
     {
-        this.localizationService = localizationService;
         this.logger = logger;
-
-        logger.LogInformation($"Getting new Resource Manager");
-        resourceManager = new ResourceManager(RESOURCE_MANAGER_PATH, typeof(Localization.Strings.Resources).Assembly);
     }
 
     /// <inheritdoc />
     public string GetLocalizedString(string key)
     {
-        CultureInfo currentCulture = GetCurrentCulture();
+        Dictionary<string, string> translations = GetTranslationsForCurrentLanguage();
 
-        logger.LogDebug("CurrentCulture: {CurrentCulture}, CurrentUICulture: {CurrentUICulture}",
-            CultureInfo.CurrentCulture.Name, CultureInfo.CurrentUICulture.Name);
-        logger.LogInformation("Getting '{Key}' from LocalizationService Culture '{Culture}'.", key,
-            currentCulture.Name);
-
-        string? localizedString = resourceManager.GetString(key, currentCulture);
-
-        if (!string.IsNullOrWhiteSpace(localizedString))
+        if (translations.TryGetValue(key, out string? localizedString) && !string.IsNullOrWhiteSpace(localizedString))
         {
-            logger.LogDebug("Got value for '{Key}' - {Value}", key, localizedString);
             return localizedString;
         }
 
-        logger.LogWarning($"Failed to get a localized string for '{key}' in culture '{currentCulture.Name}'...");
+        if (Translations.Fallback.TryGetValue(key, out string? fallbackString) &&
+            !string.IsNullOrWhiteSpace(fallbackString))
+        {
+            logger.LogDebug("Falling back to fallback translation for key '{Key}' and language '{Language}'.", key,
+                currentLanguage);
+
+            return fallbackString;
+        }
+
+        logger.LogWarning("Failed to get localized string for key '{Key}' and language '{Language}'. Returning key.",
+            key, currentLanguage);
+
         return key;
     }
 
     /// <inheritdoc />
-    public async Task SetLanguage(LanguageType type)
+    public Task SetLanguage(LanguageType type)
     {
-        CultureInfo currentCulture = GetCurrentCulture();
+        if (currentLanguage == type)
+        {
+            return Task.CompletedTask;
+        }
 
-        string language = GetSupportedCulturesFromEnum(type);
+        currentLanguage = type;
 
-        logger.LogDebug("Attempting to resolve language '{Language}'. Supported cultures: {Cultures}", language,
-            string.Join(", ", localizationService.SupportedCultures.Select(c => c.Name)));
-        CultureInfo targetCulture = localizationService.SupportedCultures.First(culture => culture.Name == language);
+        CultureInfo culture = GetCultureFromLanguage(type);
 
-        if (Equals(currentCulture, targetCulture))
-            return;
+        CultureInfo.CurrentCulture = culture;
+        CultureInfo.CurrentUICulture = culture;
+        CultureInfo.DefaultThreadCurrentCulture = culture;
+        CultureInfo.DefaultThreadCurrentUICulture = culture;
 
-        logger.LogInformation($"Attempting to change language from '{targetCulture.Name}' to '{targetCulture.Name}'.");
-        await localizationService.SetCurrentCultureAsync(targetCulture);
+        logger.LogInformation("Changed language to '{Language}' using culture '{Culture}'.", currentLanguage,
+            culture.Name);
+
+        return Task.CompletedTask;
     }
 
-    private string GetSupportedCulturesFromEnum(LanguageType type)
+    private Dictionary<string, string> GetTranslationsForCurrentLanguage()
+    {
+        return currentLanguage switch
+        {
+            LanguageType.DANISH => Translations.Danish,
+            LanguageType.ENGLISH => Translations.English,
+            var _ => Translations.Fallback,
+        };
+    }
+
+
+    private CultureInfo GetCultureFromLanguage(LanguageType type)
     {
         return type switch
         {
-            LanguageType.DANISH => "da",
-            LanguageType.ENGLISH => "en",
+            LanguageType.DANISH => new CultureInfo("da"),
+            LanguageType.ENGLISH => new CultureInfo("en"),
             var _ => throw new ArgumentException($"Received invalid type for {nameof(LanguageType)}"),
         };
     }
 
     public CultureInfo GetCurrentCulture()
     {
-        return localizationService.CurrentCulture;
+        return GetCultureFromLanguage(currentLanguage);
     }
 }
