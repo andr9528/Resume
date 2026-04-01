@@ -1,0 +1,12 @@
+namespace Resume.Abstraction.Enums.Keys;
+
+public enum ProjectKey
+{
+    UNKNOWN = 0,
+    TRACKER_TITLE,
+    TRACKER_DESCRIPTION,
+    TOWER_DEFENCE_DEV_TITLE,
+    TOWER_DEFENCE_DEV_DESCRIPTION,
+    ONI_MODDING_TITLE,
+    ONI_MODDING_DESCRIPTION,
+}
