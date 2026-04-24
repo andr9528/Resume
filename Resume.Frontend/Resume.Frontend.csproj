@@ -43,6 +43,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.Xml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Resume.Services\Resume.Services.csproj" />
     <ProjectReference Include="..\Resume.Startup\Resume.Startup.csproj" />
   </ItemGroup>
