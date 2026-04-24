@@ -9,7 +9,8 @@ public partial class LanguagesSection
     {
         /// <inheritdoc />
         public LanguagesSectionUi(
-            LanguagesSectionLogic logic, LanguagesSectionViewModel viewModel, IEntityService entityService) : base(
+            LanguagesSectionLogic logic, LanguagesSectionViewModel viewModel, IEntityService entityService,
+            ILocaleService localeService) : base(
             logic, viewModel, entityService)
         {
         }

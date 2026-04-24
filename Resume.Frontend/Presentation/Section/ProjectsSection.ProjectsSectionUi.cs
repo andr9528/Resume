@@ -9,7 +9,8 @@ public partial class ProjectsSection
     {
         /// <inheritdoc />
         public ProjectsSectionUi(
-            ProjectsSectionLogic logic, ProjectsSectionViewModel viewModel, IEntityService entityService) : base(
+            ProjectsSectionLogic logic, ProjectsSectionViewModel viewModel, IEntityService entityService,
+            ILocaleService localeService) : base(
             logic, viewModel, entityService)
         {
         }

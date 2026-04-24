@@ -9,11 +9,15 @@ public partial class EmploymentSection
 {
     private class EmploymentSectionUi : BaseUi<EmploymentSectionLogic, EmploymentSectionViewModel>
     {
+        private readonly ILocaleService localeService;
+
         /// <inheritdoc />
         public EmploymentSectionUi(
-            EmploymentSectionLogic logic, EmploymentSectionViewModel viewModel, IEntityService entityService) : base(
+            EmploymentSectionLogic logic, EmploymentSectionViewModel viewModel, IEntityService entityService,
+            ILocaleService localeService) : base(
             logic, viewModel, entityService)
         {
+            this.localeService = localeService;
         }
 
         /// <inheritdoc />

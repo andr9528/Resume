@@ -9,11 +9,15 @@ public partial class EducationSection
 {
     private class EducationSectionUi : BaseUi<EducationSectionLogic, EducationSectionViewModel>
     {
+        private readonly ILocaleService localeService;
+
         /// <inheritdoc />
         public EducationSectionUi(
-            EducationSectionLogic logic, EducationSectionViewModel viewModel, IEntityService entityService) : base(
+            EducationSectionLogic logic, EducationSectionViewModel viewModel, IEntityService entityService,
+            ILocaleService localeService) : base(
             logic, viewModel, entityService)
         {
+            this.localeService = localeService;
         }
 
         /// <inheritdoc />

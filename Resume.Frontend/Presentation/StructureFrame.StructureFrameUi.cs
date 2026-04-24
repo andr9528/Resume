@@ -10,6 +10,7 @@ public partial class StructureFrame
 {
     private class StructureFrameUi : BaseUi<StructureFrameLogic, StructureFrameViewModel>
     {
+        private readonly ILocaleService localeService;
         private const int OUTER_MARGIN_COLUMN_WIDTH = 4;
         private const int CONTENT_DIVIDER_COLUMN_WIDTH = 3;
         private const int CONTENT_COLUMN_ONE_WIDTH = 55;
@@ -19,9 +20,11 @@ public partial class StructureFrame
             OUTER_MARGIN_COLUMN_WIDTH, CONTENT_COLUMN_ONE_WIDTH, CONTENT_DIVIDER_COLUMN_WIDTH, CONTENT_COLUMN_TWO_WIDTH, OUTER_MARGIN_COLUMN_WIDTH,
         ];
 
-        public StructureFrameUi(StructureFrameLogic logic, StructureFrameViewModel viewModel, IEntityService entityService) : base(logic,
+        public StructureFrameUi(StructureFrameLogic logic, StructureFrameViewModel viewModel, IEntityService entityService,
+            ILocaleService localeService) : base(logic,
             viewModel, entityService)
         {
+            this.localeService = localeService;
         }
 
         protected override void ConfigureGrid(Grid grid)
@@ -47,11 +50,11 @@ public partial class StructureFrame
             columnOne.HorizontalAlignment = HorizontalAlignment.Stretch;
             columnOne.MinWidth = 0;
 
-            EmploymentSection employmentSection = new EmploymentSection(EntityService).SetRow(0);
-            EducationSection educationSection = new EducationSection(EntityService).SetRow(1);
-            CoursesSection coursesSection = new CoursesSection(EntityService).SetRow(2);
-            ProjectsSection projectsSection = new ProjectsSection(EntityService).SetRow(3);
-            ReferencesSection referencesSection = new ReferencesSection(EntityService).SetRow(4);
+            EmploymentSection employmentSection = new EmploymentSection(EntityService, localeService).SetRow(0);
+            EducationSection educationSection = new EducationSection(EntityService, localeService).SetRow(1);
+            CoursesSection coursesSection = new CoursesSection(EntityService, localeService).SetRow(2);
+            ProjectsSection projectsSection = new ProjectsSection(EntityService, localeService).SetRow(3);
+            ReferencesSection referencesSection = new ReferencesSection(EntityService, localeService).SetRow(4);
 
             columnOne.Add(employmentSection);
             columnOne.Add(educationSection);
@@ -69,10 +72,10 @@ public partial class StructureFrame
             columnTwo.HorizontalAlignment = HorizontalAlignment.Stretch;
             columnTwo.MinWidth = 0;
 
-            GeneralSection generalSection = new GeneralSection(EntityService).SetRow(0);
-            LinksSection linksSection = new LinksSection(EntityService).SetRow(1);
-            SkillsSection skillsSection = new SkillsSection(EntityService).SetRow(2);
-            LanguagesSection languagesSection = new LanguagesSection(EntityService).SetRow(3);
+            GeneralSection generalSection = new GeneralSection(EntityService, localeService).SetRow(0);
+            LinksSection linksSection = new LinksSection(EntityService, localeService).SetRow(1);
+            SkillsSection skillsSection = new SkillsSection(EntityService, localeService).SetRow(2);
+            LanguagesSection languagesSection = new LanguagesSection(EntityService, localeService).SetRow(3);
 
             columnTwo.Add(generalSection);
             columnTwo.Add(linksSection);

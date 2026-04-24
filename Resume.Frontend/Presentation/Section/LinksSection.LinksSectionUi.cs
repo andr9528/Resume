@@ -7,11 +7,15 @@ public partial class LinksSection
 {
     private class LinksSectionUi : BaseUi<LinksSectionLogic, LinksSectionViewModel>
     {
+        private readonly ILocaleService localeService;
+
         /// <inheritdoc />
         public LinksSectionUi(
-            LinksSectionLogic logic, LinksSectionViewModel viewModel, IEntityService entityService) : base(
+            LinksSectionLogic logic, LinksSectionViewModel viewModel, IEntityService entityService,
+            ILocaleService localeService) : base(
             logic, viewModel, entityService)
         {
+            this.localeService = localeService;
         }
 
         /// <inheritdoc />

@@ -7,11 +7,15 @@ public partial class GeneralSection
 {
     private class GeneralSectionUi : BaseUi<GeneralSectionLogic, GeneralSectionViewModel>
     {
+        private readonly ILocaleService localeService;
+
         /// <inheritdoc />
         public GeneralSectionUi(
-            GeneralSectionLogic logic, GeneralSectionViewModel viewModel, IEntityService entityService) : base(
+            GeneralSectionLogic logic, GeneralSectionViewModel viewModel, IEntityService entityService,
+            ILocaleService localeService) : base(
             logic, viewModel, entityService)
         {
+            this.localeService = localeService;
         }
 
         /// <inheritdoc />

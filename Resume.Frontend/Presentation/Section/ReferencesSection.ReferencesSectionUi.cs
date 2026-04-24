@@ -7,11 +7,15 @@ public partial class ReferencesSection
 {
     private class ReferencesSectionUi : BaseUi<ReferencesSectionLogic, ReferencesSectionViewModel>
     {
+        private readonly ILocaleService localeService;
+
         /// <inheritdoc />
         public ReferencesSectionUi(
-            ReferencesSectionLogic logic, ReferencesSectionViewModel viewModel, IEntityService entityService) : base(
+            ReferencesSectionLogic logic, ReferencesSectionViewModel viewModel, IEntityService entityService,
+            ILocaleService localeService) : base(
             logic, viewModel, entityService)
         {
+            this.localeService = localeService;
         }
 
         /// <inheritdoc />
