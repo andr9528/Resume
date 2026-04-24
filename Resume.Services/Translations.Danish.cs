@@ -42,6 +42,9 @@ public static partial class Translations
 
         private static Dictionary<string, string> Employment { get; } = new()
         {
+            [EmploymentKey.EMPLOYMENT_TYPE_CONTRACT.ToKey()] = "Kontrakt",
+            [EmploymentKey.EMPLOYMENT_TYPE_INTERNSHIP.ToKey()] = "Praktik",
+            [EmploymentKey.EMPLOYMENT_TYPE_PERMANENT.ToKey()] = "Fastansat",
             [EmploymentKey.EMPLOYER_APPS4ALL.ToKey()] = "Apps4All",
             [EmploymentKey.EMPLOYER_FASHIONHERO_INTERNSHIP.ToKey()] = "Fashionhero",
             [EmploymentKey.EMPLOYER_NOERGAARD_MIKKELSEN_INTERNSHIP.ToKey()] = "Nørgård Mikkelsen",
@@ -52,31 +55,28 @@ public static partial class Translations
             [EmploymentKey.JOB_TITLE_TV2.ToKey()] = "Software Udvikler",
             [EmploymentKey.WORK_DESCRIPTION_APPS4ALL.ToKey()] = Paragraphs(
                 "Min primære arbejdsopgave var at udvikle nye mobil applikationer egnet til Android, til brug på Point-of-Sale enheder.",
-                "Udviklingen af mobil applikationer gjorde jeg gennem Xamarin Forms.",
+                "Udviklingen af mobil applikationer gjorde jeg gennem Xamarin Forms.", "",
                 "Dertil udviklede jeg også nogle Microservices til at understøtte mobil applikationerne.",
                 "Microservicerne blev sat i funktion via Google Cloud."),
             [EmploymentKey.WORK_DESCRIPTION_FASHIONHERO_INTERNSHIP.ToKey()] = Paragraphs(
-                "Denne stilling var en, en-måneds virksomhedspraktik.",
                 "Ved brug af C#, arbejdet jeg på at udvikle et program der kunne loade deres lagerdata, fra den eksporterede Xml fil, ind i en lokal database.",
-                "Det indlæste lager ville derefter kunne blive eksporteret til en Xml fil i et andet format, til brug for at få en anden side til at sælge vores produkter for os.",
+                "Det indlæste lager ville derefter kunne blive eksporteret til en Xml fil i et andet format, til brug for at få en anden side til at sælge vores produkter for os.", "",
                 "Under dette arbejde gjorde jeg brug af Entity Framework Core til at skrive til den Sqlite database."),
             [EmploymentKey.WORK_DESCRIPTION_NOERGAARD_MIKKELSEN_INTERNSHIP.ToKey()] = Paragraphs(
-                "Denne stilling var en, en-måneds virksomhedspraktik.",
                 "Ved brug af C# og Uno Platform som frontend framework, udviklede jeg et program til at registrere Prompts til AI's.",
-                "Disse prompts kunne så blive sendt til registrerede AI's, med udgangspunkt i OpenAI's ChatGPT, hvorefter deres svar bliver gemt til statistik.",
+                "Disse prompts kunne så blive sendt til registrerede AI's, med udgangspunkt i OpenAI's ChatGPT, hvorefter deres svar bliver gemt til statistik.", "",
                 "Programmets mål var at indsamle kvantitativ data på hvordan AI's svarer på den samme prompt, før Nørgård Mikkelsen forsøger at påvirke deres svar.",
                 "Projektet er Open Source, og kan findes på min GitHub profil."),
             [EmploymentKey.WORK_DESCRIPTION_TV2.ToKey()] = Paragraphs(
-                "Denne stilling sluttede på grund af min kontrakt udløb, og ikke kunne blive fornyet, ikke fordi jeg blev fyret.",
                 "Jeg deltog i et team af udviklere hvor vi ved brug af SCRUM udviklede interne værktøjer, hvor nogle er Open Source.",
-                "Siden min kontrakt udløb er nogle projekter blevet Closed Source, dog kun midlertidigt.",
+                "Siden min kontrakt udløb er nogle projekter blevet Closed Source.", "",
                 "På Cliptool projektet genskrev jeg frontend for at begrænse komponenter til én per fil.",
                 "Omskrivningen forbedrede også projektets struktur markant.",
                 "Jeg forbedrede også backend håndtering af settings mellem sessioner.",
-                "Jeg rettede flere fejl og introducerede muligheden for at skjule filer i GUI.",
+                "Jeg rettede flere fejl og introducerede muligheden for at skjule filer i GUI.", "",
                 "På Sofie projektet arbejdede jeg med backend og Mongo integration samt frontend præsentationslag.",
-                "Jeg hjalp også med migrering af virksomhedsspecifikt kode til ny struktur.",
-                "Jeg gik fra ingen TypeScript erfaring til at være lige så komfortabel som i C#."),
+                "Jeg hjalp også med migrering af virksomhedsspecifikt kode til ny struktur.", "",
+                "Jeg gik fra ingen TypeScript erfaring til at være næsten lige så komfortabel som i C#."),
         };
 
         private static Dictionary<string, string> GeneralInformation { get; } = new()

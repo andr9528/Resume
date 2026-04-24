@@ -2,6 +2,7 @@ using Resume.Abstraction.Interfaces.Services;
 using Resume.Frontend.Presentation.Core;
 using Resume.Frontend.Presentation.Section;
 using Resume.Frontend.Extensions;
+using Resume.Frontend.Presentation.Factory;
 
 namespace Resume.Frontend.Presentation;
 
@@ -9,10 +10,10 @@ public partial class StructureFrame
 {
     private class StructureFrameUi : BaseUi<StructureFrameLogic, StructureFrameViewModel>
     {
-        private const int OUTER_MARGIN_COLUMN_WIDTH = 10;
-        private const int CONTENT_DIVIDER_COLUMN_WIDTH = 4;
-        private const int CONTENT_COLUMN_ONE_WIDTH = 43;
-        private const int CONTENT_COLUMN_TWO_WIDTH = 33;
+        private const int OUTER_MARGIN_COLUMN_WIDTH = 4;
+        private const int CONTENT_DIVIDER_COLUMN_WIDTH = 3;
+        private const int CONTENT_COLUMN_ONE_WIDTH = 55;
+        private const int CONTENT_COLUMN_TWO_WIDTH = 30;
         private readonly int[] gridColumnWidths =
         [
             OUTER_MARGIN_COLUMN_WIDTH, CONTENT_COLUMN_ONE_WIDTH, CONTENT_DIVIDER_COLUMN_WIDTH, CONTENT_COLUMN_TWO_WIDTH, OUTER_MARGIN_COLUMN_WIDTH,
@@ -41,7 +42,10 @@ public partial class StructureFrame
 
         private Grid CreateAndFillColumnOne()
         {
-            var columnOne = new Grid().SetColumn(1).SetRow(0);
+            var columnOne = GridFactory.CreateDefaultGrid().SetColumn(1).SetRow(0)
+                .DefineRows(GridUnitType.Auto, 1, 1, 1, 1, 1);
+            columnOne.HorizontalAlignment = HorizontalAlignment.Stretch;
+            columnOne.MinWidth = 0;
 
             EmploymentSection employmentSection = new EmploymentSection(EntityService).SetRow(0);
             EducationSection educationSection = new EducationSection(EntityService).SetRow(1);
@@ -60,7 +64,10 @@ public partial class StructureFrame
 
         private Grid CreateAndFillColumnTwo()
         {
-            var columnTwo = new Grid().SetColumn(3).SetRow(0);
+            var columnTwo = GridFactory.CreateDefaultGrid().SetColumn(3).SetRow(0)
+                .DefineRows(GridUnitType.Auto, 1, 1, 1, 1);
+            columnTwo.HorizontalAlignment = HorizontalAlignment.Stretch;
+            columnTwo.MinWidth = 0;
 
             GeneralSection generalSection = new GeneralSection(EntityService).SetRow(0);
             LinksSection linksSection = new LinksSection(EntityService).SetRow(1);
@@ -79,9 +86,9 @@ public partial class StructureFrame
         {
             var scrollView = new ScrollViewer
             {
-                HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden,
+                HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled,
                 VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
-                Margin = new Thickness(80, 0),
+                Margin = new Thickness(20, 0),
             };
 
             scrollView.Content(CreateContentGrid());

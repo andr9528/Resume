@@ -29,7 +29,6 @@ public static partial class Translations
             if (i > 0)
             {
                 sb.AppendLine();
-                sb.AppendLine();
             }
 
             sb.Append(paragraphs[i].Trim());

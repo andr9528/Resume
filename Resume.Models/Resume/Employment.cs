@@ -17,6 +17,9 @@ public class Employment : IEmployment
     public string City { get; set; }
 
     /// <inheritdoc />
+    public string EmploymentType { get; set; }
+
+    /// <inheritdoc />
     public IList<string>? Links { get; set; }
 
     /// <inheritdoc />

@@ -49,6 +49,7 @@ public class EntityService : IEntityService
                 StartDate = new DateTime(2020, 10, 1),
                 EndDate = new DateTime(2020, 12, 31),
                 WorkDescription = localeService.GetLocalizedString(EmploymentKey.WORK_DESCRIPTION_APPS4ALL.ToKey()),
+                EmploymentType = localeService.GetLocalizedString(EmploymentKey.EMPLOYMENT_TYPE_CONTRACT.ToKey()),
             },
             new Employment
             {
@@ -58,6 +59,7 @@ public class EntityService : IEntityService
                 StartDate = new DateTime(2022, 4, 1),
                 EndDate = new DateTime(2023, 12, 31),
                 WorkDescription = localeService.GetLocalizedString(EmploymentKey.WORK_DESCRIPTION_TV2.ToKey()),
+                EmploymentType = localeService.GetLocalizedString(EmploymentKey.EMPLOYMENT_TYPE_CONTRACT.ToKey()),
                 Links = new List<string>
                 {
                     localeService.GetLocalizedString(LinkKey.TV2_CLIPTOOL_GITHUB_PROJECT.ToKey()),
@@ -72,6 +74,8 @@ public class EntityService : IEntityService
                 EndDate = new DateTime(2024, 5, 31),
                 WorkDescription =
                     localeService.GetLocalizedString(EmploymentKey.WORK_DESCRIPTION_FASHIONHERO_INTERNSHIP.ToKey()),
+
+                EmploymentType = localeService.GetLocalizedString(EmploymentKey.EMPLOYMENT_TYPE_INTERNSHIP.ToKey()),
                 Links = new List<string>
                 {
                     localeService.GetLocalizedString(LinkKey.FASHION_HERO_GITHUB_PROJECT.ToKey()),
@@ -89,6 +93,7 @@ public class EntityService : IEntityService
                 WorkDescription =
                     localeService.GetLocalizedString(
                         EmploymentKey.WORK_DESCRIPTION_NOERGAARD_MIKKELSEN_INTERNSHIP.ToKey()),
+                EmploymentType = localeService.GetLocalizedString(EmploymentKey.EMPLOYMENT_TYPE_INTERNSHIP.ToKey()),
                 Links = new List<string>
                 {
                     localeService.GetLocalizedString(LinkKey.NOERGAARD_MIKKELSEN_GITHUB_PROJECT.ToKey()),
@@ -241,7 +246,7 @@ public class EntityService : IEntityService
                 Name = "Jeppe Hamming",
                 Company = localeService.GetLocalizedString(ReferencesKey.COMPANY_NAME_NOERGAARD_MIKKELSEN.ToKey()),
                 Email = "jeppe.hamming@nmic.dk",
-                Importance = 70,
+                Importance = 40,
                 IsShown = true,
             },
         };
@@ -314,6 +319,7 @@ public class EntityService : IEntityService
         };
 
         educations.Sort();
+        educations.Reverse();
         return educations;
     }
 

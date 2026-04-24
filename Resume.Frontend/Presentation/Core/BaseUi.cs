@@ -1,4 +1,5 @@
 using Resume.Abstraction.Interfaces.Services;
+using Resume.Frontend.Presentation.Factory;
 
 namespace Resume.Frontend.Presentation.Core;
 
@@ -18,7 +19,7 @@ public abstract class BaseUi<TLogic, TViewModel> where TLogic : class where TVie
 
     public Grid CreateContentGrid()
     {
-        var grid = new Grid();
+        var grid = GridFactory.CreateDefaultGrid();
 
         ConfigureGrid(grid);
         AddControlsToGrid(grid);

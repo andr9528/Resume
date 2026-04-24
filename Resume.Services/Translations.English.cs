@@ -39,6 +39,9 @@ public static partial class Translations
 
         private static Dictionary<string, string> Employment { get; } = new()
         {
+            [EmploymentKey.EMPLOYMENT_TYPE_CONTRACT.ToKey()] = "Contract",
+            [EmploymentKey.EMPLOYMENT_TYPE_INTERNSHIP.ToKey()] = "Internship",
+            [EmploymentKey.EMPLOYMENT_TYPE_PERMANENT.ToKey()] = "Permanent Employment",
             [EmploymentKey.EMPLOYER_APPS4ALL.ToKey()] = "Apps4All",
             [EmploymentKey.EMPLOYER_FASHIONHERO_INTERNSHIP.ToKey()] = "Fashionhero",
             [EmploymentKey.EMPLOYER_NOERGAARD_MIKKELSEN_INTERNSHIP.ToKey()] = "Noergaard Mikkelsen",
@@ -53,28 +56,25 @@ public static partial class Translations
                 "In addition to this, I also developed some Microservices to support the mobile applications.",
                 "The microservices were deployed to Google Cloud."),
             [EmploymentKey.WORK_DESCRIPTION_FASHIONHERO_INTERNSHIP.ToKey()] = Paragraphs(
-                "This position was a one month Company Internship.",
                 "Using C#, I worked on developing a program to load their storage, exported to an Xml file, into a local database.",
-                "The loaded storage would then be export to a Xml in another format, for use by other sites to sell products from us.",
+                "The loaded storage would then be export to a Xml in another format, for use by other sites to sell products from us.", "",
                 "During this work I made use of Entity Framework Core to write to a Sqlite database."),
             [EmploymentKey.WORK_DESCRIPTION_NOERGAARD_MIKKELSEN_INTERNSHIP.ToKey()] = Paragraphs(
-                "This position was a one month Company Internship.",
                 "Using C# and Uno Platform as the frontend framework, I developed a program to register prompts for AI's.",
                 "These Prompts were then able to be executed on registered AI's, starting with ChatGPT.",
-                "Afterwards the AI's response would be saved, for use to generate statistics with.",
+                "Afterwards the AI's response would be saved, for use to generate statistics with.", "",
                 "The aim of the program was to collect quantitative data on how AI's respond to the same Prompts, before Noergaard Mikkelsen starts to apply changes to their customers websites, in an attempt to influence AI's responses.",
                 "The program is open source, and a version of it can be found on my GitHub profile, through the link below."),
             [EmploymentKey.WORK_DESCRIPTION_TV2.ToKey()] = Paragraphs(
-                "This position ended due to a contract running out, and it not being able to be renewed, not because I was fired.",
                 "I was part of a team of developers who by use of SCRUM, developed on a number of internal tools, some of which are Open Source projects.",
-                "Some of the projects I have contributed to have since my contract ran out been changed to be Closed Source. I do know that this change is only temporary.",
+                "Some of the projects I have contributed to have since my contract ran out been changed to be Closed Source.", "",
                 "On the Cliptool project, I rewrote the frontend side of the application, mainly to limit the amount of components per file to one.",
                 "The rewrite was also done to apply a better file structure to the project, as it was difficult to know where different components were located beforehand.",
                 "I also rewrote parts of the backend of Cliptool in the process, mainly to save changes to settings for between sessions better than before.",
-                "During this rewrite, I managed to fix a number of smaller bugs, and introduce the ability to hide selected files from the GUI.",
+                "During this rewrite, I managed to fix a number of smaller bugs, and introduce the ability to hide selected files from the GUI.", "",
                 "On the Sofie project, I helped with creating parts of the backend, related to interacting with the underlying Mongo database and the frontend-facing presentation layer.",
-                "I also helped with moving over parts of the company-specific code from the old repository, to the new structure.",
-                "All in all, I went from never having touched or used TypeScript, to now feeling just as comfortable in that as I am in C#."),
+                "I also helped with moving over parts of the company-specific code from the old repository, to the new structure.", "",
+                "All in all, I went from never having touched or used TypeScript, to now feeling almost as comfortable in that as I am in C#."),
         };
 
         private static Dictionary<string, string> GeneralInformation { get; } = new()

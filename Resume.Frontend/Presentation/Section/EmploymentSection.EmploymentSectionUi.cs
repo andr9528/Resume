@@ -39,12 +39,12 @@ public partial class EmploymentSection
             panel.Orientation = Orientation.Vertical;
 
             TextBlock pieceHeader = BuildPieceHeader(employment);
-            TextBlock piecePeriod = BuildPiecePeriod(employment);
+            TextBlock pieceSubHeader = BuildPieceSubHeader(employment);
             TextBlock pieceDescription = BuildPieceDescription(employment);
             ListView? pieceLinks = BuildPieceLinks(employment);
 
             panel.Children.Add(pieceHeader);
-            panel.Children.Add(piecePeriod);
+            panel.Children.Add(pieceSubHeader);
             panel.Children.Add(pieceDescription);
 
             if (pieceLinks != null)
@@ -82,15 +82,17 @@ public partial class EmploymentSection
                 Text = employment.WorkDescription,
                 FontSize = 14,
                 Margin = new Thickness(0, 0, 0, 10),
+                TextWrapping = TextWrapping.WrapWholeWords,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
             };
         }
 
-        private TextBlock BuildPiecePeriod(IEmployment employment)
+        private TextBlock BuildPieceSubHeader(IEmployment employment)
         {
             string end = employment.EndDate != null ? $"{employment.EndDate:MMM yyyy}" : "TEMP";
             return new TextBlock
             {
-                Text = $"{employment.StartDate:MMM yyyy} - {end}",
+                Text = $"{employment.City}, {employment.StartDate:MMM yyyy} - {end}, {employment.EmploymentType}",
                 FontSize = 14,
                 Margin = new Thickness(0, 0, 0, 10),
             };
@@ -100,7 +102,7 @@ public partial class EmploymentSection
         {
             return new TextBlock
             {
-                Text = employment.JobTitle,
+                Text = $"{employment.JobTitle} - {employment.Employer}",
                 FontSize = 18,
                 Margin = new Thickness(0, 0, 0, 10),
             };
