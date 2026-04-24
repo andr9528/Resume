@@ -7,12 +7,15 @@ public partial class SkillsSection
 {
     private class SkillsSectionUi : BaseUi<SkillsSectionLogic, SkillsSectionViewModel>
     {
+        private readonly ILocaleService localeService;
+
         /// <inheritdoc />
         public SkillsSectionUi(
             SkillsSectionLogic logic, SkillsSectionViewModel viewModel, IEntityService entityService,
             ILocaleService localeService) : base(
             logic, viewModel, entityService)
         {
+            this.localeService = localeService;
         }
 
         /// <inheritdoc />

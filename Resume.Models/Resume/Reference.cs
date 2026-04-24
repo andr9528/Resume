@@ -17,11 +17,11 @@ public class Reference : IReference
     public string Company { get; set; }
 
     /// <inheritdoc />
-    public string Phone { get; set; }
+    public string? Phone { get; set; }
 
     /// <inheritdoc />
-    public string Email { get; set; }
+    public string? Email { get; set; }
 
     /// <inheritdoc />
-    public string LinkedIn { get; set; }
+    public string? LinkedIn { get; set; }
 }

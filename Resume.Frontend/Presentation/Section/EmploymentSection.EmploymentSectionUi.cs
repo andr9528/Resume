@@ -1,7 +1,11 @@
+using Resume.Abstraction.Enums.Keys;
 using Resume.Abstraction.Interfaces.Resume;
 using Resume.Abstraction.Interfaces.Services;
+using Resume.Frontend.Extensions;
 using Resume.Frontend.Presentation.Core;
 using Resume.Frontend.Presentation.Factory;
+using Resume.Models.Extensions;
+using Resume.Models.Resume;
 
 namespace Resume.Frontend.Presentation.Section;
 
@@ -25,15 +29,18 @@ public partial class EmploymentSection
         {
             grid.SafeArea(SafeArea.InsetMask.VisibleBounds);
             grid.RowDefinitions(Enumerable
-                .Repeat(new GridLength(10, GridUnitType.Auto), EntityService.GetEmployments().Count).ToArray());
+                .Repeat(new GridLength(10, GridUnitType.Auto), EntityService.GetEmployments().Count + 1).ToArray());
         }
 
         /// <inheritdoc />
         protected override void AddControlsToGrid(Grid grid)
         {
+            var sectionHeader = TextBlockFactory.BuildSectionHeader(
+                localeService.GetLocalizedString(UserInterfaceKey.EMPLOYMENT_HEADER.ToKey())).SetRow(0);
             var pieces = EntityService.GetEmployments()
-                .Select((employment, index) => BuildPiece(employment).Grid(row: index, column: 0));
+                .Select((employment, index) => BuildPiece(employment).Grid(row: index + 1, column: 0));
 
+            grid.Children.Add(sectionHeader);
             grid.Children.AddRange(pieces);
         }
 

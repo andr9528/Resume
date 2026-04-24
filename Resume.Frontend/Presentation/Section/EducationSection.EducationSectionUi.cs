@@ -1,7 +1,10 @@
+using Resume.Abstraction.Enums.Keys;
 using Resume.Abstraction.Interfaces.Resume;
 using Resume.Abstraction.Interfaces.Services;
+using Resume.Frontend.Extensions;
 using Resume.Frontend.Presentation.Core;
 using Resume.Frontend.Presentation.Factory;
+using Resume.Models.Extensions;
 
 namespace Resume.Frontend.Presentation.Section;
 
@@ -25,15 +28,18 @@ public partial class EducationSection
         {
             grid.SafeArea(SafeArea.InsetMask.VisibleBounds);
             grid.RowDefinitions(Enumerable
-                .Repeat(new GridLength(10, GridUnitType.Auto), EntityService.GetEducations().Count).ToArray());
+                .Repeat(new GridLength(10, GridUnitType.Auto), EntityService.GetEducations().Count + 1).ToArray());
         }
 
         /// <inheritdoc />
         protected override void AddControlsToGrid(Grid grid)
         {
+            var sectionHeader = TextBlockFactory.BuildSectionHeader(
+                localeService.GetLocalizedString(UserInterfaceKey.EDUCATION_HEADER.ToKey())).SetRow(0);
             var pieces = EntityService.GetEducations()
-                .Select((education, index) => BuildPiece(education).Grid(row: index, column: 0));
+                .Select((education, index) => BuildPiece(education).Grid(row: index + 1, column: 0));
 
+            grid.Children.Add(sectionHeader);
             grid.Children.AddRange(pieces);
         }
 

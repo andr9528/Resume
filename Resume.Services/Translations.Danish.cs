@@ -118,7 +118,11 @@ public static partial class Translations
         private static Dictionary<string, string> UserInterface { get; } = new()
         {
             [UserInterfaceKey.SKILLS_HEADER.ToKey()] = "Evner",
+            [UserInterfaceKey.EDUCATION_HEADER.ToKey()] = "Uddannelse",
+            [UserInterfaceKey.EMPLOYMENT_HEADER.ToKey()] = "Ansættelseshistorik",
+            [UserInterfaceKey.REFERENCES_HEADER.ToKey()] = "Referencer",
             [UserInterfaceKey.TITLE.ToKey()] = "Resume",
+            [UserInterfaceKey.PHONE.ToKey()] = "Telefon",
         };
 
         public static Dictionary<string, string> All { get; } = Merge(Links, Profile, Education, Employment,

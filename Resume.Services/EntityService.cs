@@ -249,9 +249,19 @@ public class EntityService : IEntityService
                 Importance = 40,
                 IsShown = true,
             },
+            new Reference
+            {
+                Name = "Marwa Kasim",
+                Company = localeService.GetLocalizedString(ReferencesKey.COMPANY_NAME_SPECIALISTERNE.ToKey()),
+                Email = "marwa.kasim@specialisterne.dk",
+                Importance = 60,
+                Phone = "+45 27 79 85 97",
+                IsShown = true,
+            },
         };
 
         references.Sort();
+        references.Reverse();
         return references;
     }
 
