@@ -144,7 +144,7 @@ public class EntityService : IEntityService
             new Skill
             {
                 Name = "SCRUM",
-                Importance = 60,
+                Importance = 55,
                 Expertise = SkillLevel.SKILLFUL,
             },
             new Skill
