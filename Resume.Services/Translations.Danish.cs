@@ -7,18 +7,7 @@ public static partial class Translations
 {
     public static class Danish
     {
-        public static Dictionary<string, string> All { get; } = Merge(
-            Links,
-            Profile,
-            Education,
-            Employment,
-            GeneralInformation,
-            Languages,
-            Projects,
-            References,
-            UserInterface);
-
-        public static Dictionary<string, string> Links { get; } = new()
+        private static Dictionary<string, string> Links { get; } = new()
         {
             [LinkKey.REMARK_GITHUB.ToKey()] = "Tag et kig på min tidligere kode.",
             [LinkKey.REMARK_LINKEDIN.ToKey()] =
@@ -28,7 +17,7 @@ public static partial class Translations
             [LinkKey.TV2_CLIPTOOL_GITHUB_PROJECT.ToKey()] = "",
         };
 
-        public static Dictionary<string, string> Profile { get; } = new()
+        private static Dictionary<string, string> Profile { get; } = new()
         {
             [ProfileKey.DESCRIPTION.ToKey()] = Paragraphs(
                 "Jeg er en lærenem logisk tænkende udvikler, med erfaring i C# / .Net. Jeg har også under min seneste stilling ved Tv2 Danmark fået erfaring med TypeScript / React.",
@@ -37,7 +26,7 @@ public static partial class Translations
                 "Når jeg udvikler stræber jeg efter at følge DRY og SOLID principperne."),
         };
 
-        public static Dictionary<string, string> Education { get; } = new()
+        private static Dictionary<string, string> Education { get; } = new()
         {
             [EducationKey.DESCRIPTION_BACHELOR.ToKey()] =
                 "Fag jeg præsterede specielt godt i inkluderer .Net Core, Database og Test.",
@@ -51,7 +40,7 @@ public static partial class Translations
             [EducationKey.SCHOOL_NAME_UCL.ToKey()] = "University College Lillebælt",
         };
 
-        public static Dictionary<string, string> Employment { get; } = new()
+        private static Dictionary<string, string> Employment { get; } = new()
         {
             [EmploymentKey.EMPLOYER_APPS4ALL.ToKey()] = "Apps4All",
             [EmploymentKey.EMPLOYER_FASHIONHERO_INTERNSHIP.ToKey()] = "Fashionhero",
@@ -90,19 +79,19 @@ public static partial class Translations
                 "Jeg gik fra ingen TypeScript erfaring til at være lige så komfortabel som i C#."),
         };
 
-        public static Dictionary<string, string> GeneralInformation { get; } = new()
+        private static Dictionary<string, string> GeneralInformation { get; } = new()
         {
             [GeneralInformationKey.COUNTRY.ToKey()] = "Danmark",
         };
 
-        public static Dictionary<string, string> Languages { get; } = new()
+        private static Dictionary<string, string> Languages { get; } = new()
         {
             [LanguageKey.DANISH_LANGUAGE.ToKey()] = "Dansk",
             [LanguageKey.ENGLISH_LANGUAGE.ToKey()] = "Engelsk",
             [LanguageKey.GERMAN_LANGUAGE.ToKey()] = "Tysk",
         };
 
-        public static Dictionary<string, string> Projects { get; } = new()
+        private static Dictionary<string, string> Projects { get; } = new()
         {
             [ProjectKey.ONI_MODDING_DESCRIPTION.ToKey()] = Paragraphs(
                 "Jeg har ideer til mods til Oxygen Not Included som jeg gerne vil udvikle.",
@@ -119,18 +108,21 @@ public static partial class Translations
             [ProjectKey.TRACKER_TITLE.ToKey()] = "Sporings Applikation",
         };
 
-        public static Dictionary<string, string> References { get; } = new()
+        private static Dictionary<string, string> References { get; } = new()
         {
             [ReferencesKey.COMPANY_NAME_NOERGAARD_MIKKELSEN.ToKey()] = "Nørgård Mikkelsen",
             [ReferencesKey.COMPANY_NAME_TV2.ToKey()] = "Tv2 Danmark",
             [ReferencesKey.COMPANY_NAME_SPECIALISTERNE.ToKey()] = "Specialisterne",
         };
 
-        public static Dictionary<string, string> UserInterface { get; } = new()
+        private static Dictionary<string, string> UserInterface { get; } = new()
         {
             [UserInterfaceKey.SKILLS_HEADER.ToKey()] = "Evner",
             [UserInterfaceKey.TITLE.ToKey()] = "Resume",
         };
+
+        public static Dictionary<string, string> All { get; } = Merge(Links, Profile, Education, Employment,
+            GeneralInformation, Languages, Projects, References, UserInterface);
 
     }
 }

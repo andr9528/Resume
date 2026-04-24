@@ -7,11 +7,7 @@ public static partial class Translations
 {
     public static class Fallback
     {
-        public static Dictionary<string, string> All { get; } = Merge(
-            Links,
-            Profile);
-
-        public static Dictionary<string, string> Links { get; } = new()
+        private static Dictionary<string, string> Links { get; } = new()
         {
             [LinkKey.FASHION_HERO_GITHUB_PROJECT.ToKey()] = "https://github.com/FashionHeroOnGit/PortalProject",
             [LinkKey.NOERGAARD_MIKKELSEN_GITHUB_PROJECT.ToKey()] = "https://github.com/andr9528/gaio",
@@ -23,10 +19,12 @@ public static partial class Translations
             [LinkKey.TITLE_LINKEDIN.ToKey()] = "LinkedIn",
         };
 
-        public static Dictionary<string, string> Profile { get; } = new()
+        private static Dictionary<string, string> Profile { get; } = new()
         {
             [ProfileKey.NAME.ToKey()] = "André Steenhoff Madsen",
         };
+
+        public static Dictionary<string, string> All { get; } = Merge(Links, Profile);
 
     }
 }
