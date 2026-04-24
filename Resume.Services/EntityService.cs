@@ -126,7 +126,7 @@ public class EntityService : IEntityService
             new Skill
             {
                 Name = "Python",
-                Importance = 30,
+                Importance = 25,
                 Expertise = SkillLevel.NOVICE,
             },
             new Skill
@@ -168,7 +168,7 @@ public class EntityService : IEntityService
             new Skill
             {
                 Name = "Angular",
-                Importance = 45,
+                Importance = 25,
                 Expertise = SkillLevel.NOVICE,
             },
             new Skill
@@ -189,9 +189,28 @@ public class EntityService : IEntityService
                 Importance = 80,
                 Expertise = SkillLevel.EXPERIENCED,
             },
+            new Skill
+            {
+                Name = "COBOL",
+                Importance = 30,
+                Expertise = SkillLevel.NOVICE,
+            },
+            new Skill
+            {
+                Name = "NUnit / TUnit / XUnit",
+                Importance = 60,
+                Expertise = SkillLevel.SKILLFUL,
+            },
+            new Skill
+            {
+                Name = "Fluent Assertion",
+                Importance = 59,
+                Expertise = SkillLevel.SKILLFUL,
+            },
         };
 
         skills.Sort();
+        skills.Reverse();
         return skills;
     }
 

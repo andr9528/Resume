@@ -27,9 +27,11 @@ public partial class EmploymentSection
         /// <inheritdoc />
         protected override void ConfigureGrid(Grid grid)
         {
+            var employmentCount = EntityService.GetEmployments().Count;
+
             grid.SafeArea(SafeArea.InsetMask.VisibleBounds);
             grid.RowDefinitions(Enumerable
-                .Repeat(new GridLength(10, GridUnitType.Auto), EntityService.GetEmployments().Count + 1).ToArray());
+                .Repeat(new GridLength(10, GridUnitType.Auto), employmentCount + 1).ToArray());
         }
 
         /// <inheritdoc />
