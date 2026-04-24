@@ -25,7 +25,7 @@ public class LocaleService : ILocaleService
             return localizedString;
         }
 
-        if (Translations.Fallback.TryGetValue(key, out string? fallbackString) &&
+        if (Translations.Fallback.All.TryGetValue(key, out string? fallbackString) &&
             !string.IsNullOrWhiteSpace(fallbackString))
         {
             logger.LogDebug("Falling back to fallback translation for key '{Key}' and language '{Language}'.", key,
@@ -67,9 +67,9 @@ public class LocaleService : ILocaleService
     {
         return currentLanguage switch
         {
-            LanguageType.DANISH => Translations.Danish,
-            LanguageType.ENGLISH => Translations.English,
-            var _ => Translations.Fallback,
+            LanguageType.DANISH => Translations.Danish.All,
+            LanguageType.ENGLISH => Translations.English.All,
+            var _ => Translations.Fallback.All,
         };
     }
 
