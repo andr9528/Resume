@@ -14,8 +14,7 @@ public abstract class BaseUi<TLogic, TViewModel> where TLogic : class where TVie
     protected TLogic Logic { get; }
     protected TViewModel ViewModel { get; }
 
-    //public ILocalizationCategories LocaleCategories { get; }
-    public IEntityService EntityService { get; }
+    protected IEntityService EntityService { get; }
 
     public Grid CreateContentGrid()
     {
