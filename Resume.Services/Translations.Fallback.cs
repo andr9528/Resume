@@ -23,8 +23,13 @@ public static partial class Translations
         {
             [ProfileKey.NAME.ToKey()] = "André Steenhoff Madsen",
         };
+        
+        private static Dictionary<string, string> UserInterface { get; } = new()
+        {
+            [UserInterfaceKey.LINKS_HEADER.ToKey()] = "Links",
+        };
 
-        public static Dictionary<string, string> All { get; } = Merge(Links, Profile);
+        public static Dictionary<string, string> All { get; } = Merge(Links, Profile, UserInterface);
 
     }
 }

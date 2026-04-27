@@ -1,5 +1,10 @@
+using Resume.Abstraction.Enums.Keys;
+using Resume.Abstraction.Interfaces.Resume;
 using Resume.Abstraction.Interfaces.Services;
+using Resume.Frontend.Extensions;
 using Resume.Frontend.Presentation.Core;
+using Resume.Frontend.Presentation.Factory;
+using Resume.Models.Extensions;
 
 namespace Resume.Frontend.Presentation.Section;
 
@@ -21,14 +26,92 @@ public partial class LinksSection
         /// <inheritdoc />
         protected override void ConfigureGrid(Grid grid)
         {
+            int linkCount = EntityService.GetLinks().Count;
+
             grid.SafeArea(SafeArea.InsetMask.VisibleBounds);
-            grid.RowDefinitions(GridLength.Auto);
+            grid.RowDefinitions(Enumerable.Repeat(new GridLength(10, GridUnitType.Auto), linkCount + 1).ToArray());
         }
 
         /// <inheritdoc />
         protected override void AddControlsToGrid(Grid grid)
         {
-            // TODO: Add LinksSection controls.
+            var sectionHeader = TextBlockFactory.BuildSectionHeader(
+                localeService.GetLocalizedString(UserInterfaceKey.LINKS_HEADER.ToKey())).SetRow(0);
+            var pieces = EntityService.GetLinks()
+                .Select((link, index) => BuildPiece(link).Grid(row: index + 1, column: 0));
+
+            grid.Children.Add(sectionHeader);
+            grid.Children.AddRange(pieces);
+        }
+
+        private Grid BuildPiece(ILink link)
+        {
+            const int headerRowSize = 1;
+            const int remarkRowSize = 1;
+            const int urlRowSize = 1;
+
+            var hasRemark = !string.IsNullOrWhiteSpace(link.Remark);
+            var rowSizes = hasRemark
+                ? new[] {headerRowSize, remarkRowSize, urlRowSize,}
+                : new[] {headerRowSize, urlRowSize,};
+
+            var grid = GridFactory.CreateDefaultGrid().DefineRows(GridUnitType.Auto, rowSizes);
+
+            grid.Children.Add(BuildTitle(link).Grid(row: 0, column: 0));
+
+            if (hasRemark)
+            {
+                grid.Children.Add(BuildRemark(link).Grid(row: 1, column: 0));
+                grid.Children.Add(BuildUrl(link).Grid(row: 2, column: 0));
+            }
+            else
+            {
+                grid.Children.Add(BuildUrl(link).Grid(row: 1, column: 0));
+            }
+
+            return grid;
+        }
+
+        private TextBlock BuildTitle(ILink link)
+        {
+            return new TextBlock
+            {
+                Text = link.Title,
+                FontSize = 18,
+                Margin = new Thickness(10, 0, 0, 0),
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+        }
+
+        private TextBlock BuildRemark(ILink link)
+        {
+            return new TextBlock
+            {
+                Text = link.Remark,
+                FontSize = 16,
+                Margin = new Thickness(20, 0, 0, 0),
+                VerticalAlignment = VerticalAlignment.Center,
+                TextWrapping = TextWrapping.Wrap,
+            };
+        }
+
+        private HyperlinkButton BuildUrl(ILink link)
+        {
+            Uri.TryCreate(link.Url, UriKind.Absolute, out Uri? uri);
+
+            return new HyperlinkButton
+            {
+                NavigateUri = uri,
+                IsEnabled = uri is not null,
+                Margin = new Thickness(10, 0, 0, 5),
+                VerticalAlignment = VerticalAlignment.Center,
+                Content = new TextBlock
+                {
+                    Text = link.Url,
+                    FontSize = 16,
+                    TextWrapping = TextWrapping.Wrap,
+                },
+            };
         }
     }
 }

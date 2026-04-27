@@ -9,4 +9,5 @@ public enum UserInterfaceKey
     EDUCATION_HEADER,
     REFERENCES_HEADER,
     PHONE,
+    LINKS_HEADER
 }

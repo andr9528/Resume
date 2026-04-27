@@ -14,7 +14,6 @@ public static partial class Translations
                 "Tag dig ikke af at linket ser lidt underligt ud, LinkedIn kan ikke lide min apostrof.",
             [LinkKey.REMARK_PERSONAL_PAGE.ToKey()] = "Til at se dette CV online.",
             [LinkKey.TITLE_PERSONAL_PAGE.ToKey()] = "Personlig hjemmeside",
-            [LinkKey.TV2_CLIPTOOL_GITHUB_PROJECT.ToKey()] = "",
         };
 
         private static Dictionary<string, string> Profile { get; } = new()
