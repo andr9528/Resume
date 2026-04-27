@@ -365,13 +365,19 @@ public class EntityService : IEntityService
             {
                 Name = localeService.GetLocalizedString(ProjectKey.TRACKER_TITLE.ToKey()),
                 Description = localeService.GetLocalizedString(ProjectKey.TRACKER_DESCRIPTION.ToKey()),
+                Importance = 70,
+            },
+            new Project
+            {
+                Name = localeService.GetLocalizedString(ProjectKey.AOM_MODDING_TITLE.ToKey()),
+                Description = localeService.GetLocalizedString(ProjectKey.AOM_MODDING_DESCRIPTION.ToKey()),
                 Importance = 100,
             },
             new Project
             {
                 Name = localeService.GetLocalizedString(ProjectKey.ONI_MODDING_TITLE.ToKey()),
                 Description = localeService.GetLocalizedString(ProjectKey.ONI_MODDING_DESCRIPTION.ToKey()),
-                Importance = 90,
+                Importance = 50,
             },
             new Project
             {
@@ -382,6 +388,7 @@ public class EntityService : IEntityService
         };
 
         projects.Sort();
+        projects.Reverse();
         return projects;
     }
 }

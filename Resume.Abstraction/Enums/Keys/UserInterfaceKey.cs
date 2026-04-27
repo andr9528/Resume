@@ -18,5 +18,6 @@ public enum UserInterfaceKey
     DATE_OF_BIRTH_LABEL,
     GENERAL_HEADER,
     THE_LABEL,
-    OF_LABEL
+    OF_LABEL,
+    PROJECTS_HEADER
 }

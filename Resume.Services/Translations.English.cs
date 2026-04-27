@@ -97,6 +97,13 @@ public static partial class Translations
                 "The game is developed using Unity, therefore C# is the language to be used, which is an advantage for me.",
                 "It uses 'Harmony' as the access point for modders, which might help me learn it for use in my own game, if Godot allows it."),
             [ProjectKey.ONI_MODDING_TITLE.ToKey()] = "Oxygen Not Included Modding",
+            [ProjectKey.AOM_MODDING_DESCRIPTION.ToKey()] = Paragraphs(
+                "In my spare time, I maintain several mods for Age of Mythology: Retold.",
+                "Since the game’s modding system is data-driven through XML files, I developed a custom tool to streamline updating and maintaining these mods.",
+                "The tool loads game data from XML files and applies transformations based on the desired mod configuration, ensuring consistent and efficient updates.",
+                "In addition, I created a companion tool for managing mods outside the game, allowing enabling and disabling of mods, as well as saving and activating full playsets.",
+                "The tools are built using C#, Uno Platform, and Entity Framework Core, and are actively being expanded with new features."),
+            [ProjectKey.AOM_MODDING_TITLE.ToKey()] = "Age of Mythology Retold Modding",
             [ProjectKey.TOWER_DEFENCE_DEV_DESCRIPTION.ToKey()] = Paragraphs(
                 "I have a game in mind that I would like to slowly get started on.",
                 "Currently I have noted down many details of the planned game, but have not started on any code for it yet.",
@@ -132,6 +139,7 @@ public static partial class Translations
             [UserInterfaceKey.NAME_LABEL.ToKey()] = "Full Name",
             [UserInterfaceKey.THE_LABEL.ToKey()] = "the",
             [UserInterfaceKey.OF_LABEL.ToKey()] = "of",
+            [UserInterfaceKey.PROJECTS_HEADER.ToKey()] = "Projects",
         };
 
         public static Dictionary<string, string> All { get; } = Merge(Links, Profile, Education, Employment,

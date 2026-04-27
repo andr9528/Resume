@@ -97,6 +97,13 @@ public static partial class Translations
                 "Jeg har delt ideer med andre modders og kan sparre med dem.", "Spillet er udviklet i Unity og bruger C#.",
                 "Modding sker via Harmony som jeg gerne vil lære."),
             [ProjectKey.ONI_MODDING_TITLE.ToKey()] = "Oxygen Not Included Modding",
+            [ProjectKey.AOM_MODDING_DESCRIPTION.ToKey()] = Paragraphs(
+                "I min fritid vedligeholder jeg flere mods til Age of Mythology: Retold.",
+                "Da spillets modding-system er datadrevet gennem XML-filer, har jeg udviklet et værktøj til at effektivisere opdatering og vedligeholdelse af disse mods.",
+                "Værktøjet indlæser spildata fra XML-filer og transformerer dataene baseret på den ønskede mod-konfiguration, hvilket sikrer konsistente og effektive opdateringer.",
+                "Derudover har jeg udviklet et værktøj til at håndtere mods uden for spillet, som gør det muligt at aktivere/deaktivere mods samt gemme og indlæse komplette playsets.",
+                "Værktøjerne er udviklet i C#, Uno Platform og Entity Framework Core og bliver løbende udvidet med nye funktioner."),
+            [ProjectKey.AOM_MODDING_TITLE.ToKey()] = "Age of Mythology Retold Modding",
             [ProjectKey.TOWER_DEFENCE_DEV_DESCRIPTION.ToKey()] = Paragraphs(
                 "Jeg har et spil i tankerne jeg gerne vil begynde på.", "Jeg har mange noter men ingen kode endnu.",
                 "Jeg overvejer Godot som engine pga C# og Unity kontroversen.",
@@ -125,6 +132,7 @@ public static partial class Translations
             [UserInterfaceKey.PHONE_LABEL.ToKey()] = "Telefon",
             [UserInterfaceKey.ADDRESS_LABEL.ToKey()] = "Addresse",
             [UserInterfaceKey.GENERAL_HEADER.ToKey()] = "Generel Information",
+            [UserInterfaceKey.PROJECTS_HEADER.ToKey()] = "Projekter",
             [UserInterfaceKey.DATE_OF_BIRTH_LABEL.ToKey()] = "Fødselsdag",
             [UserInterfaceKey.NAME_LABEL.ToKey()] = "Fulde Navn",
             [UserInterfaceKey.THE_LABEL.ToKey()] = "den",
