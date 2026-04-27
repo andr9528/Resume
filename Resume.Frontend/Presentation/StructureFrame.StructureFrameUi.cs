@@ -45,46 +45,60 @@ public partial class StructureFrame
 
         private Grid CreateAndFillColumnOne()
         {
-            var columnOne = GridFactory.CreateDefaultGrid().SetColumn(1).SetRow(0)
-                .DefineRows(GridUnitType.Auto, 1, 1, 1, 1, 1, 1);
-            columnOne.HorizontalAlignment = HorizontalAlignment.Stretch;
-            columnOne.MinWidth = 0;
+            ProfileSection profileSection = new(EntityService, localeService);
+            EmploymentSection employmentSection = new(EntityService, localeService);
+            EducationSection educationSection = new(EntityService, localeService);
+            CoursesSection coursesSection = new(EntityService, localeService);
+            ProjectsSection projectsSection = new(EntityService, localeService);
+            ReferencesSection referencesSection = new(EntityService, localeService);
 
-            ProfileSection profileSection = new ProfileSection(EntityService, localeService).SetRow(0);
-            EmploymentSection employmentSection = new EmploymentSection(EntityService, localeService).SetRow(1);
-            EducationSection educationSection = new EducationSection(EntityService, localeService).SetRow(2);
-            CoursesSection coursesSection = new CoursesSection(EntityService, localeService).SetRow(3);
-            ProjectsSection projectsSection = new ProjectsSection(EntityService, localeService).SetRow(4);
-            ReferencesSection referencesSection = new ReferencesSection(EntityService, localeService).SetRow(5);
+            Border[] sections =
+            [
+                profileSection,
+                employmentSection,
+                educationSection,
+                coursesSection,
+                projectsSection,
+                referencesSection,
+            ];
 
-            columnOne.Add(profileSection);
-            columnOne.Add(employmentSection);
-            columnOne.Add(educationSection);
-            columnOne.Add(coursesSection);
-            columnOne.Add(projectsSection);
-            columnOne.Add(referencesSection);
-
-            return columnOne;
+            return CreateAndFillColumn(1, sections);
         }
 
         private Grid CreateAndFillColumnTwo()
         {
-            var columnTwo = GridFactory.CreateDefaultGrid().SetColumn(3).SetRow(0)
-                .DefineRows(GridUnitType.Auto, 1, 1, 1, 1);
-            columnTwo.HorizontalAlignment = HorizontalAlignment.Stretch;
-            columnTwo.MinWidth = 0;
+            GeneralSection generalSection = new(EntityService, localeService);
+            LinksSection linksSection = new(EntityService, localeService);
+            SkillsSection skillsSection = new(EntityService, localeService);
+            LanguagesSection languagesSection = new(EntityService, localeService);
 
-            GeneralSection generalSection = new GeneralSection(EntityService, localeService).SetRow(0);
-            SkillsSection skillsSection = new SkillsSection(EntityService, localeService).SetRow(1);
-            LinksSection linksSection = new LinksSection(EntityService, localeService).SetRow(2);
-            LanguagesSection languagesSection = new LanguagesSection(EntityService, localeService).SetRow(3);
+            Border[] sections =
+            [
+                generalSection,
+                skillsSection,
+                linksSection,
+                languagesSection,
+            ];
 
-            columnTwo.Add(generalSection);
-            columnTwo.Add(linksSection);
-            columnTwo.Add(skillsSection);
-            columnTwo.Add(languagesSection);
+            return CreateAndFillColumn(3, sections);
+        }
 
-            return columnTwo;
+        private Grid CreateAndFillColumn(int column, Border[] sections)
+        {
+            var rowDefinitions = Enumerable.Repeat(1, sections.Length).ToArray();
+
+            var grid = GridFactory.CreateDefaultGrid().SetColumn(column).SetRow(0)
+                .DefineRows(GridUnitType.Auto, rowDefinitions);
+
+            grid.HorizontalAlignment = HorizontalAlignment.Stretch;
+            grid.MinWidth = 0;
+
+            foreach ((Border section, int index) in sections.Select((section, index) => (section, index)))
+            {
+                grid.Children.Add(section.SetRow(index));
+            }
+
+            return grid;
         }
 
         internal ScrollViewer CreateScrollView()
