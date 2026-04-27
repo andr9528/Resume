@@ -121,6 +121,21 @@ public static partial class Translations
             [ReferencesKey.COMPANY_NAME_SPECIALISTERNE.ToKey()] = "Specialisterne",
         };
 
+        private static Dictionary<string, string> Courses { get; } = new()
+        {
+            [CourseKey.ORACLE_JAVA_SE_8_PROGRAMMING_NAME.ToKey()] = "Oracle Java SE 8 Programmering",
+            [CourseKey.ORACLE_JAVA_SE_8_PROGRAMMING_DESCRIPTION.ToKey()] =
+                "Kursus i udvikling med Java, mere specifikt Java SE 8. Under kurset lærte jeg blandt andet syntaksen for Java kode.",
+
+            [CourseKey.SPECIALISTERNE_ACADEMY_NAME.ToKey()] = "Specialisterne Academy • Kochsgade 31, 5000 Odense C",
+            [CourseKey.SPECIALISTERNE_ACADEMY_DESCRIPTION.ToKey()] = Paragraphs(
+                "Styrket min erfaring med C#, Entity Framework Core og Uno Platform under små projekter. Projekterne inkluderede følgende:",
+                "- Et Wordle spil.", "- Et program til download af hovedsageligt PDF-filer, med hastighed som fokus.",
+                "- Oprettelse af API til eksisterende database data.",
+                "- Et fullstack lagerstyringssystem som gruppeopgave.", "",
+                "Den afsluttende del af kurset inkluderede muligheden for en række selvvalgte projekter, hvoriblandt jeg valgte at løse en række opgaver fokuseret på at lære COBOL.")
+        };
+
         private static Dictionary<string, string> UserInterface { get; } = new()
         {
             [UserInterfaceKey.SKILLS_HEADER.ToKey()] = "Færdigheder",
@@ -137,10 +152,11 @@ public static partial class Translations
             [UserInterfaceKey.NAME_LABEL.ToKey()] = "Fulde Navn",
             [UserInterfaceKey.THE_LABEL.ToKey()] = "den",
             [UserInterfaceKey.OF_LABEL.ToKey()] = ".",
+            [UserInterfaceKey.COURSES_HEADER.ToKey()] = "Kursuser",
         };
 
         public static Dictionary<string, string> All { get; } = Merge(Links, Profile, Education, Employment,
-            GeneralInformation, Languages, Projects, References, UserInterface);
+            GeneralInformation, Languages, Projects, References, UserInterface, Courses);
 
     }
 }

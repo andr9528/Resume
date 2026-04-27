@@ -391,4 +391,31 @@ public class EntityService : IEntityService
         projects.Reverse();
         return projects;
     }
+
+    /// <inheritdoc />
+    public IList<ICourse> GetCourses()
+    {
+        var courses = new List<ICourse>
+        {
+            new Course
+            {
+                Name = localeService.GetLocalizedString(CourseKey.ORACLE_JAVA_SE_8_PROGRAMMING_NAME.ToKey()),
+                Description =
+                    localeService.GetLocalizedString(CourseKey.ORACLE_JAVA_SE_8_PROGRAMMING_DESCRIPTION.ToKey()),
+                StartDate = new DateTime(2021, 5, 25),
+                EndDate = new DateTime(2021, 7, 5),
+            },
+            new Course
+            {
+                Name = localeService.GetLocalizedString(CourseKey.SPECIALISTERNE_ACADEMY_NAME.ToKey()),
+                Description = localeService.GetLocalizedString(CourseKey.SPECIALISTERNE_ACADEMY_DESCRIPTION.ToKey()),
+                StartDate = new DateTime(2026, 2, 2),
+                EndDate = new DateTime(2026, 4, 30),
+            },
+        };
+
+        courses.Sort();
+        courses.Reverse();
+        return courses;
+    }
 }

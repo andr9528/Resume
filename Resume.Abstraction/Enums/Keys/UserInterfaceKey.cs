@@ -19,5 +19,6 @@ public enum UserInterfaceKey
     GENERAL_HEADER,
     THE_LABEL,
     OF_LABEL,
-    PROJECTS_HEADER
+    PROJECTS_HEADER,
+    COURSES_HEADER
 }

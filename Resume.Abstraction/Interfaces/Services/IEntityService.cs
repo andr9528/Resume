@@ -19,5 +19,7 @@ namespace Resume.Abstraction.Interfaces.Services
         IList<IEducation> GetEducations();
 
         IList<IProject> GetProjects();
+
+        IList<ICourse> GetCourses();
     }
 }
