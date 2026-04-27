@@ -79,10 +79,12 @@ public partial class EmploymentSection
             {
                 HorizontalAlignment = HorizontalAlignment.Left,
             };
+
             var items = employment.Links.Select(link => new ListViewItem
             {
-                Content = link,
+                Content = ButtonFactory.BuildHyperlinkButton(link),
             });
+
             listView.Items.AddRange(items);
 
             return listView;

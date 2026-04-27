@@ -97,21 +97,16 @@ public partial class LinksSection
 
         private HyperlinkButton BuildUrl(ILink link)
         {
-            Uri.TryCreate(link.Url, UriKind.Absolute, out Uri? uri);
+            HyperlinkButton button = ButtonFactory.BuildHyperlinkButton(link.Url);
 
-            return new HyperlinkButton
+            button.Margin = new Thickness(10, 0, 0, 5);
+
+            if (button.Content is TextBlock textBlock)
             {
-                NavigateUri = uri,
-                IsEnabled = uri is not null,
-                Margin = new Thickness(10, 0, 0, 5),
-                VerticalAlignment = VerticalAlignment.Center,
-                Content = new TextBlock
-                {
-                    Text = link.Url,
-                    FontSize = 16,
-                    TextWrapping = TextWrapping.Wrap,
-                },
-            };
+                textBlock.FontSize = 16;
+            }
+
+            return button;
         }
     }
 }
