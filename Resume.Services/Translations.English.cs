@@ -124,6 +124,7 @@ public static partial class Translations
             [UserInterfaceKey.EMPLOYMENT_HEADER.ToKey()] = "Employment History",
             [UserInterfaceKey.REFERENCES_HEADER.ToKey()] = "References",
             [UserInterfaceKey.LANGUAGES_HEADER.ToKey()] = "Languages",
+            [UserInterfaceKey.PROFILE_HEADER.ToKey()] = "Profile",
             [UserInterfaceKey.PHONE.ToKey()] = "Phone",
         };
 

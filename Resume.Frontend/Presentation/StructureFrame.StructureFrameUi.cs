@@ -46,16 +46,18 @@ public partial class StructureFrame
         private Grid CreateAndFillColumnOne()
         {
             var columnOne = GridFactory.CreateDefaultGrid().SetColumn(1).SetRow(0)
-                .DefineRows(GridUnitType.Auto, 1, 1, 1, 1, 1);
+                .DefineRows(GridUnitType.Auto, 1, 1, 1, 1, 1, 1);
             columnOne.HorizontalAlignment = HorizontalAlignment.Stretch;
             columnOne.MinWidth = 0;
 
-            EmploymentSection employmentSection = new EmploymentSection(EntityService, localeService).SetRow(0);
-            EducationSection educationSection = new EducationSection(EntityService, localeService).SetRow(1);
-            CoursesSection coursesSection = new CoursesSection(EntityService, localeService).SetRow(2);
-            ProjectsSection projectsSection = new ProjectsSection(EntityService, localeService).SetRow(3);
-            ReferencesSection referencesSection = new ReferencesSection(EntityService, localeService).SetRow(4);
+            ProfileSection profileSection = new ProfileSection(EntityService, localeService).SetRow(0);
+            EmploymentSection employmentSection = new EmploymentSection(EntityService, localeService).SetRow(1);
+            EducationSection educationSection = new EducationSection(EntityService, localeService).SetRow(2);
+            CoursesSection coursesSection = new CoursesSection(EntityService, localeService).SetRow(3);
+            ProjectsSection projectsSection = new ProjectsSection(EntityService, localeService).SetRow(4);
+            ReferencesSection referencesSection = new ReferencesSection(EntityService, localeService).SetRow(5);
 
+            columnOne.Add(profileSection);
             columnOne.Add(employmentSection);
             columnOne.Add(educationSection);
             columnOne.Add(coursesSection);

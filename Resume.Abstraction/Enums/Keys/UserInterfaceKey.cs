@@ -10,5 +10,6 @@ public enum UserInterfaceKey
     REFERENCES_HEADER,
     PHONE,
     LINKS_HEADER,
-    LANGUAGES_HEADER
+    LANGUAGES_HEADER,
+    PROFILE_HEADER
 }

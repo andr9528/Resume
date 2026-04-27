@@ -33,6 +33,7 @@ public class EntityService : IEntityService
             PhoneNumber = 22287257,
             PostalCode = 5200,
             DateOfBirth = new DateTime(1996, 2, 3),
+            ProfileDescription = localeService.GetLocalizedString(ProfileKey.DESCRIPTION.ToKey()),
         };
     }
 

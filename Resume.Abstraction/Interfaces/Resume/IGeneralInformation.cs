@@ -12,4 +12,5 @@ public interface IGeneralInformation
     public int PhoneNumber { get; set; }
     public int PostalCode { get; set; }
     public DateTime DateOfBirth { get; set; }
+    public string ProfileDescription { get; set; }
 }

@@ -33,4 +33,7 @@ public class GeneralInformation : IGeneralInformation
 
     /// <inheritdoc />
     public DateTime DateOfBirth { get; set; }
+
+    public string ProfileDescription { get; set; }
 }
+    
