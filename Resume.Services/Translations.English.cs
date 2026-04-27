@@ -18,14 +18,14 @@ public static partial class Translations
         private static Dictionary<string, string> Profile { get; } = new()
         {
             [ProfileKey.DESCRIPTION.ToKey()] = Paragraphs(
-                "Analytical, solution-oriented, and quality-focused developer with a Bachelor's degree in Software Development.",
-                "", "Experienced in C#/.NET, TypeScript, and React.",
-                "Experience working according to SCRUM principles during development.",
-                "Focuses on DRY and SOLID principles during development.", "",
-                "Uses Entity Framework Core and has gained a solid understanding of SQL through its use.",
-                "Uses Git for development and keeps all previous code on GitHub.", "",
-                "Interested in Cloud technologies, Azure, and Microservice architecture.",
-                "Quick to understand new programming languages and capable of learning them quickly."),
+                "- Analytical, solution-oriented, and quality-focused developer with a Bachelor's degree in Software Development.",
+                "", "- Experienced in C#/.NET, TypeScript, and React.",
+                "- Experience working according to SCRUM principles during development.",
+                "- Focuses on DRY and SOLID principles during development.", "",
+                "- Uses Entity Framework Core and has gained a solid understanding of SQL through its use.",
+                "- Uses Git for development and keeps all previous code on GitHub.", "",
+                "- Interested in Cloud technologies, Azure, and Microservice architecture.",
+                "- Quick to understand new programming languages and capable of learning them quickly."),
         };
 
         private static Dictionary<string, string> Education { get; } = new()

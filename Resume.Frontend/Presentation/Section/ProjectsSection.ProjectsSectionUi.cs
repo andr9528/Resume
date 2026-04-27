@@ -45,7 +45,7 @@ public partial class ProjectsSection
             grid.Children.AddRange(pieces);
         }
 
-        private Grid BuildPiece(IProject project)
+        private Border BuildPiece(IProject project)
         {
             var grid = GridFactory.CreateDefaultGrid()
                 .DefineRows(GridUnitType.Auto, 1, 1);
@@ -53,7 +53,7 @@ public partial class ProjectsSection
             grid.Children.Add(BuildProjectName(project).Grid(row: 0, column: 0));
             grid.Children.Add(BuildProjectDescription(project).Grid(row: 1, column: 0));
 
-            return grid;
+            return grid.WrapWithTopBorder();
         }
 
         private TextBlock BuildProjectName(IProject project)

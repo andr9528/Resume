@@ -45,7 +45,7 @@ public partial class ReferencesSection
             grid.Children.AddRange(pieces);
         }
 
-        private StackPanel BuildPiece(IReference reference)
+        private Border BuildPiece(IReference reference)
         {
             StackPanel panel = StackPanelFactory.CreateDefaultPanel();
             panel.Orientation = Orientation.Vertical;
@@ -59,7 +59,7 @@ public partial class ReferencesSection
                 panel.Children.Add(contactInformation);
             }
 
-            return panel;
+            return panel.WrapWithTopBorder();
         }
 
         private TextBlock BuildPieceHeader(IReference reference)

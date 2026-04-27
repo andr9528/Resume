@@ -19,13 +19,13 @@ public static partial class Translations
         private static Dictionary<string, string> Profile { get; } = new()
         {
             [ProfileKey.DESCRIPTION.ToKey()] = Paragraphs(
-                "Analytisk, løsningsorienteret og kvalitetsbevidst udvikler med Bachelor i Softwareudvikling.", "",
-                "Erfaren i C#/.NET, TypeScript og React.", "Erfaring med arbejde efter SCRUM under softwareudvikling.",
-                "Fokuserer på DRY og SOLID principper under udvikling.", "",
-                "Har anvendt Entity Framework Core i flere år, og har i den forbindelse fået god forståelse for SQL.",
-                "Gør brug af Git til udviklingsopgaver, og har alt tidligere kode på GitHub.", "",
-                "Finder Cloud, Azure og Microservice Architecture interessant.",
-                "Har nemt ved at forstå ukendte kodesprog, og lærer derved hurtigt nye sprog.")
+                "- Analytisk, løsningsorienteret og kvalitetsbevidst udvikler med Bachelor i Softwareudvikling.", "",
+                "- Erfaren i C#/.NET, TypeScript og React.", "Erfaring med arbejde efter SCRUM under softwareudvikling.",
+                "- Fokuserer på DRY og SOLID principper under udvikling.", "",
+                "- Har anvendt Entity Framework Core i flere år, og har i den forbindelse fået god forståelse for SQL.",
+                "- Gør brug af Git til udviklingsopgaver, og har alt tidligere kode på GitHub.", "",
+                "- Finder Cloud, Azure og Microservice Architecture interessant.",
+                "- Har nemt ved at forstå ukendte kodesprog, og lærer derved hurtigt nye sprog.")
         };
 
         private static Dictionary<string, string> Education { get; } = new()

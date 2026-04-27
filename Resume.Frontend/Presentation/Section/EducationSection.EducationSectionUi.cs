@@ -45,7 +45,7 @@ public partial class EducationSection
             grid.Children.AddRange(pieces);
         }
 
-        private StackPanel BuildPiece(IEducation education)
+        private Border BuildPiece(IEducation education)
         {
             StackPanel panel = StackPanelFactory.CreateDefaultPanel();
             panel.Orientation = Orientation.Vertical;
@@ -58,7 +58,7 @@ public partial class EducationSection
             panel.Children.Add(pieceSubHeader);
             panel.Children.Add(pieceDescription);
 
-            return panel;
+            return panel.WrapWithTopBorder();
         }
 
         private TextBlock BuildPieceHeader(IEducation education)

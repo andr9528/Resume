@@ -46,7 +46,7 @@ public partial class EmploymentSection
             grid.Children.AddRange(pieces);
         }
 
-        private StackPanel BuildPiece(IEmployment employment)
+        private Border BuildPiece(IEmployment employment)
         {
             StackPanel panel = StackPanelFactory.CreateDefaultPanel();
             panel.Orientation = Orientation.Vertical;
@@ -65,7 +65,7 @@ public partial class EmploymentSection
                 panel.Children.Add(pieceLinks);
             }
 
-            return panel;
+            return panel.WrapWithTopBorder();
         }
 
         private ListView? BuildPieceLinks(IEmployment employment)
