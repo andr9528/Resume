@@ -72,7 +72,7 @@ public partial class ProjectsSection
             return new TextBlock
             {
                 Text = project.Description,
-                FontSize = 16,
+                FontSize = 14,
                 Margin = new Thickness(10, 0, 0, 5),
                 VerticalAlignment = VerticalAlignment.Top,
                 TextWrapping = TextWrapping.WrapWholeWords,

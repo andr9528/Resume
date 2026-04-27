@@ -18,9 +18,14 @@ public static partial class Translations
         private static Dictionary<string, string> Profile { get; } = new()
         {
             [ProfileKey.DESCRIPTION.ToKey()] = Paragraphs(
-                "I am an easy-to-learn, logically thinking developer with experience in C# / .Net. During my most recent position at Tv2 Danmark, I also gained experience with TypeScript / React.",
-                "As a background, I have a Computer Science degree and on top of that a Bachelor in Software Development. This education, along with my sense of logic, allows me to understand other coding languages to some degree, even if I have no previous experience with them.",
-                "When I develop I strive to adhere to the DRY and SOLID principles as much as possible. With these principles in focus, I feel that code gets a good quality."),
+                "Analytical, solution-oriented, and quality-focused developer with a Bachelor's degree in Software Development.",
+                "", "Experienced in C#/.NET, TypeScript, and React.",
+                "Experience working according to SCRUM principles during development.",
+                "Focuses on DRY and SOLID principles during development.", "",
+                "Uses Entity Framework Core and has gained a solid understanding of SQL through its use.",
+                "Uses Git for development and keeps all previous code on GitHub.", "",
+                "Interested in Cloud technologies, Azure, and Microservice architecture.",
+                "Quick to understand new programming languages and capable of learning them quickly."),
         };
 
         private static Dictionary<string, string> Education { get; } = new()
@@ -93,27 +98,30 @@ public static partial class Translations
         {
             [ProjectKey.ONI_MODDING_DESCRIPTION.ToKey()] = Paragraphs(
                 "I have some ideas for mods for one of my favorite games as of late, Oxygen Not Included, which I might spend some time on bringing to life.",
-                "Some of the ideas I have shared with other modders for the game, and I will thus likely spar with them if needed.",
-                "The game is developed using Unity, therefore C# is the language to be used, which is an advantage for me.",
-                "It uses 'Harmony' as the access point for modders, which might help me learn it for use in my own game, if Godot allows it."),
+                "",
+                "Some of the ideas I have shared with other modders for the game, and I will thus likely collaborate with them if needed.",
+                "",
+                "The game is developed using Unity, therefore C# is the language to be used, which is an advantage for me. " +
+                "It uses Harmony as the access point for modders, which may also be useful for future projects."),
             [ProjectKey.ONI_MODDING_TITLE.ToKey()] = "Oxygen Not Included Modding",
             [ProjectKey.AOM_MODDING_DESCRIPTION.ToKey()] = Paragraphs(
-                "In my spare time, I maintain several mods for Age of Mythology: Retold.",
-                "Since the game’s modding system is data-driven through XML files, I developed a custom tool to streamline updating and maintaining these mods.",
+                "In my spare time, I maintain several mods for Age of Mythology: Retold.", "",
+                "Since the game’s modding system is data-driven through XML files, I developed a custom tool to streamline updating and maintaining these mods. " +
                 "The tool loads game data from XML files and applies transformations based on the desired mod configuration, ensuring consistent and efficient updates.",
-                "In addition, I created a companion tool for managing mods outside the game, allowing enabling and disabling of mods, as well as saving and activating full playsets.",
+                "",
+                "In addition, I created a companion tool for managing mods outside the game, allowing enabling and disabling of mods, as well as saving and activating full playsets. " +
                 "The tools are built using C#, Uno Platform, and Entity Framework Core, and are actively being expanded with new features."),
             [ProjectKey.AOM_MODDING_TITLE.ToKey()] = "Age of Mythology Retold Modding",
             [ProjectKey.TOWER_DEFENCE_DEV_DESCRIPTION.ToKey()] = Paragraphs(
-                "I have a game in mind that I would like to slowly get started on.",
+                "I have a game in mind that I would like to slowly get started on.", "",
                 "Currently I have noted down many details of the planned game, but have not started on any code for it yet.",
-                "I am heavily leaning toward using Godot as the game engine of choice, mainly for the C# language, but also due to the controversy about Unity during 2023.",
-                "The game genre will be Tower Defence / Roguelike, with inspiration from a number of Mythologies, as a nod to my liking of 'Age of Mythology'."),
+                "", "The game will be developed using Unity with C#, aligning with my existing experience.", "",
+                "The genre will be Tower Defence / Roguelike, with inspiration from a number of mythologies, as a nod to my interest in Age of Mythology."),
             [ProjectKey.TOWER_DEFENCE_DEV_TITLE.ToKey()] = "Roguelike Tower Defence Game",
             [ProjectKey.TRACKER_DESCRIPTION.ToKey()] = Paragraphs(
-                "A highly modular program usable to track a number of things, depending on the modules included.",
-                "Will be developed using C#, Entity Framework Core and Uno Platform as frontend.",
-                "Planned modules include: Dining, Budget and Time."),
+                "A highly modular program usable to track a number of things, depending on the modules included.", "",
+                "It will be developed using C#, Entity Framework Core, and Uno Platform as frontend.", "",
+                "Planned modules include: Dining, Budget, and Time."),
             [ProjectKey.TRACKER_TITLE.ToKey()] = "Tracker Application",
         };
 

@@ -19,10 +19,13 @@ public static partial class Translations
         private static Dictionary<string, string> Profile { get; } = new()
         {
             [ProfileKey.DESCRIPTION.ToKey()] = Paragraphs(
-                "Jeg er en lærenem logisk tænkende udvikler, med erfaring i C# / .Net. Jeg har også under min seneste stilling ved Tv2 Danmark fået erfaring med TypeScript / React.",
-                "Som baggrund har jeg en Datamatiker og oven på den en Bachelor i Softwareudvikling.",
-                "Denne uddannelse sammen med min logiske sans gør at jeg kan forstå andre kodesprog i nogen grad.",
-                "Når jeg udvikler stræber jeg efter at følge DRY og SOLID principperne."),
+                "Analytisk, løsningsorienteret og kvalitetsbevidst udvikler med Bachelor i Softwareudvikling.", "",
+                "Erfaren i C#/.NET, TypeScript og React.", "Erfaring med arbejde efter SCRUM under softwareudvikling.",
+                "Fokuserer på DRY og SOLID principper under udvikling.", "",
+                "Har anvendt Entity Framework Core i flere år, og har i den forbindelse fået god forståelse for SQL.",
+                "Gør brug af Git til udviklingsopgaver, og har alt tidligere kode på GitHub.", "",
+                "Finder Cloud, Azure og Microservice Architecture interessant.",
+                "Har nemt ved at forstå ukendte kodesprog, og lærer derved hurtigt nye sprog.")
         };
 
         private static Dictionary<string, string> Education { get; } = new()
@@ -93,24 +96,31 @@ public static partial class Translations
         private static Dictionary<string, string> Projects { get; } = new()
         {
             [ProjectKey.ONI_MODDING_DESCRIPTION.ToKey()] = Paragraphs(
-                "Jeg har ideer til mods til Oxygen Not Included som jeg gerne vil udvikle.",
-                "Jeg har delt ideer med andre modders og kan sparre med dem.", "Spillet er udviklet i Unity og bruger C#.",
-                "Modding sker via Harmony som jeg gerne vil lære."),
+                "Jeg har nogle idéer til mods til et af mine yndlingsspil for tiden, Oxygen Not Included, som jeg muligvis vil bruge tid på at realisere.",
+                "",
+                "Nogle af idéerne har jeg delt med andre moddere, og jeg vil derfor sandsynligvis samarbejde med dem efter behov.",
+                "",
+                "Spillet er udviklet i Unity, og derfor er C# det anvendte sprog, hvilket er en fordel for mig. " +
+                "Det benytter Harmony som adgangspunkt for moddere, hvilket også kan være nyttigt i fremtidige projekter."),
             [ProjectKey.ONI_MODDING_TITLE.ToKey()] = "Oxygen Not Included Modding",
             [ProjectKey.AOM_MODDING_DESCRIPTION.ToKey()] = Paragraphs(
-                "I min fritid vedligeholder jeg flere mods til Age of Mythology: Retold.",
-                "Da spillets modding-system er datadrevet gennem XML-filer, har jeg udviklet et værktøj til at effektivisere opdatering og vedligeholdelse af disse mods.",
+                "I min fritid vedligeholder jeg flere mods til Age of Mythology: Retold.", "",
+                "Da spillets modding-system er datadrevet gennem XML-filer, har jeg udviklet et værktøj til at effektivisere opdatering og vedligeholdelse af disse mods. " +
                 "Værktøjet indlæser spildata fra XML-filer og transformerer dataene baseret på den ønskede mod-konfiguration, hvilket sikrer konsistente og effektive opdateringer.",
-                "Derudover har jeg udviklet et værktøj til at håndtere mods uden for spillet, som gør det muligt at aktivere/deaktivere mods samt gemme og indlæse komplette playsets.",
+                "",
+                "Derudover har jeg udviklet et værktøj til at håndtere mods uden for spillet, som gør det muligt at aktivere/deaktivere mods samt gemme og indlæse komplette playsets. " +
                 "Værktøjerne er udviklet i C#, Uno Platform og Entity Framework Core og bliver løbende udvidet med nye funktioner."),
             [ProjectKey.AOM_MODDING_TITLE.ToKey()] = "Age of Mythology Retold Modding",
             [ProjectKey.TOWER_DEFENCE_DEV_DESCRIPTION.ToKey()] = Paragraphs(
-                "Jeg har et spil i tankerne jeg gerne vil begynde på.", "Jeg har mange noter men ingen kode endnu.",
-                "Jeg overvejer Godot som engine pga C# og Unity kontroversen.",
-                "Genren bliver Tower Defence / Roguelike inspireret af mytologier."),
+                "Jeg har en spilidé, som jeg gerne vil begynde at arbejde på over tid.", "",
+                "Jeg har allerede noteret mange detaljer om det planlagte spil, men har endnu ikke påbegyndt selve udviklingen.",
+                "", "Spillet vil blive udviklet i Unity med C#, hvilket passer godt til min eksisterende erfaring.", "",
+                "Genren vil være Tower Defence / Roguelike, med inspiration fra forskellige mytologier som et nik til min interesse for Age of Mythology."),
             [ProjectKey.TOWER_DEFENCE_DEV_TITLE.ToKey()] = "Roguelike Tårn Forsvars Spil",
-            [ProjectKey.TRACKER_DESCRIPTION.ToKey()] = Paragraphs("Et modulært program til at tracke forskellige ting.",
-                "Udvikles i C#, Entity Framework Core og Uno Platform.", "Planlagte moduler: mad, budget og tid."),
+            [ProjectKey.TRACKER_DESCRIPTION.ToKey()] = Paragraphs(
+                "Et modulært program, der kan bruges til at holde styr på forskellige ting, afhængigt af hvilke moduler der er inkluderet.",
+                "", "Vil blive udviklet i C#, med Entity Framework Core og Uno Platform som frontend.", "",
+                "Planlagte moduler inkluderer: Mad, Budget og Tid."),
             [ProjectKey.TRACKER_TITLE.ToKey()] = "Sporings Applikation",
         };
 
