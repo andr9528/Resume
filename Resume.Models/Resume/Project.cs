@@ -12,4 +12,7 @@ public class Project : IProject
 
     /// <inheritdoc />
     public string Description { get; set; }
+
+    /// <inheritdoc />
+    public IList<string>? Links { get; set; }
 }

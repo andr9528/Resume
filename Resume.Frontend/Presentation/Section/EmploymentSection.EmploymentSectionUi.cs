@@ -54,40 +54,18 @@ public partial class EmploymentSection
             TextBlock pieceHeader = BuildPieceHeader(employment);
             TextBlock pieceSubHeader = BuildPieceSubHeader(employment);
             TextBlock pieceDescription = BuildPieceDescription(employment);
-            ListView? pieceLinks = BuildPieceLinks(employment);
+            ListView? links = ListViewFactory.BuildLinksListView(employment.Links);
 
             panel.Children.Add(pieceHeader);
             panel.Children.Add(pieceSubHeader);
             panel.Children.Add(pieceDescription);
 
-            if (pieceLinks != null)
+            if (links != null)
             {
-                panel.Children.Add(pieceLinks);
+                panel.Children.Add(links);
             }
 
             return panel.WrapWithTopBorder();
-        }
-
-        private ListView? BuildPieceLinks(IEmployment employment)
-        {
-            if (employment.Links == null || !employment.Links.Any())
-            {
-                return null;
-            }
-
-            var listView = new ListView
-            {
-                HorizontalAlignment = HorizontalAlignment.Left,
-            };
-
-            var items = employment.Links.Select(link => new ListViewItem
-            {
-                Content = ButtonFactory.BuildHyperlinkButton(link),
-            });
-
-            listView.Items.AddRange(items);
-
-            return listView;
         }
 
         private TextBlock BuildPieceDescription(IEmployment employment)

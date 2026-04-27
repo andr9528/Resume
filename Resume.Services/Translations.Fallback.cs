@@ -11,6 +11,11 @@ public static partial class Translations
         {
             [LinkKey.FASHION_HERO_GITHUB_PROJECT.ToKey()] = "https://github.com/FashionHeroOnGit/PortalProject",
             [LinkKey.NOERGAARD_MIKKELSEN_GITHUB_PROJECT.ToKey()] = "https://github.com/andr9528/gaio",
+            [LinkKey.TRACKER_GITHUB_PROJECT.ToKey()] = "https://github.com/andr9528/Tracker",
+            [LinkKey.RETOLD_MODS_GITHUB_PROJECT.ToKey()] = "https://github.com/andr9528/Retold-Mods",
+            [LinkKey.RETOLD_DEV_TOOL_PROJECT.ToKey()] = "https://github.com/andr9528/AoMR-Mod-Development-Tools",
+            [LinkKey.RETOLD_MOD_MANAGER_GITHUB_PROJECT.ToKey()] = "https://github.com/andr9528/AoMR-Mod-Manager",
+            [LinkKey.PROTECT_THE_TEMPLE_GITHUB_PROJECT.ToKey()] = "https://github.com/andr9528/ProtectTheTemple.Public",
             [LinkKey.PERSONAL_GITHUB.ToKey()] = "https://github.com/andr9528",
             [LinkKey.PERSONAL_LINKEDIN.ToKey()] = "https://www.linkedin.com/in/andr%C3%A9-steenhoff-madsen-65a22698/",
             [LinkKey.PERSONAL_PAGE.ToKey()] = "https://andr9528.github.io/",

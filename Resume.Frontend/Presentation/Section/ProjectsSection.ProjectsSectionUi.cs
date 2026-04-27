@@ -47,13 +47,20 @@ public partial class ProjectsSection
 
         private Border BuildPiece(IProject project)
         {
-            var grid = GridFactory.CreateDefaultGrid()
-                .DefineRows(GridUnitType.Auto, 1, 1);
+            StackPanel panel = StackPanelFactory.CreateDefaultPanel();
+            panel.Orientation = Orientation.Vertical;
 
-            grid.Children.Add(BuildProjectName(project).Grid(row: 0, column: 0));
-            grid.Children.Add(BuildProjectDescription(project).Grid(row: 1, column: 0));
+            panel.Children.Add(BuildProjectName(project));
+            panel.Children.Add(BuildProjectDescription(project));
 
-            return grid.WrapWithTopBorder();
+            ListView? links = ListViewFactory.BuildLinksListView(project.Links);
+
+            if (links is not null)
+            {
+                panel.Children.Add(links);
+            }
+
+            return panel.WrapWithTopBorder();
         }
 
         private TextBlock BuildProjectName(IProject project)
@@ -62,7 +69,7 @@ public partial class ProjectsSection
             {
                 Text = project.Name,
                 FontSize = 18,
-                Margin = new Thickness(10, 0, 0, 6),
+                Margin = new Thickness(0, 0, 0, 6),
                 VerticalAlignment = VerticalAlignment.Top,
             };
         }
@@ -73,7 +80,7 @@ public partial class ProjectsSection
             {
                 Text = project.Description,
                 FontSize = 14,
-                Margin = new Thickness(10, 0, 0, 5),
+                Margin = new Thickness(0, 0, 0, 5),
                 VerticalAlignment = VerticalAlignment.Top,
                 TextWrapping = TextWrapping.WrapWholeWords,
             };

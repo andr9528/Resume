@@ -366,12 +366,22 @@ public class EntityService : IEntityService
                 Name = localeService.GetLocalizedString(ProjectKey.TRACKER_TITLE.ToKey()),
                 Description = localeService.GetLocalizedString(ProjectKey.TRACKER_DESCRIPTION.ToKey()),
                 Importance = 70,
+                Links = new List<string>()
+                {
+                    localeService.GetLocalizedString(LinkKey.TRACKER_GITHUB_PROJECT.ToKey()),
+                }
             },
             new Project
             {
                 Name = localeService.GetLocalizedString(ProjectKey.AOM_MODDING_TITLE.ToKey()),
                 Description = localeService.GetLocalizedString(ProjectKey.AOM_MODDING_DESCRIPTION.ToKey()),
                 Importance = 100,
+                Links = new List<string>()
+                {
+                    localeService.GetLocalizedString(LinkKey.RETOLD_DEV_TOOL_PROJECT.ToKey()),
+                    localeService.GetLocalizedString(LinkKey.RETOLD_MODS_GITHUB_PROJECT.ToKey()),
+                    localeService.GetLocalizedString(LinkKey.RETOLD_MOD_MANAGER_GITHUB_PROJECT.ToKey()),
+                }
             },
             new Project
             {
@@ -384,6 +394,10 @@ public class EntityService : IEntityService
                 Name = localeService.GetLocalizedString(ProjectKey.TOWER_DEFENCE_DEV_TITLE.ToKey()),
                 Description = localeService.GetLocalizedString(ProjectKey.TOWER_DEFENCE_DEV_DESCRIPTION.ToKey()),
                 Importance = 80,
+                Links = new List<string>()
+                {
+                    localeService.GetLocalizedString(LinkKey.PROTECT_THE_TEMPLE_GITHUB_PROJECT.ToKey()),
+                }
             },
         };
 
