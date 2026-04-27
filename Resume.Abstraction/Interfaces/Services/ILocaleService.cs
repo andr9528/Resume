@@ -8,5 +8,6 @@ namespace Resume.Abstraction.Interfaces.Services
         string GetLocalizedString(string key);
         CultureInfo GetCurrentCulture();
         Task SetLanguage(LanguageType type);
+        bool IsTargetedLanguage(LanguageType type);
     }
 }

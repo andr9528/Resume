@@ -10,6 +10,7 @@ public interface IGeneralInformation
     public string Address { get; set; }
     public string Country { get; set; }
     public int PhoneNumber { get; set; }
+    public string AreaCode { get; set; }
     public int PostalCode { get; set; }
     public DateTime DateOfBirth { get; set; }
     public string ProfileDescription { get; set; }

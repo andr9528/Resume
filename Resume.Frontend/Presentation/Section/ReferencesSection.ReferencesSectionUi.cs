@@ -106,7 +106,7 @@ public partial class ReferencesSection
 
         private string GetPhoneTranslation()
         {
-            return localeService.GetLocalizedString(UserInterfaceKey.PHONE.ToKey());
+            return localeService.GetLocalizedString(UserInterfaceKey.PHONE_LABEL.ToKey());
         }
     }
 }

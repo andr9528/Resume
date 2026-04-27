@@ -26,6 +26,7 @@ public static partial class Translations
         
         private static Dictionary<string, string> UserInterface { get; } = new()
         {
+            [UserInterfaceKey.EMAIL_LABEL.ToKey()] = "Email",
             [UserInterfaceKey.LINKS_HEADER.ToKey()] = "Links",
             [UserInterfaceKey.TITLE.ToKey()] = "Resume",
         };

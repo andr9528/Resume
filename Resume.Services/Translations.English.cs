@@ -125,7 +125,13 @@ public static partial class Translations
             [UserInterfaceKey.REFERENCES_HEADER.ToKey()] = "References",
             [UserInterfaceKey.LANGUAGES_HEADER.ToKey()] = "Languages",
             [UserInterfaceKey.PROFILE_HEADER.ToKey()] = "Profile",
-            [UserInterfaceKey.PHONE.ToKey()] = "Phone",
+            [UserInterfaceKey.PHONE_LABEL.ToKey()] = "Phone",
+            [UserInterfaceKey.ADDRESS_LABEL.ToKey()] = "Address",
+            [UserInterfaceKey.GENERAL_HEADER.ToKey()] = "General Information",
+            [UserInterfaceKey.DATE_OF_BIRTH_LABEL.ToKey()] = "Birthday",
+            [UserInterfaceKey.NAME_LABEL.ToKey()] = "Full Name",
+            [UserInterfaceKey.THE_LABEL.ToKey()] = "the",
+            [UserInterfaceKey.OF_LABEL.ToKey()] = "of",
         };
 
         public static Dictionary<string, string> All { get; } = Merge(Links, Profile, Education, Employment,

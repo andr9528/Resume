@@ -63,6 +63,12 @@ public class LocaleService : ILocaleService
         return Task.CompletedTask;
     }
 
+    /// <inheritdoc />
+    public bool IsTargetedLanguage(LanguageType type)
+    {
+        return currentLanguage == type;
+    }
+
     private Dictionary<string, string> GetTranslationsForCurrentLanguage()
     {
         return currentLanguage switch

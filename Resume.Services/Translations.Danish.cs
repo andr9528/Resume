@@ -122,7 +122,13 @@ public static partial class Translations
             [UserInterfaceKey.REFERENCES_HEADER.ToKey()] = "Referencer",
             [UserInterfaceKey.LANGUAGES_HEADER.ToKey()] = "Sprog",
             [UserInterfaceKey.PROFILE_HEADER.ToKey()] = "Profil",
-            [UserInterfaceKey.PHONE.ToKey()] = "Telefon",
+            [UserInterfaceKey.PHONE_LABEL.ToKey()] = "Telefon",
+            [UserInterfaceKey.ADDRESS_LABEL.ToKey()] = "Addresse",
+            [UserInterfaceKey.GENERAL_HEADER.ToKey()] = "Generel Information",
+            [UserInterfaceKey.DATE_OF_BIRTH_LABEL.ToKey()] = "Fødselsdag",
+            [UserInterfaceKey.NAME_LABEL.ToKey()] = "Fulde Navn",
+            [UserInterfaceKey.THE_LABEL.ToKey()] = "den",
+            [UserInterfaceKey.OF_LABEL.ToKey()] = ".",
         };
 
         public static Dictionary<string, string> All { get; } = Merge(Links, Profile, Education, Employment,

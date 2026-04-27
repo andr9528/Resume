@@ -31,6 +31,7 @@ public class EntityService : IEntityService
             Address = "Duftrankevej 17 2. mf",
             Country = localeService.GetLocalizedString(GeneralInformationKey.COUNTRY.ToKey()),
             PhoneNumber = 22287257,
+            AreaCode = "+45",
             PostalCode = 5200,
             DateOfBirth = new DateTime(1996, 2, 3),
             ProfileDescription = localeService.GetLocalizedString(ProfileKey.DESCRIPTION.ToKey()),

@@ -29,6 +29,9 @@ public class GeneralInformation : IGeneralInformation
     public int PhoneNumber { get; set; }
 
     /// <inheritdoc />
+    public string AreaCode { get; set; }
+
+    /// <inheritdoc />
     public int PostalCode { get; set; }
 
     /// <inheritdoc />
