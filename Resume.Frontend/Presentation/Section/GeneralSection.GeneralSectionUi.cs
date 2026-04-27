@@ -44,7 +44,7 @@ public partial class GeneralSection
             List<Grid> pieces =
             [
                 BuildPiece(UserInterfaceKey.NAME_LABEL, BuildFullName(generalInformation)),
-                BuildPiece(UserInterfaceKey.DATE_OF_BIRTH_LABEL, BuildDateOfBirth(generalInformation.DateOfBirth)),
+                BuildPiece(UserInterfaceKey.DATE_OF_BIRTH_LABEL, BuildDateOfBirth(generalInformation.DateOfBirth), false),
                 BuildPiece(UserInterfaceKey.EMAIL_LABEL, generalInformation.Email),
                 BuildPiece(UserInterfaceKey.PHONE_LABEL, BuildPhoneNumber(generalInformation)),
                 BuildPiece(UserInterfaceKey.ADDRESS_LABEL, BuildAddress(generalInformation)),
@@ -106,13 +106,15 @@ public partial class GeneralSection
             }.Where(value => !string.IsNullOrWhiteSpace(value)));
         }
 
-        private Grid BuildPiece(UserInterfaceKey labelKey, string value)
+        private Grid BuildPiece(UserInterfaceKey labelKey, string value, bool isValueCopyable = true)
         {
             var grid = GridFactory.CreateDefaultGrid()
                 .DefineColumns(GridUnitType.Star, 2, 3);
 
+            grid.MinHeight = 60;
+
             grid.Children.Add(BuildLabel(labelKey).Grid(row: 0, column: 0));
-            grid.Children.Add(BuildValue(value).Grid(row: 0, column: 1));
+            grid.Children.Add(BuildValue(value, isValueCopyable).Grid(row: 0, column: 1));
 
             return grid;
         }
@@ -124,20 +126,37 @@ public partial class GeneralSection
                 Text = $"{localeService.GetLocalizedString(labelKey.ToKey())}:",
                 FontSize = 16,
                 Margin = new Thickness(10, 0, 0, 5),
-                VerticalAlignment = VerticalAlignment.Top,
+                VerticalAlignment = VerticalAlignment.Center,
             };
         }
 
-        private TextBlock BuildValue(string value)
+        private TextBox BuildValue(string value, bool copyable = true)
         {
-            return new TextBlock
+            var textBox = new TextBox
             {
                 Text = value,
                 FontSize = 16,
-                Margin = new Thickness(0, 0, 0, 5),
-                VerticalAlignment = VerticalAlignment.Center,
-                TextWrapping = TextWrapping.WrapWholeWords,
+                Margin = new Thickness(0),
+
+                IsReadOnly = true,
+                BorderThickness = new Thickness(0),
+                Background = new SolidColorBrush(Colors.Transparent),
+
+                Padding = new Thickness(0),
+                MinHeight = 0,
+                Height = double.NaN,
+                VerticalAlignment = VerticalAlignment.Top,
+
+                TextWrapping = TextWrapping.Wrap,
+                AcceptsReturn = false,
             };
+
+            if (copyable)
+            {
+                textBox.Tapped += (_, _) => Logic.CopyToClipboard(value);
+            }
+
+            return textBox;
         }
 
         private string BuildFullName(IGeneralInformation generalInformation)
