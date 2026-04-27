@@ -123,7 +123,7 @@ public static partial class Translations
             [UserInterfaceKey.EDUCATION_HEADER.ToKey()] = "Education",
             [UserInterfaceKey.EMPLOYMENT_HEADER.ToKey()] = "Employment History",
             [UserInterfaceKey.REFERENCES_HEADER.ToKey()] = "References",
-            [UserInterfaceKey.TITLE.ToKey()] = "Resume",
+            [UserInterfaceKey.LANGUAGES_HEADER.ToKey()] = "Languages",
             [UserInterfaceKey.PHONE.ToKey()] = "Phone",
         };
 

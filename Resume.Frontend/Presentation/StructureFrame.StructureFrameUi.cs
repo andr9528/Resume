@@ -73,8 +73,8 @@ public partial class StructureFrame
             columnTwo.MinWidth = 0;
 
             GeneralSection generalSection = new GeneralSection(EntityService, localeService).SetRow(0);
-            LinksSection linksSection = new LinksSection(EntityService, localeService).SetRow(1);
-            SkillsSection skillsSection = new SkillsSection(EntityService, localeService).SetRow(2);
+            SkillsSection skillsSection = new SkillsSection(EntityService, localeService).SetRow(1);
+            LinksSection linksSection = new LinksSection(EntityService, localeService).SetRow(2);
             LanguagesSection languagesSection = new LanguagesSection(EntityService, localeService).SetRow(3);
 
             columnTwo.Add(generalSection);

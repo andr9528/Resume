@@ -120,7 +120,7 @@ public static partial class Translations
             [UserInterfaceKey.EDUCATION_HEADER.ToKey()] = "Uddannelse",
             [UserInterfaceKey.EMPLOYMENT_HEADER.ToKey()] = "Ansættelseshistorik",
             [UserInterfaceKey.REFERENCES_HEADER.ToKey()] = "Referencer",
-            [UserInterfaceKey.TITLE.ToKey()] = "Resume",
+            [UserInterfaceKey.LANGUAGES_HEADER.ToKey()] = "Sprog",
             [UserInterfaceKey.PHONE.ToKey()] = "Telefon",
         };
 

@@ -27,6 +27,7 @@ public static partial class Translations
         private static Dictionary<string, string> UserInterface { get; } = new()
         {
             [UserInterfaceKey.LINKS_HEADER.ToKey()] = "Links",
+            [UserInterfaceKey.TITLE.ToKey()] = "Resume",
         };
 
         public static Dictionary<string, string> All { get; } = Merge(Links, Profile, UserInterface);

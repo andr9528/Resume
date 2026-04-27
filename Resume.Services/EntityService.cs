@@ -243,6 +243,7 @@ public class EntityService : IEntityService
         };
 
         links.Sort();
+        links.Reverse();
         return links;
     }
 
@@ -310,6 +311,7 @@ public class EntityService : IEntityService
         };
 
         languages.Sort();
+        languages.Reverse();
         return languages;
     }
 
