@@ -15,14 +15,16 @@ public partial class StructureFrame
         private const int CONTENT_DIVIDER_COLUMN_WIDTH = 3;
         private const int CONTENT_COLUMN_ONE_WIDTH = 55;
         private const int CONTENT_COLUMN_TWO_WIDTH = 30;
+
         private readonly int[] gridColumnWidths =
         [
-            OUTER_MARGIN_COLUMN_WIDTH, CONTENT_COLUMN_ONE_WIDTH, CONTENT_DIVIDER_COLUMN_WIDTH, CONTENT_COLUMN_TWO_WIDTH, OUTER_MARGIN_COLUMN_WIDTH,
+            OUTER_MARGIN_COLUMN_WIDTH, CONTENT_COLUMN_ONE_WIDTH, CONTENT_DIVIDER_COLUMN_WIDTH, CONTENT_COLUMN_TWO_WIDTH,
+            OUTER_MARGIN_COLUMN_WIDTH,
         ];
 
-        public StructureFrameUi(StructureFrameLogic logic, StructureFrameViewModel viewModel, IEntityService entityService,
-            ILocaleService localeService) : base(logic,
-            viewModel, entityService)
+        public StructureFrameUi(
+            StructureFrameLogic logic, StructureFrameViewModel viewModel, IEntityService entityService,
+            ILocaleService localeService) : base(logic, viewModel, entityService)
         {
             this.localeService = localeService;
         }
@@ -36,8 +38,8 @@ public partial class StructureFrame
 
         protected override void AddControlsToGrid(Grid grid)
         {
-            var columnOneContent = CreateAndFillColumnOne();
-            var columnTwoContent = CreateAndFillColumnTwo();
+            Grid columnOneContent = CreateAndFillColumnOne();
+            Grid columnTwoContent = CreateAndFillColumnTwo();
 
             grid.Children.Add(columnOneContent);
             grid.Children.Add(columnTwoContent);
@@ -85,9 +87,9 @@ public partial class StructureFrame
 
         private Grid CreateAndFillColumn(int column, Border[] sections)
         {
-            var rowDefinitions = Enumerable.Repeat(1, sections.Length).ToArray();
+            int[] rowDefinitions = Enumerable.Repeat(1, sections.Length).ToArray();
 
-            var grid = GridFactory.CreateDefaultGrid().SetColumn(column).SetRow(0)
+            Grid grid = GridFactory.CreateDefaultGrid().SetColumn(column).SetRow(0)
                 .DefineRows(GridUnitType.Auto, rowDefinitions);
 
             grid.HorizontalAlignment = HorizontalAlignment.Stretch;

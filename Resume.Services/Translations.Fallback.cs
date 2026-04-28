@@ -28,7 +28,7 @@ public static partial class Translations
         {
             [ProfileKey.NAME.ToKey()] = "André Steenhoff Madsen",
         };
-        
+
         private static Dictionary<string, string> UserInterface { get; } = new()
         {
             [UserInterfaceKey.EMAIL_LABEL.ToKey()] = "Email",
@@ -37,6 +37,5 @@ public static partial class Translations
         };
 
         public static Dictionary<string, string> All { get; } = Merge(Links, Profile, UserInterface);
-
     }
 }

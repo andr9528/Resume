@@ -17,8 +17,7 @@ public partial class ReferencesSection
         /// <inheritdoc />
         public ReferencesSectionUi(
             ReferencesSectionLogic logic, ReferencesSectionViewModel viewModel, IEntityService entityService,
-            ILocaleService localeService) : base(
-            logic, viewModel, entityService)
+            ILocaleService localeService) : base(logic, viewModel, entityService)
         {
             this.localeService = localeService;
         }
@@ -36,7 +35,7 @@ public partial class ReferencesSection
         /// <inheritdoc />
         protected override void AddControlsToGrid(Grid grid)
         {
-            var sectionHeader = TextBlockFactory.BuildSectionHeader(
+            TextBlock sectionHeader = TextBlockFactory.BuildSectionHeader(
                 localeService.GetLocalizedString(UserInterfaceKey.REFERENCES_HEADER.ToKey())).SetRow(0);
             var pieces = EntityService.GetReferences().Where(reference => reference.IsShown)
                 .Select((reference, index) => BuildPiece(reference).Grid(row: index + 1, column: 0));
@@ -52,7 +51,7 @@ public partial class ReferencesSection
 
             panel.Children.Add(BuildPieceHeader(reference));
 
-            var contactInformation = BuildContactInformation(reference);
+            StackPanel? contactInformation = BuildContactInformation(reference);
 
             if (contactInformation != null)
             {
@@ -74,11 +73,11 @@ public partial class ReferencesSection
 
         private StackPanel? BuildContactInformation(IReference reference)
         {
-            var panel = StackPanelFactory.CreateDefaultPanel();
+            StackPanel panel = StackPanelFactory.CreateDefaultPanel();
             panel.Orientation = Orientation.Vertical;
             panel.Margin = new Thickness(0, 0, 0, 10);
 
-            bool hasItems = false;
+            var hasItems = false;
 
             hasItems |= AddContactItem(panel, "Email", reference.Email);
             hasItems |= AddContactItem(panel, GetPhoneTranslation(), reference.Phone);

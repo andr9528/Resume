@@ -18,8 +18,7 @@ public partial class EmploymentSection
         /// <inheritdoc />
         public EmploymentSectionUi(
             EmploymentSectionLogic logic, EmploymentSectionViewModel viewModel, IEntityService entityService,
-            ILocaleService localeService) : base(
-            logic, viewModel, entityService)
+            ILocaleService localeService) : base(logic, viewModel, entityService)
         {
             this.localeService = localeService;
         }
@@ -27,17 +26,17 @@ public partial class EmploymentSection
         /// <inheritdoc />
         protected override void ConfigureGrid(Grid grid)
         {
-            var employmentCount = EntityService.GetEmployments().Count;
+            int employmentCount = EntityService.GetEmployments().Count;
 
             grid.SafeArea(SafeArea.InsetMask.VisibleBounds);
-            grid.RowDefinitions(Enumerable
-                .Repeat(new GridLength(10, GridUnitType.Auto), employmentCount + 1).ToArray());
+            grid.RowDefinitions(Enumerable.Repeat(new GridLength(10, GridUnitType.Auto), employmentCount + 1)
+                .ToArray());
         }
 
         /// <inheritdoc />
         protected override void AddControlsToGrid(Grid grid)
         {
-            var sectionHeader = TextBlockFactory.BuildSectionHeader(
+            TextBlock sectionHeader = TextBlockFactory.BuildSectionHeader(
                 localeService.GetLocalizedString(UserInterfaceKey.EMPLOYMENT_HEADER.ToKey())).SetRow(0);
             var pieces = EntityService.GetEmployments()
                 .Select((employment, index) => BuildPiece(employment).Grid(row: index + 1, column: 0));

@@ -18,9 +18,7 @@ public partial class GeneralSection
 
         /// <inheritdoc />
         public GeneralSectionUi(
-            GeneralSectionLogic logic,
-            GeneralSectionViewModel viewModel,
-            IEntityService entityService,
+            GeneralSectionLogic logic, GeneralSectionViewModel viewModel, IEntityService entityService,
             ILocaleService localeService) : base(logic, viewModel, entityService)
         {
             this.localeService = localeService;
@@ -38,13 +36,14 @@ public partial class GeneralSection
         {
             IGeneralInformation generalInformation = EntityService.GetGeneralInformation();
 
-            var sectionHeader = TextBlockFactory.BuildSectionHeader(
+            TextBlock sectionHeader = TextBlockFactory.BuildSectionHeader(
                 localeService.GetLocalizedString(UserInterfaceKey.GENERAL_HEADER.ToKey())).SetRow(0);
 
             List<Grid> pieces =
             [
                 BuildPiece(UserInterfaceKey.NAME_LABEL, BuildFullName(generalInformation)),
-                BuildPiece(UserInterfaceKey.DATE_OF_BIRTH_LABEL, BuildDateOfBirth(generalInformation.DateOfBirth), false),
+                BuildPiece(UserInterfaceKey.DATE_OF_BIRTH_LABEL, BuildDateOfBirth(generalInformation.DateOfBirth),
+                    false),
                 BuildPiece(UserInterfaceKey.EMAIL_LABEL, generalInformation.Email),
                 BuildPiece(UserInterfaceKey.PHONE_LABEL, BuildPhoneNumber(generalInformation)),
                 BuildPiece(UserInterfaceKey.ADDRESS_LABEL, BuildAddress(generalInformation)),
@@ -60,7 +59,7 @@ public partial class GeneralSection
 
         private string BuildPhoneNumber(IGeneralInformation generalInformation)
         {
-            string number = generalInformation.PhoneNumber.ToString();
+            var number = generalInformation.PhoneNumber.ToString();
 
             var segments = Enumerable.Range(0, number.Length / 2).Select(i => number.Substring(i * 2, 2));
 
@@ -74,7 +73,7 @@ public partial class GeneralSection
             CultureInfo culture = localeService.GetCurrentCulture();
 
             string dayName = Capitalize(date.ToString("dddd", culture));
-            string monthName = date.ToString("MMMM", culture);
+            var monthName = date.ToString("MMMM", culture);
             string the = localeService.GetLocalizedString(UserInterfaceKey.THE_LABEL.ToKey());
             string of = localeService.GetLocalizedString(UserInterfaceKey.OF_LABEL.ToKey());
             string daySuffix = localeService.IsTargetedLanguage(LanguageType.ENGLISH) ? $"rd {of}" : of;
@@ -85,7 +84,9 @@ public partial class GeneralSection
         private string Capitalize(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
+            {
                 return value;
+            }
 
             return char.ToUpper(value[0]) + value[1..];
         }
@@ -103,8 +104,7 @@ public partial class GeneralSection
 
         private Grid BuildPiece(UserInterfaceKey labelKey, string value, bool isValueCopyable = true)
         {
-            var grid = GridFactory.CreateDefaultGrid()
-                .DefineColumns(GridUnitType.Star, 2, 3);
+            Grid grid = GridFactory.CreateDefaultGrid().DefineColumns(GridUnitType.Star, 2, 3);
 
             grid.Children.Add(BuildLabel(labelKey).Grid(row: 0, column: 0));
             grid.Children.Add(BuildValue(value, isValueCopyable).Grid(row: 0, column: 1));

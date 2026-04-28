@@ -28,10 +28,10 @@ public partial class ProfileSection
 
         protected override void AddControlsToGrid(Grid grid)
         {
-            var sectionHeader = TextBlockFactory.BuildSectionHeader(
+            TextBlock sectionHeader = TextBlockFactory.BuildSectionHeader(
                 localeService.GetLocalizedString(UserInterfaceKey.PROFILE_HEADER.ToKey())).SetRow(0);
 
-            var profileText = BuildProfileText().Grid(row: 1, column: 0);
+            TextBlock profileText = BuildProfileText().Grid(row: 1, column: 0);
 
             grid.Children.Add(sectionHeader);
             grid.Children.Add(profileText);

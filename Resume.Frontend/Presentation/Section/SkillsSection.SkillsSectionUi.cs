@@ -18,8 +18,7 @@ public partial class SkillsSection
         /// <inheritdoc />
         public SkillsSectionUi(
             SkillsSectionLogic logic, SkillsSectionViewModel viewModel, IEntityService entityService,
-            ILocaleService localeService) : base(
-            logic, viewModel, entityService)
+            ILocaleService localeService) : base(logic, viewModel, entityService)
         {
             this.localeService = localeService;
         }
@@ -36,7 +35,7 @@ public partial class SkillsSection
         /// <inheritdoc />
         protected override void AddControlsToGrid(Grid grid)
         {
-            var sectionHeader = TextBlockFactory.BuildSectionHeader(
+            TextBlock sectionHeader = TextBlockFactory.BuildSectionHeader(
                 localeService.GetLocalizedString(UserInterfaceKey.SKILLS_HEADER.ToKey())).SetRow(0);
 
             var pieces = EntityService.GetSkills()
@@ -48,7 +47,7 @@ public partial class SkillsSection
 
         private Grid BuildPiece(ISkill skill)
         {
-            var grid = GridFactory.CreateDefaultGrid().DefineColumns(GridUnitType.Star, 3, 2);
+            Grid grid = GridFactory.CreateDefaultGrid().DefineColumns(GridUnitType.Star, 3, 2);
 
             TextBlock skillName = BuildSkillName(skill);
             TextBlock expertise = BuildExpertise(skill);

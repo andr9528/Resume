@@ -11,8 +11,8 @@ public partial class LinksSection : Border
 
         this.ConfigureSectionBorder();
 
-        var logic = new LinksSectionLogic((LinksSectionViewModel)DataContext);
-        var ui = new LinksSectionUi(logic, (LinksSectionViewModel)DataContext, entityService, localeService);
+        var logic = new LinksSectionLogic((LinksSectionViewModel) DataContext);
+        var ui = new LinksSectionUi(logic, (LinksSectionViewModel) DataContext, entityService, localeService);
 
         this.Background(Theme.Brushes.Background.Default).Child(ui.CreateContentGrid());
     }

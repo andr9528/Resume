@@ -11,8 +11,8 @@ public partial class EducationSection : Border
 
         this.ConfigureSectionBorder();
 
-        var logic = new EducationSectionLogic((EducationSectionViewModel)DataContext);
-        var ui = new EducationSectionUi(logic, (EducationSectionViewModel)DataContext, entityService, localeService);
+        var logic = new EducationSectionLogic((EducationSectionViewModel) DataContext);
+        var ui = new EducationSectionUi(logic, (EducationSectionViewModel) DataContext, entityService, localeService);
 
         this.Background(Theme.Brushes.Background.Default).Child(ui.CreateContentGrid());
     }

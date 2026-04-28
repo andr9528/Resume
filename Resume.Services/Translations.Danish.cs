@@ -20,12 +20,13 @@ public static partial class Translations
         {
             [ProfileKey.DESCRIPTION.ToKey()] = Paragraphs(
                 "- Analytisk, løsningsorienteret og kvalitetsbevidst udvikler med Bachelor i Softwareudvikling.", "",
-                "- Erfaren i C#/.NET, TypeScript og React.", "Erfaring med arbejde efter SCRUM under softwareudvikling.",
+                "- Erfaren i C#/.NET, TypeScript og React.",
+                "- Erfaring med arbejde efter SCRUM under softwareudvikling.",
                 "- Fokuserer på DRY og SOLID principper under udvikling.", "",
                 "- Har anvendt Entity Framework Core i flere år, og har i den forbindelse fået god forståelse for SQL.",
                 "- Gør brug af Git til udviklingsopgaver, og har alt tidligere kode på GitHub.", "",
                 "- Finder Cloud, Azure og Microservice Architecture interessant.",
-                "- Har nemt ved at forstå ukendte kodesprog, og lærer derved hurtigt nye sprog.")
+                "- Har nemt ved at forstå ukendte kodesprog, og lærer derved hurtigt nye sprog."),
         };
 
         private static Dictionary<string, string> Education { get; } = new()
@@ -64,11 +65,13 @@ public static partial class Translations
                 "Microservicerne blev sat i funktion via Google Cloud."),
             [EmploymentKey.WORK_DESCRIPTION_FASHIONHERO_INTERNSHIP.ToKey()] = Paragraphs(
                 "Ved brug af C#, arbejdet jeg på at udvikle et program der kunne loade deres lagerdata, fra den eksporterede Xml fil, ind i en lokal database.",
-                "Det indlæste lager ville derefter kunne blive eksporteret til en Xml fil i et andet format, til brug for at få en anden side til at sælge vores produkter for os.", "",
+                "Det indlæste lager ville derefter kunne blive eksporteret til en Xml fil i et andet format, til brug for at få en anden side til at sælge vores produkter for os.",
+                "",
                 "Under dette arbejde gjorde jeg brug af Entity Framework Core til at skrive til den Sqlite database."),
             [EmploymentKey.WORK_DESCRIPTION_NOERGAARD_MIKKELSEN_INTERNSHIP.ToKey()] = Paragraphs(
                 "Ved brug af C# og Uno Platform som frontend framework, udviklede jeg et program til at registrere Prompts til AI's.",
-                "Disse prompts kunne så blive sendt til registrerede AI's, med udgangspunkt i OpenAI's ChatGPT, hvorefter deres svar bliver gemt til statistik.", "",
+                "Disse prompts kunne så blive sendt til registrerede AI's, med udgangspunkt i OpenAI's ChatGPT, hvorefter deres svar bliver gemt til statistik.",
+                "",
                 "Programmets mål var at indsamle kvantitativ data på hvordan AI's svarer på den samme prompt, før Nørgård Mikkelsen forsøger at påvirke deres svar.",
                 "Projektet er Open Source, og kan findes på min GitHub profil."),
             [EmploymentKey.WORK_DESCRIPTION_TV2.ToKey()] = Paragraphs(
@@ -147,7 +150,7 @@ public static partial class Translations
                 "- Et Wordle spil.", "- Et program til download af hovedsageligt PDF-filer, med hastighed som fokus.",
                 "- Oprettelse af API til eksisterende database data.",
                 "- Et fullstack lagerstyringssystem som gruppeopgave.", "",
-                "Den afsluttende del af kurset inkluderede muligheden for en række selvvalgte projekter, hvoriblandt jeg valgte at løse en række opgaver fokuseret på at lære COBOL.")
+                "Den afsluttende del af kurset inkluderede muligheden for en række selvvalgte projekter, hvoriblandt jeg valgte at løse en række opgaver fokuseret på at lære COBOL."),
         };
 
         private static Dictionary<string, string> UserInterface { get; } = new()
@@ -171,6 +174,5 @@ public static partial class Translations
 
         public static Dictionary<string, string> All { get; } = Merge(Links, Profile, Education, Employment,
             GeneralInformation, Languages, Projects, References, UserInterface, Courses);
-
     }
 }

@@ -10,7 +10,8 @@ public static partial class Translations
         private static Dictionary<string, string> Links { get; } = new()
         {
             [LinkKey.REMARK_GITHUB.ToKey()] = "Take a peek at my previous code.",
-            [LinkKey.REMARK_LINKEDIN.ToKey()] = "Don't mind the weird looking link, LinkedIn doesn't like my apostrophe.",
+            [LinkKey.REMARK_LINKEDIN.ToKey()] =
+                "Don't mind the weird looking link, LinkedIn doesn't like my apostrophe.",
             [LinkKey.REMARK_PERSONAL_PAGE.ToKey()] = "To view this CV online.",
             [LinkKey.TITLE_PERSONAL_PAGE.ToKey()] = "Personal Webpage",
         };
@@ -64,8 +65,8 @@ public static partial class Translations
                 "The microservices were deployed to Google Cloud."),
             [EmploymentKey.WORK_DESCRIPTION_FASHIONHERO_INTERNSHIP.ToKey()] = Paragraphs(
                 "Using C#, I worked on developing a program to load their storage, exported to an Xml file, into a local database.",
-                "The loaded storage would then be export to a Xml in another format, for use by other sites to sell products from us.", "",
-                "During this work I made use of Entity Framework Core to write to a Sqlite database."),
+                "The loaded storage would then be export to a Xml in another format, for use by other sites to sell products from us.",
+                "", "During this work I made use of Entity Framework Core to write to a Sqlite database."),
             [EmploymentKey.WORK_DESCRIPTION_NOERGAARD_MIKKELSEN_INTERNSHIP.ToKey()] = Paragraphs(
                 "Using C# and Uno Platform as the frontend framework, I developed a program to register prompts for AI's.",
                 "These Prompts were then able to be executed on registered AI's, starting with ChatGPT.",
@@ -74,13 +75,16 @@ public static partial class Translations
                 "The program is open source, and a version of it can be found on my GitHub profile, through the link below."),
             [EmploymentKey.WORK_DESCRIPTION_TV2.ToKey()] = Paragraphs(
                 "I was part of a team of developers who by use of SCRUM, developed on a number of internal tools, some of which are Open Source projects.",
-                "Some of the projects I have contributed to have since my contract ran out been changed to be Closed Source.", "",
+                "Some of the projects I have contributed to have since my contract ran out been changed to be Closed Source.",
+                "",
                 "On the Cliptool project, I rewrote the frontend side of the application, mainly to limit the amount of components per file to one.",
                 "The rewrite was also done to apply a better file structure to the project, as it was difficult to know where different components were located beforehand.",
                 "I also rewrote parts of the backend of Cliptool in the process, mainly to save changes to settings for between sessions better than before.",
-                "During this rewrite, I managed to fix a number of smaller bugs, and introduce the ability to hide selected files from the GUI.", "",
+                "During this rewrite, I managed to fix a number of smaller bugs, and introduce the ability to hide selected files from the GUI.",
+                "",
                 "On the Sofie project, I helped with creating parts of the backend, related to interacting with the underlying Mongo database and the frontend-facing presentation layer.",
-                "I also helped with moving over parts of the company-specific code from the old repository, to the new structure.", "",
+                "I also helped with moving over parts of the company-specific code from the old repository, to the new structure.",
+                "",
                 "All in all, I went from never having touched or used TypeScript, to now feeling almost as comfortable in that as I am in C#."),
             [EmploymentKey.WORK_DESCRIPTION_FLOWPOINT_DEFENCE.ToKey()] = Paragraphs(
                 "Due to an NDA, I can only mention that I contributed to the development of C# software used to automate processes for the navy."),
@@ -148,7 +152,7 @@ public static partial class Translations
                 "- A Wordle game.", "- A program for downloading primarily PDF files, with a focus on performance.",
                 "- Creation of an API for existing database data.",
                 "- A full-stack inventory management system developed as a group project.", "",
-                "The final part of the course included the opportunity to work on a range of self-selected projects, where I chose to complete a series of assignments focused on learning COBOL.")
+                "The final part of the course included the opportunity to work on a range of self-selected projects, where I chose to complete a series of assignments focused on learning COBOL."),
         };
 
         private static Dictionary<string, string> UserInterface { get; } = new()
@@ -172,6 +176,5 @@ public static partial class Translations
 
         public static Dictionary<string, string> All { get; } = Merge(Links, Profile, Education, Employment,
             GeneralInformation, Languages, Projects, References, UserInterface, Courses);
-
     }
 }

@@ -67,7 +67,7 @@ public sealed partial class PageSelector : Page
 
     private Grid CreatePaneContentGrid()
     {
-        var paneRoot = GridFactory.CreateDefaultGrid();
+        Grid paneRoot = GridFactory.CreateDefaultGrid();
 
         paneRoot.Background = new SolidColorBrush(Color.FromArgb(255, 32, 32, 32));
         paneRoot.HorizontalAlignment = HorizontalAlignment.Stretch;

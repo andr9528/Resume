@@ -23,15 +23,21 @@ public class LoggingStartupModule : IServiceStartupModule
         this.logTargets = enumerable.Distinct().ToArray();
 
         if (!enumerable.Any())
+        {
             throw new ArgumentException("At least one log target must be supplied.", nameof(logTargets));
+        }
 
         if (!enumerable.Contains(LogTarget.FILE))
+        {
             return;
+        }
 
         if (string.IsNullOrWhiteSpace(applicationDataPath))
+        {
             throw new ArgumentException(
                 $"'{nameof(applicationDataPath)}' must be supplied when using {LogTarget.FILE}.",
                 nameof(applicationDataPath));
+        }
 
         logDirectory = Path.Combine(applicationDataPath, "Logs");
     }
@@ -71,13 +77,17 @@ public class LoggingStartupModule : IServiceStartupModule
     private void WriteFileGap()
     {
         if (!logTargets.Contains(LogTarget.FILE))
+        {
             return;
+        }
 
         var todayFileName = $"log-{DateTime.Now:yyyyMMdd}.log";
         string fullPath = Path.Combine(logDirectory!, todayFileName);
 
         if (!File.Exists(fullPath))
+        {
             return;
+        }
 
         File.AppendAllText(fullPath, Environment.NewLine);
         File.AppendAllText(fullPath, Environment.NewLine);

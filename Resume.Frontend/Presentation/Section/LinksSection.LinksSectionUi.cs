@@ -17,8 +17,7 @@ public partial class LinksSection
         /// <inheritdoc />
         public LinksSectionUi(
             LinksSectionLogic logic, LinksSectionViewModel viewModel, IEntityService entityService,
-            ILocaleService localeService) : base(
-            logic, viewModel, entityService)
+            ILocaleService localeService) : base(logic, viewModel, entityService)
         {
             this.localeService = localeService;
         }
@@ -35,7 +34,7 @@ public partial class LinksSection
         /// <inheritdoc />
         protected override void AddControlsToGrid(Grid grid)
         {
-            var sectionHeader = TextBlockFactory.BuildSectionHeader(
+            TextBlock sectionHeader = TextBlockFactory.BuildSectionHeader(
                 localeService.GetLocalizedString(UserInterfaceKey.LINKS_HEADER.ToKey())).SetRow(0);
             var pieces = EntityService.GetLinks()
                 .Select((link, index) => BuildPiece(link).Grid(row: index + 1, column: 0));
@@ -50,12 +49,12 @@ public partial class LinksSection
             const int remarkRowSize = 1;
             const int urlRowSize = 1;
 
-            var hasRemark = !string.IsNullOrWhiteSpace(link.Remark);
-            var rowSizes = hasRemark
+            bool hasRemark = !string.IsNullOrWhiteSpace(link.Remark);
+            int[] rowSizes = hasRemark
                 ? new[] {headerRowSize, remarkRowSize, urlRowSize,}
                 : new[] {headerRowSize, urlRowSize,};
 
-            var grid = GridFactory.CreateDefaultGrid().DefineRows(GridUnitType.Auto, rowSizes);
+            Grid grid = GridFactory.CreateDefaultGrid().DefineRows(GridUnitType.Auto, rowSizes);
 
             grid.Children.Add(BuildTitle(link).Grid(row: 0, column: 0));
 

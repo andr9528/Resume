@@ -11,8 +11,8 @@ public partial class LanguagesSection : Border
 
         this.ConfigureSectionBorder();
 
-        var logic = new LanguagesSectionLogic((LanguagesSectionViewModel)DataContext);
-        var ui = new LanguagesSectionUi(logic, (LanguagesSectionViewModel)DataContext, entityService, localeService);
+        var logic = new LanguagesSectionLogic((LanguagesSectionViewModel) DataContext);
+        var ui = new LanguagesSectionUi(logic, (LanguagesSectionViewModel) DataContext, entityService, localeService);
 
         this.Background(Theme.Brushes.Background.Default).Child(ui.CreateContentGrid());
     }

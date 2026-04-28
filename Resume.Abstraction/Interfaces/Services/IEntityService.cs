@@ -1,25 +1,24 @@
 using Resume.Abstraction.Interfaces.Resume;
 
-namespace Resume.Abstraction.Interfaces.Services
+namespace Resume.Abstraction.Interfaces.Services;
+
+public interface IEntityService
 {
-    public interface IEntityService
-    {
-        IGeneralInformation GetGeneralInformation();
+    IGeneralInformation GetGeneralInformation();
 
-        IList<IEmployment> GetEmployments();
+    IList<IEmployment> GetEmployments();
 
-        IList<ISkill> GetSkills();
+    IList<ISkill> GetSkills();
 
-        IList<ILink> GetLinks();
+    IList<ILink> GetLinks();
 
-        IList<IReference> GetReferences();
+    IList<IReference> GetReferences();
 
-        IList<ILanguage> GetLanguages();
+    IList<ILanguage> GetLanguages();
 
-        IList<IEducation> GetEducations();
+    IList<IEducation> GetEducations();
 
-        IList<IProject> GetProjects();
+    IList<IProject> GetProjects();
 
-        IList<ICourse> GetCourses();
-    }
+    IList<ICourse> GetCourses();
 }

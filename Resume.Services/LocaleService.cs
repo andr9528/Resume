@@ -18,7 +18,7 @@ public class LocaleService : ILocaleService
     /// <inheritdoc />
     public string GetLocalizedString(string key)
     {
-        Dictionary<string, string> translations = GetTranslationsForCurrentLanguage();
+        var translations = GetTranslationsForCurrentLanguage();
 
         if (translations.TryGetValue(key, out string? localizedString) && !string.IsNullOrWhiteSpace(localizedString))
         {

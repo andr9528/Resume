@@ -39,4 +39,3 @@ public class GeneralInformation : IGeneralInformation
 
     public string ProfileDescription { get; set; }
 }
-    

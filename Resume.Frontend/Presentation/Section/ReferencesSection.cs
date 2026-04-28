@@ -11,8 +11,8 @@ public partial class ReferencesSection : Border
 
         this.ConfigureSectionBorder();
 
-        var logic = new ReferencesSectionLogic((ReferencesSectionViewModel)DataContext);
-        var ui = new ReferencesSectionUi(logic, (ReferencesSectionViewModel)DataContext, entityService, localeService);
+        var logic = new ReferencesSectionLogic((ReferencesSectionViewModel) DataContext);
+        var ui = new ReferencesSectionUi(logic, (ReferencesSectionViewModel) DataContext, entityService, localeService);
 
         this.Background(Theme.Brushes.Background.Default).Child(ui.CreateContentGrid());
     }

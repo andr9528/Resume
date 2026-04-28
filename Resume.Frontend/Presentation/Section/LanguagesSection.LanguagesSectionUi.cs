@@ -18,8 +18,7 @@ public partial class LanguagesSection
         /// <inheritdoc />
         public LanguagesSectionUi(
             LanguagesSectionLogic logic, LanguagesSectionViewModel viewModel, IEntityService entityService,
-            ILocaleService localeService) : base(
-            logic, viewModel, entityService)
+            ILocaleService localeService) : base(logic, viewModel, entityService)
         {
             this.localeService = localeService;
         }
@@ -36,7 +35,7 @@ public partial class LanguagesSection
         /// <inheritdoc />
         protected override void AddControlsToGrid(Grid grid)
         {
-            var sectionHeader = TextBlockFactory.BuildSectionHeader(
+            TextBlock sectionHeader = TextBlockFactory.BuildSectionHeader(
                 localeService.GetLocalizedString(UserInterfaceKey.LANGUAGES_HEADER.ToKey())).SetRow(0);
 
             var pieces = EntityService.GetLanguages()
@@ -48,7 +47,7 @@ public partial class LanguagesSection
 
         private Grid BuildPiece(ILanguage language)
         {
-            var grid = GridFactory.CreateDefaultGrid().DefineColumns(GridUnitType.Star, 3, 2);
+            Grid grid = GridFactory.CreateDefaultGrid().DefineColumns(GridUnitType.Star, 3, 2);
 
             grid.Children.Add(BuildLanguageName(language).Grid(row: 0, column: 0));
             grid.Children.Add(BuildLevel(language).Grid(row: 0, column: 1));
@@ -82,11 +81,10 @@ public partial class LanguagesSection
         {
             const int maxLevel = 5;
 
-            int value = Math.Clamp((int)level, 0, maxLevel);
+            int value = Math.Clamp((int) level, 0, maxLevel);
             int remaining = maxLevel - value;
 
-            return string.Concat(Enumerable.Repeat("★", value))
-                   + string.Concat(Enumerable.Repeat("☆", remaining));
+            return string.Concat(Enumerable.Repeat("★", value)) + string.Concat(Enumerable.Repeat("☆", remaining));
         }
     }
 }

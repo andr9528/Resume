@@ -17,8 +17,7 @@ public partial class EducationSection
         /// <inheritdoc />
         public EducationSectionUi(
             EducationSectionLogic logic, EducationSectionViewModel viewModel, IEntityService entityService,
-            ILocaleService localeService) : base(
-            logic, viewModel, entityService)
+            ILocaleService localeService) : base(logic, viewModel, entityService)
         {
             this.localeService = localeService;
         }
@@ -26,17 +25,17 @@ public partial class EducationSection
         /// <inheritdoc />
         protected override void ConfigureGrid(Grid grid)
         {
-            var employmentCount = EntityService.GetEducations().Count;
+            int employmentCount = EntityService.GetEducations().Count;
 
             grid.SafeArea(SafeArea.InsetMask.VisibleBounds);
-            grid.RowDefinitions(Enumerable
-                .Repeat(new GridLength(10, GridUnitType.Auto), employmentCount + 1).ToArray());
+            grid.RowDefinitions(Enumerable.Repeat(new GridLength(10, GridUnitType.Auto), employmentCount + 1)
+                .ToArray());
         }
 
         /// <inheritdoc />
         protected override void AddControlsToGrid(Grid grid)
         {
-            var sectionHeader = TextBlockFactory.BuildSectionHeader(
+            TextBlock sectionHeader = TextBlockFactory.BuildSectionHeader(
                 localeService.GetLocalizedString(UserInterfaceKey.EDUCATION_HEADER.ToKey())).SetRow(0);
             var pieces = EntityService.GetEducations()
                 .Select((education, index) => BuildPiece(education).Grid(row: index + 1, column: 0));

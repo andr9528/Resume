@@ -16,9 +16,7 @@ public partial class CoursesSection
 
         /// <inheritdoc />
         public CoursesSectionUi(
-            CoursesSectionLogic logic,
-            CoursesSectionViewModel viewModel,
-            IEntityService entityService,
+            CoursesSectionLogic logic, CoursesSectionViewModel viewModel, IEntityService entityService,
             ILocaleService localeService) : base(logic, viewModel, entityService)
         {
             this.localeService = localeService;
@@ -36,7 +34,7 @@ public partial class CoursesSection
         /// <inheritdoc />
         protected override void AddControlsToGrid(Grid grid)
         {
-            var sectionHeader = TextBlockFactory.BuildSectionHeader(
+            TextBlock sectionHeader = TextBlockFactory.BuildSectionHeader(
                 localeService.GetLocalizedString(UserInterfaceKey.COURSES_HEADER.ToKey())).SetRow(0);
 
             var pieces = EntityService.GetCourses()

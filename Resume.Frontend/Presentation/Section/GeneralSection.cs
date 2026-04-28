@@ -11,8 +11,8 @@ public partial class GeneralSection : Border
 
         this.ConfigureSectionBorder();
 
-        var logic = new GeneralSectionLogic((GeneralSectionViewModel)DataContext);
-        var ui = new GeneralSectionUi(logic, (GeneralSectionViewModel)DataContext, entityService, localeService);
+        var logic = new GeneralSectionLogic((GeneralSectionViewModel) DataContext);
+        var ui = new GeneralSectionUi(logic, (GeneralSectionViewModel) DataContext, entityService, localeService);
 
         this.Background(Theme.Brushes.Background.Default).Child(ui.CreateContentGrid());
     }

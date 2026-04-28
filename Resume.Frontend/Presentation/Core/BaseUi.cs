@@ -19,7 +19,7 @@ public abstract class BaseUi<TLogic, TViewModel> where TLogic : class where TVie
 
     public Grid CreateContentGrid()
     {
-        var grid = GridFactory.CreateDefaultGrid();
+        Grid grid = GridFactory.CreateDefaultGrid();
 
         ConfigureGrid(grid);
         AddControlsToGrid(grid);

@@ -17,8 +17,7 @@ public partial class ProjectsSection
         /// <inheritdoc />
         public ProjectsSectionUi(
             ProjectsSectionLogic logic, ProjectsSectionViewModel viewModel, IEntityService entityService,
-            ILocaleService localeService) : base(
-            logic, viewModel, entityService)
+            ILocaleService localeService) : base(logic, viewModel, entityService)
         {
             this.localeService = localeService;
         }
@@ -35,7 +34,7 @@ public partial class ProjectsSection
         /// <inheritdoc />
         protected override void AddControlsToGrid(Grid grid)
         {
-            var sectionHeader = TextBlockFactory.BuildSectionHeader(
+            TextBlock sectionHeader = TextBlockFactory.BuildSectionHeader(
                 localeService.GetLocalizedString(UserInterfaceKey.PROJECTS_HEADER.ToKey())).SetRow(0);
 
             var pieces = EntityService.GetProjects()

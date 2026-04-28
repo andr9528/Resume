@@ -12,8 +12,8 @@ public partial class SkillsSection : Border
 
         this.ConfigureSectionBorder();
 
-        var logic = new SkillsSectionLogic((SkillsSectionViewModel)DataContext);
-        var ui = new SkillsSectionUi(logic, (SkillsSectionViewModel)DataContext, entityService, localeService);
+        var logic = new SkillsSectionLogic((SkillsSectionViewModel) DataContext);
+        var ui = new SkillsSectionUi(logic, (SkillsSectionViewModel) DataContext, entityService, localeService);
 
         this.Background(Theme.Brushes.Background.Default).Child(ui.CreateContentGrid());
     }

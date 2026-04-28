@@ -11,8 +11,8 @@ public partial class CoursesSection : Border
 
         this.ConfigureSectionBorder();
 
-        var logic = new CoursesSectionLogic((CoursesSectionViewModel)DataContext);
-        var ui = new CoursesSectionUi(logic, (CoursesSectionViewModel)DataContext, entityService, localeService);
+        var logic = new CoursesSectionLogic((CoursesSectionViewModel) DataContext);
+        var ui = new CoursesSectionUi(logic, (CoursesSectionViewModel) DataContext, entityService, localeService);
 
         this.Background(Theme.Brushes.Background.Default).Child(ui.CreateContentGrid());
     }
