@@ -101,6 +101,17 @@ public class EntityService : IEntityService
                     localeService.GetLocalizedString(LinkKey.NOERGAARD_MIKKELSEN_GITHUB_PROJECT.ToKey()),
                 },
             },
+            new Employment
+            {
+                City = "Odense",
+                Employer = localeService.GetLocalizedString(EmploymentKey.EMPLOYER_FLOWPOINT_DEFENCE.ToKey()),
+                JobTitle = localeService.GetLocalizedString(EmploymentKey.JOB_TITLE_FLOWPOINT_DEFENCE.ToKey()),
+                StartDate = new DateTime(2025, 5, 26),
+                EndDate = new DateTime(2025, 6, 22),
+                WorkDescription =
+                    localeService.GetLocalizedString(EmploymentKey.WORK_DESCRIPTION_FLOWPOINT_DEFENCE.ToKey()),
+                EmploymentType = localeService.GetLocalizedString(EmploymentKey.EMPLOYMENT_TYPE_INTERNSHIP.ToKey()),
+            },
         };
 
         employments.Sort();

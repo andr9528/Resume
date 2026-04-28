@@ -49,10 +49,12 @@ public static partial class Translations
             [EmploymentKey.EMPLOYMENT_TYPE_PERMANENT.ToKey()] = "Permanent Employment",
             [EmploymentKey.EMPLOYER_APPS4ALL.ToKey()] = "Apps4All",
             [EmploymentKey.EMPLOYER_FASHIONHERO_INTERNSHIP.ToKey()] = "Fashionhero",
+            [EmploymentKey.EMPLOYER_FLOWPOINT_DEFENCE.ToKey()] = "Flowpoint Defence A/S",
             [EmploymentKey.EMPLOYER_NOERGAARD_MIKKELSEN_INTERNSHIP.ToKey()] = "Noergaard Mikkelsen",
             [EmploymentKey.EMPLOYER_TV2.ToKey()] = "Tv2 Danmark",
             [EmploymentKey.JOB_TITLE_APPS4ALL.ToKey()] = "Mobile Developer",
             [EmploymentKey.JOB_TITLE_FASHIONHERO_INTERNSHIP.ToKey()] = "Software Developer",
+            [EmploymentKey.JOB_TITLE_FLOWPOINT_DEFENCE.ToKey()] = "Software Developer",
             [EmploymentKey.JOB_TITLE_NOERGAARD_MIKKELSEN_INTERNSHIP.ToKey()] = "Software Developer",
             [EmploymentKey.JOB_TITLE_TV2.ToKey()] = "Software Developer",
             [EmploymentKey.WORK_DESCRIPTION_APPS4ALL.ToKey()] = Paragraphs(
@@ -80,6 +82,8 @@ public static partial class Translations
                 "On the Sofie project, I helped with creating parts of the backend, related to interacting with the underlying Mongo database and the frontend-facing presentation layer.",
                 "I also helped with moving over parts of the company-specific code from the old repository, to the new structure.", "",
                 "All in all, I went from never having touched or used TypeScript, to now feeling almost as comfortable in that as I am in C#."),
+            [EmploymentKey.WORK_DESCRIPTION_FLOWPOINT_DEFENCE.ToKey()] = Paragraphs(
+                "Due to an NDA, I can only mention that I contributed to the development of C# software used to automate processes for the navy."),
         };
 
         private static Dictionary<string, string> GeneralInformation { get; } = new()

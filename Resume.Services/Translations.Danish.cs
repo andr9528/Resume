@@ -47,12 +47,14 @@ public static partial class Translations
             [EmploymentKey.EMPLOYMENT_TYPE_CONTRACT.ToKey()] = "Kontrakt",
             [EmploymentKey.EMPLOYMENT_TYPE_INTERNSHIP.ToKey()] = "Praktik",
             [EmploymentKey.EMPLOYMENT_TYPE_PERMANENT.ToKey()] = "Fastansat",
+            [EmploymentKey.EMPLOYER_FLOWPOINT_DEFENCE.ToKey()] = "Flowpoint Defence A/S",
             [EmploymentKey.EMPLOYER_APPS4ALL.ToKey()] = "Apps4All",
             [EmploymentKey.EMPLOYER_FASHIONHERO_INTERNSHIP.ToKey()] = "Fashionhero",
             [EmploymentKey.EMPLOYER_NOERGAARD_MIKKELSEN_INTERNSHIP.ToKey()] = "Nørgård Mikkelsen",
             [EmploymentKey.EMPLOYER_TV2.ToKey()] = "Tv2 Danmark",
             [EmploymentKey.JOB_TITLE_APPS4ALL.ToKey()] = "Mobil Udvikler",
             [EmploymentKey.JOB_TITLE_FASHIONHERO_INTERNSHIP.ToKey()] = "Software Udvikler",
+            [EmploymentKey.JOB_TITLE_FLOWPOINT_DEFENCE.ToKey()] = "Software Udvikler",
             [EmploymentKey.JOB_TITLE_NOERGAARD_MIKKELSEN_INTERNSHIP.ToKey()] = "Software Udvikler",
             [EmploymentKey.JOB_TITLE_TV2.ToKey()] = "Software Udvikler",
             [EmploymentKey.WORK_DESCRIPTION_APPS4ALL.ToKey()] = Paragraphs(
@@ -79,6 +81,8 @@ public static partial class Translations
                 "På Sofie projektet arbejdede jeg med backend og Mongo integration samt frontend præsentationslag.",
                 "Jeg hjalp også med migrering af virksomhedsspecifikt kode til ny struktur.", "",
                 "Jeg gik fra ingen TypeScript erfaring til at være næsten lige så komfortabel som i C#."),
+            [EmploymentKey.WORK_DESCRIPTION_FLOWPOINT_DEFENCE.ToKey()] = Paragraphs(
+                "Da jeg er underlagt NDA, kan jeg kun nævne at jeg hjalp med udviklingen af software i C#, til at automatisere processer for flåden."),
         };
 
         private static Dictionary<string, string> GeneralInformation { get; } = new()
