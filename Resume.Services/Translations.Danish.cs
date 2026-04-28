@@ -162,7 +162,7 @@ public static partial class Translations
             [UserInterfaceKey.NAME_LABEL.ToKey()] = "Fulde Navn",
             [UserInterfaceKey.THE_LABEL.ToKey()] = "den",
             [UserInterfaceKey.OF_LABEL.ToKey()] = ".",
-            [UserInterfaceKey.COURSES_HEADER.ToKey()] = "Kursuser",
+            [UserInterfaceKey.COURSES_HEADER.ToKey()] = "Kurser",
         };
 
         public static Dictionary<string, string> All { get; } = Merge(Links, Profile, Education, Employment,

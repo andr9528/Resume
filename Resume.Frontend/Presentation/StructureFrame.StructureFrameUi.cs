@@ -50,7 +50,6 @@ public partial class StructureFrame
             EducationSection educationSection = new(EntityService, localeService);
             CoursesSection coursesSection = new(EntityService, localeService);
             ProjectsSection projectsSection = new(EntityService, localeService);
-            ReferencesSection referencesSection = new(EntityService, localeService);
 
             Border[] sections =
             [
@@ -59,7 +58,6 @@ public partial class StructureFrame
                 educationSection,
                 coursesSection,
                 projectsSection,
-                referencesSection,
             ];
 
             return CreateAndFillColumn(1, sections);
@@ -71,6 +69,7 @@ public partial class StructureFrame
             LinksSection linksSection = new(EntityService, localeService);
             SkillsSection skillsSection = new(EntityService, localeService);
             LanguagesSection languagesSection = new(EntityService, localeService);
+            ReferencesSection referencesSection = new(EntityService, localeService);
 
             Border[] sections =
             [
@@ -78,6 +77,7 @@ public partial class StructureFrame
                 skillsSection,
                 linksSection,
                 languagesSection,
+                referencesSection,
             ];
 
             return CreateAndFillColumn(3, sections);

@@ -194,8 +194,8 @@ public class EntityService : IEntityService
             new Skill
             {
                 Name = "COBOL",
-                Importance = 30,
-                Expertise = SkillLevel.NOVICE,
+                Importance = 40,
+                Expertise = SkillLevel.BEGINNER,
             },
             new Skill
             {

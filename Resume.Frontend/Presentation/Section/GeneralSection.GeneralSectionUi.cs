@@ -66,12 +66,7 @@ public partial class GeneralSection
 
             string formattedNumber = string.Join(" ", segments);
 
-            if (localeService.IsTargetedLanguage(LanguageType.ENGLISH))
-            {
-                return $"{generalInformation.AreaCode} {formattedNumber}";
-            }
-
-            return formattedNumber;
+            return $"{generalInformation.AreaCode} {formattedNumber}";
         }
 
         private string BuildDateOfBirth(DateTime date)
@@ -111,8 +106,6 @@ public partial class GeneralSection
             var grid = GridFactory.CreateDefaultGrid()
                 .DefineColumns(GridUnitType.Star, 2, 3);
 
-            grid.MinHeight = 60;
-
             grid.Children.Add(BuildLabel(labelKey).Grid(row: 0, column: 0));
             grid.Children.Add(BuildValue(value, isValueCopyable).Grid(row: 0, column: 1));
 
@@ -126,37 +119,28 @@ public partial class GeneralSection
                 Text = $"{localeService.GetLocalizedString(labelKey.ToKey())}:",
                 FontSize = 16,
                 Margin = new Thickness(10, 0, 0, 5),
-                VerticalAlignment = VerticalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Top,
             };
         }
 
-        private TextBox BuildValue(string value, bool copyable = true)
+        private TextBlock BuildValue(string value, bool copyable = true)
         {
-            var textBox = new TextBox
+            var block = new TextBlock
             {
                 Text = value,
                 FontSize = 16,
-                Margin = new Thickness(0),
-
-                IsReadOnly = true,
-                BorderThickness = new Thickness(0),
-                Background = new SolidColorBrush(Colors.Transparent),
-
-                Padding = new Thickness(0),
-                MinHeight = 0,
-                Height = double.NaN,
-                VerticalAlignment = VerticalAlignment.Top,
-
+                Margin = new Thickness(0, 0, 0, 5),
+                VerticalAlignment = VerticalAlignment.Center,
                 TextWrapping = TextWrapping.Wrap,
-                AcceptsReturn = false,
+                IsTextSelectionEnabled = true,
             };
 
             if (copyable)
             {
-                textBox.Tapped += (_, _) => Logic.CopyToClipboard(value);
+                block.PointerReleased += (_, _) => Logic.CopyToClipboard(value);
             }
 
-            return textBox;
+            return block;
         }
 
         private string BuildFullName(IGeneralInformation generalInformation)
