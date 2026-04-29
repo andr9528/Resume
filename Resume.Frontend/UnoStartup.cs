@@ -25,6 +25,7 @@ public class UnoStartup : ModularStartup<IApplicationBuilder>
         // Business Logic Services
         services.AddSingleton<ILocaleService, LocaleService>();
         services.AddSingleton<IEntityService, EntityService>();
+        services.AddSingleton<IDownloadService, DownloadService>();
 
         // Language Regions
         services.AddSingleton<IPageRegion, DanishPageRegionDefinition>();

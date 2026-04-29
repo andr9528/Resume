@@ -94,4 +94,9 @@ public class LocaleService : ILocaleService
     {
         return GetCultureFromLanguage(currentLanguage);
     }
+
+    public LanguageType GetCurrentLanguageType()
+    {
+        return currentLanguage;
+    }
 }

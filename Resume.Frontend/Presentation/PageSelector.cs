@@ -1,6 +1,9 @@
+using Resume.Abstraction.Interfaces.Services;
 using Resume.Frontend.Abstraction;
 using Resume.Frontend.Extensions;
 using Resume.Frontend.Presentation.Factory;
+using Resume.Services;
+using Uno.Foundation;
 
 namespace Resume.Frontend.Presentation;
 
@@ -11,14 +14,16 @@ public sealed partial class PageSelector : Page
 {
     private const double PANE_COLUMN_WEIGHT = 10d;
     private readonly IServiceProvider serviceProvider;
+    private readonly IDownloadService downloadService;
 
     private ListView menuList = null!;
     private Frame contentFrame = null!;
     private Frame paneFrame = null!;
 
-    public PageSelector(IServiceProvider sp, IEnumerable<IPageRegion> regionDefinitions)
+    public PageSelector(IServiceProvider sp, IEnumerable<IPageRegion> regionDefinitions, IDownloadService downloadService)
     {
         serviceProvider = sp ?? throw new ArgumentNullException(nameof(sp));
+        this.downloadService = downloadService;
 
         Margin = new Thickness(0);
 
@@ -75,9 +80,46 @@ public sealed partial class PageSelector : Page
         paneRoot.Margin = new Thickness(0);
         paneRoot.Padding = new Thickness(0);
 
-        paneRoot.Children.Add(menuList);
+        paneRoot.RowDefinitions.Add(new RowDefinition {Height = GridLength.Auto});
+        paneRoot.RowDefinitions.Add(new RowDefinition {Height = new GridLength(1, GridUnitType.Star)});
+        paneRoot.RowDefinitions.Add(new RowDefinition {Height = GridLength.Auto});
+
+        paneRoot.Children.Add(menuList.SetRow(0));
+
+        Button downloadButton = BuildDownloadButton();
+        paneRoot.Children.Add(downloadButton.SetRow(2));
 
         return paneRoot;
+    }
+
+    private Button BuildDownloadButton()
+    {
+        var downloadButton = new Button
+        {
+            Content = "Download PDF",
+            HorizontalAlignment = HorizontalAlignment.Stretch,
+            Margin = new Thickness(5),
+        };
+
+        downloadButton.Click += (_, _) =>
+        {
+            DispatcherQueue.TryEnqueue(async () => { await downloadService.DownloadResumePdf(DownloadAction); });
+        };
+        return downloadButton;
+    }
+
+    private Task DownloadAction(string url, string fileName)
+    {
+        WebAssemblyRuntime.InvokeJS($$"""
+                                      const link = document.createElement('a');
+                                      link.href = '{{url}}';
+                                      link.download = '{{fileName}}';
+                                      document.body.appendChild(link);
+                                      link.click();
+                                      document.body.removeChild(link);
+                                      """);
+
+        return Task.CompletedTask;
     }
 
     private List<IPageRegion> CreateMenuList(IEnumerable<IPageRegion> regionDefinitions)

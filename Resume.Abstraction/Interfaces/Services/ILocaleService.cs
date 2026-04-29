@@ -9,4 +9,5 @@ public interface ILocaleService
     CultureInfo GetCurrentCulture();
     Task SetLanguage(LanguageType type);
     bool IsTargetedLanguage(LanguageType type);
+    public LanguageType GetCurrentLanguageType();
 }

@@ -16,4 +16,17 @@
     <ProjectReference Include="..\Resume.Models\Resume.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pdfs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Pdfs\Resume - Dansk  - André Steenhoff Madsen.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Pdfs\Resume - English - André Steenhoff Madsen.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

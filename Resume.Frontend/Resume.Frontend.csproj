@@ -62,5 +62,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-
+  
+  <ItemGroup>
+    <Content Include="..\Resume.Services\Pdfs\*.pdf"
+            Link="Pdfs\%(Filename)%(Extension)"
+            CopyToOutputDirectory="PreserveNewest"
+            CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
 </Project>
