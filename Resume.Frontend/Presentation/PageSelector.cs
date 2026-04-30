@@ -99,9 +99,10 @@ public sealed partial class PageSelector : Page
     {
         var downloadButton = new Button
         {
-            Content = "Download PDF",
+            Content = "Download",
             HorizontalAlignment = HorizontalAlignment.Stretch,
             Margin = new Thickness(5),
+            Background = new SolidColorBrush(Colors.DarkBlue)
         };
 
         downloadButton.Click += (_, _) =>
