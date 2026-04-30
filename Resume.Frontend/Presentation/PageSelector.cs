@@ -156,18 +156,28 @@ public sealed partial class PageSelector : Page
 
 #if __WASM__
         packageBase = WebAssemblyRuntime.InvokeJS("""
-                                                      (() => {
-                                                          const resourceUrls = performance
-                                                              .getEntriesByType("resource")
-                                                              .map(x => x.name);
+                                                  (() => {
+                                                      const packageResource = performance
+                                                          .getEntriesByType("resource")
+                                                          .map(x => new URL(x.name))
+                                                          .find(x => x.pathname.includes("/package_"));
 
-                                                          const packageResource = resourceUrls.find(x => x.includes("/package_"));
-                                                          const match = packageResource?.match(/^(.*\/package_[^/]+\/)/);
+                                                      if (!packageResource) {
+                                                          return "";
+                                                      }
 
-                                                          return match?.[1] ?? "";
-                                                      })()
-                                                      
-                                                      """);
+                                                      const packageSegmentIndex = packageResource.pathname
+                                                          .split("/")
+                                                          .findIndex(x => x.startsWith("package_"));
+
+                                                      const packagePath = packageResource.pathname
+                                                          .split("/")
+                                                          .slice(0, packageSegmentIndex + 1)
+                                                          .join("/") + "/";
+
+                                                      return packageResource.origin + packagePath;
+                                                  })()
+                                                  """);
 #endif
 
         return packageBase;
