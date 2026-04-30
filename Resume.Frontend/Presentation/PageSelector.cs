@@ -1,4 +1,3 @@
-using System.Text.Json;
 using Resume.Abstraction.Interfaces.Services;
 using Resume.Frontend.Abstraction;
 using Resume.Frontend.Extensions;
@@ -123,8 +122,8 @@ public sealed partial class PageSelector : Page
         logger.LogInformation("Download PackageBase: {PackageBase}", packageBase);
         logger.LogInformation("Download FullUrl: {FullUrl}", fullUrl);
 
-        var safeFullUrl = JsonSerializer.Serialize(fullUrl);
-        var safeName = JsonSerializer.Serialize(fileName);
+        var safeFullUrl = ToJavaScriptString(fullUrl);
+        var safeName = ToJavaScriptString(fileName);
 
         WebAssemblyRuntime.InvokeJS($$"""
                                       const link = document.createElement('a');
@@ -136,6 +135,11 @@ public sealed partial class PageSelector : Page
                                       """);
 #endif
         return Task.CompletedTask;
+    }
+
+    private string ToJavaScriptString(string value)
+    {
+        return "'" + value.Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n") + "'";
     }
 
     private string BuildFullUrl(string packageBase, string relativeUrl)
