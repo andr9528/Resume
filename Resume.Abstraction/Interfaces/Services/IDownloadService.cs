@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Logging;
+
 namespace Resume.Abstraction.Interfaces.Services;
 
 public interface IDownloadService

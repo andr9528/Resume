@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Pdfs\Resume - Dansk  - André Steenhoff Madsen.pdf">
+    <None Update="Pdfs\Resume - Dansk - André Steenhoff Madsen.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Pdfs\Resume - English - André Steenhoff Madsen.pdf">

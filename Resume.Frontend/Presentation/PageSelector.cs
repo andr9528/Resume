@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Resume.Abstraction.Interfaces.Services;
 using Resume.Frontend.Abstraction;
 using Resume.Frontend.Extensions;
@@ -15,15 +16,17 @@ public sealed partial class PageSelector : Page
     private const double PANE_COLUMN_WEIGHT = 10d;
     private readonly IServiceProvider serviceProvider;
     private readonly IDownloadService downloadService;
+    private readonly ILogger<PageSelector> logger;
 
     private ListView menuList = null!;
     private Frame contentFrame = null!;
     private Frame paneFrame = null!;
 
-    public PageSelector(IServiceProvider sp, IEnumerable<IPageRegion> regionDefinitions, IDownloadService downloadService)
+    public PageSelector(IServiceProvider sp, IEnumerable<IPageRegion> regionDefinitions, IDownloadService downloadService, ILogger<PageSelector> logger)
     {
         serviceProvider = sp ?? throw new ArgumentNullException(nameof(sp));
         this.downloadService = downloadService;
+        this.logger = logger;
 
         Margin = new Thickness(0);
 
@@ -110,16 +113,64 @@ public sealed partial class PageSelector : Page
 
     private Task DownloadAction(string url, string fileName)
     {
+#if __WASM__
+        var packageBase = GetPackageBase();
+        var fullUrl = BuildFullUrl(packageBase, url);
+
+        logger.LogInformation("Download Url: {Url}", url);
+        logger.LogInformation("Download FileName: {FileName}", fileName);
+        logger.LogInformation("Download PackageBase: {PackageBase}", packageBase);
+        logger.LogInformation("Download FullUrl: {FullUrl}", fullUrl);
+
+        var safeFullUrl = JsonSerializer.Serialize(fullUrl);
+        var safeName = JsonSerializer.Serialize(fileName);
+
         WebAssemblyRuntime.InvokeJS($$"""
                                       const link = document.createElement('a');
-                                      link.href = '{{url}}';
-                                      link.download = '{{fileName}}';
+                                      link.href = {{safeFullUrl}};
+                                      link.download = {{safeName}};
                                       document.body.appendChild(link);
                                       link.click();
                                       document.body.removeChild(link);
                                       """);
-
+#endif
         return Task.CompletedTask;
+    }
+
+    private string BuildFullUrl(string packageBase, string relativeUrl)
+    {
+        if (string.IsNullOrWhiteSpace(packageBase))
+        {
+            logger.LogWarning("Package base was empty. Falling back to relative URL: {RelativeUrl}", relativeUrl);
+            return relativeUrl;
+        }
+
+        var fullUrl = new Uri(new Uri(packageBase), relativeUrl).ToString();
+
+        return fullUrl;
+    }
+
+    private string GetPackageBase()
+    {
+        var packageBase = "";
+
+#if __WASM__
+        packageBase = WebAssemblyRuntime.InvokeJS("""
+                                                      (() => {
+                                                          const resourceUrls = performance
+                                                              .getEntriesByType("resource")
+                                                              .map(x => x.name);
+
+                                                          const packageResource = resourceUrls.find(x => x.includes("/package_"));
+                                                          const match = packageResource?.match(/^(.*\/package_[^/]+\/)/);
+
+                                                          return match?.[1] ?? "";
+                                                      })()
+                                                      
+                                                      """);
+#endif
+
+        return packageBase;
     }
 
     private List<IPageRegion> CreateMenuList(IEnumerable<IPageRegion> regionDefinitions)
