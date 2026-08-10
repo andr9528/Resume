@@ -70,15 +70,12 @@ public partial class GeneralSection
 
         private string BuildDateOfBirth(DateTime date)
         {
-            CultureInfo culture = localeService.GetCurrentCulture();
+            if (localeService.IsTargetedLanguage(LanguageType.DANISH))
+            {
+                return $"Lørdag den {date.Day}. februar {date.Year}";
+            }
 
-            string dayName = Capitalize(date.ToString("dddd", culture));
-            var monthName = date.ToString("MMMM", culture);
-            string the = localeService.GetLocalizedString(UserInterfaceKey.THE_LABEL.ToKey());
-            string of = localeService.GetLocalizedString(UserInterfaceKey.OF_LABEL.ToKey());
-            string daySuffix = localeService.IsTargetedLanguage(LanguageType.ENGLISH) ? $"rd {of}" : of;
-
-            return $"{dayName} {the} {date.Day}{daySuffix} {monthName} {date.Year}";
+            return $"Saturday the {date.Day}rd of February {date.Year}";
         }
 
         private string Capitalize(string value)
