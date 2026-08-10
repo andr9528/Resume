@@ -28,6 +28,6 @@ public sealed partial class PageSelector : Page
 
         Content = ui.CreateContentGrid();
 
-        logic.NavigateToFirstRegion();
+        logic.Initialize();
     }
 }

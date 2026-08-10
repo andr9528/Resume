@@ -9,19 +9,17 @@ namespace Resume.Frontend.NavigationRegion;
 public class DanishPageRegionDefinition : IPageRegion
 {
     private readonly ILogger<DanishPageRegionDefinition> logger;
+    private UIElement? cachedControl;
 
     public DanishPageRegionDefinition(ILogger<DanishPageRegionDefinition> logger)
     {
         this.logger = logger;
     }
 
-    /// <inheritdoc />
     public string DisplayName => "Dansk";
 
-    /// <inheritdoc />
     public IconElement Icon => new SymbolIcon(Symbol.Flag);
 
-    /// <inheritdoc />
     public async Task<UIElement> CreateControl(IServiceProvider services)
     {
         try
@@ -29,10 +27,19 @@ public class DanishPageRegionDefinition : IPageRegion
             ILocaleService localeService = services.GetService<ILocaleService>() ??
                                            throw new ArgumentException(
                                                $"Expected to get an implementation of {nameof(ILocaleService)}");
+
             await localeService.SetLanguage(LanguageType.DANISH);
 
-            logger.LogInformation($"Changing page to: Danish {nameof(StructureFrame)}");
-            return ActivatorUtilities.CreateInstance<StructureFrame>(services);
+            if (cachedControl != null)
+            {
+                return cachedControl;
+            }
+
+            logger.LogInformation($"Creating page: Danish {nameof(StructureFrame)}");
+
+            cachedControl = ActivatorUtilities.CreateInstance<StructureFrame>(services);
+
+            return cachedControl;
         }
         catch (Exception e)
         {

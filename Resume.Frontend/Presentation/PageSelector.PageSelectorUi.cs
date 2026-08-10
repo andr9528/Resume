@@ -53,7 +53,7 @@ public sealed partial class PageSelector
         private void AddControlsToGrid(Grid grid)
         {
             grid.Children.Add(ViewModel.PaneFrame.SetColumn(0));
-            grid.Children.Add(ViewModel.ContentFrame.SetColumn(1));
+            grid.Children.Add(ViewModel.ContentHost.SetColumn(1));
         }
 
         private void CreateFrames()
@@ -61,7 +61,11 @@ public sealed partial class PageSelector
             ViewModel.Regions = regionDefinitions.ToList();
             ViewModel.MenuList = CreateMenuList(ViewModel.Regions);
 
-            ViewModel.ContentFrame = new Frame();
+            ViewModel.ContentHost = new Grid
+            {
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Stretch,
+            };
 
             ViewModel.PaneFrame = new Frame
             {

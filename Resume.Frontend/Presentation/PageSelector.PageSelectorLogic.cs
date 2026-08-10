@@ -22,6 +22,33 @@ public sealed partial class PageSelector
             this.logger = logger;
         }
 
+        private async Task PreloadRegions()
+        {
+            foreach (IPageRegion region in ViewModel.Regions)
+            {
+                UIElement control = await region.CreateControl(serviceProvider);
+
+                control.Opacity = 0;
+                control.IsHitTestVisible = false;
+
+                ViewModel.RegionControls.Add(region, control);
+                ViewModel.ContentHost.Children.Add(control);
+            }
+        }
+
+        private async Task ShowRegion(IPageRegion region)
+        {
+            await region.CreateControl(serviceProvider);
+
+            foreach ((IPageRegion key, UIElement control) in ViewModel.RegionControls)
+            {
+                bool isSelected = key == region;
+
+                control.Opacity = isSelected ? 1 : 0;
+                control.IsHitTestVisible = isSelected;
+            }
+        }
+
         public async void MenuListItemClicked(object sender, ItemClickEventArgs e)
         {
             try
@@ -31,7 +58,7 @@ public sealed partial class PageSelector
                     return;
                 }
 
-                ViewModel.ContentFrame.Content = await region.CreateControl(serviceProvider);
+                await ShowRegion(region);
             }
             catch (Exception exe)
             {
@@ -39,24 +66,18 @@ public sealed partial class PageSelector
             }
         }
 
-        internal async void NavigateToFirstRegion()
+        private async Task NavigateToFirstRegion()
         {
-            try
+            if (!ViewModel.Regions.Any())
             {
-                if (!ViewModel.Regions.Any())
-                {
-                    return;
-                }
-
-                IPageRegion region = ViewModel.Regions[0];
-
-                ViewModel.MenuList.SelectedItem = region;
-                ViewModel.ContentFrame.Content = await region.CreateControl(serviceProvider);
+                return;
             }
-            catch (Exception e)
-            {
-                logger.LogError(e, "Exception thrown while navigating to first region.");
-            }
+
+            IPageRegion region = ViewModel.Regions[0];
+
+            ViewModel.MenuList.SelectedItem = region;
+
+            await ShowRegion(region);
         }
 
         internal async void DownloadButtonClicked(object sender, RoutedEventArgs e)
@@ -147,6 +168,20 @@ public sealed partial class PageSelector
 #endif
 
             return packageBase;
+        }
+
+        public async void Initialize()
+        {
+            try
+            {
+                await PreloadRegions();
+                await NavigateToFirstRegion();
+            }
+            catch (Exception e)
+            {
+                logger.LogError(e, "Exception thrown during Initialization of Pages");
+                throw;
+            }
         }
     }
 }
