@@ -78,16 +78,6 @@ public partial class GeneralSection
             return $"Saturday the {date.Day}rd of February {date.Year}";
         }
 
-        private string Capitalize(string value)
-        {
-            if (string.IsNullOrWhiteSpace(value))
-            {
-                return value;
-            }
-
-            return char.ToUpper(value[0]) + value[1..];
-        }
-
         private string BuildAddress(IGeneralInformation generalInformation)
         {
             return string.Join(", ", new[]

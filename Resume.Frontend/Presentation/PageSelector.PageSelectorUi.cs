@@ -1,0 +1,214 @@
+using Resume.Frontend.Abstraction;
+using Resume.Frontend.Extensions;
+using Resume.Frontend.Presentation.Core;
+using Resume.Frontend.Presentation.Factory;
+
+namespace Resume.Frontend.Presentation;
+
+public sealed partial class PageSelector
+{
+    private sealed class PageSelectorUi(
+        PageSelectorLogic logic,
+        PageSelectorViewModel viewModel,
+        IEnumerable<IPageRegion> regionDefinitions)
+    {
+        private PageSelectorLogic Logic { get; } = logic;
+        private PageSelectorViewModel ViewModel { get; } = viewModel;
+
+        private const double PANE_COLUMN_WEIGHT = 12d;
+
+        public Grid CreateContentGrid()
+        {
+            Grid grid = GridFactory.CreateDefaultGrid();
+
+            ConfigureGrid(grid);
+            AddControlsToGrid(grid);
+
+            return grid;
+        }
+
+        private void ConfigureGrid(Grid grid)
+        {
+            CreateFrames();
+
+            grid.HorizontalAlignment = HorizontalAlignment.Stretch;
+            grid.VerticalAlignment = VerticalAlignment.Stretch;
+            grid.Margin = new Thickness(0);
+            grid.Padding = new Thickness(0);
+
+            const double contentColumnWeight = 100 - PANE_COLUMN_WEIGHT;
+
+            grid.ColumnDefinitions.Add(new ColumnDefinition
+            {
+                Width = new GridLength(PANE_COLUMN_WEIGHT, GridUnitType.Star),
+                MinWidth = 180,
+            });
+
+            grid.ColumnDefinitions.Add(new ColumnDefinition
+            {
+                Width = new GridLength(contentColumnWeight, GridUnitType.Star),
+            });
+        }
+
+        private void AddControlsToGrid(Grid grid)
+        {
+            grid.Children.Add(ViewModel.PaneFrame.SetColumn(0));
+            grid.Children.Add(ViewModel.ContentFrame.SetColumn(1));
+        }
+
+        private void CreateFrames()
+        {
+            ViewModel.Regions = regionDefinitions.ToList();
+            ViewModel.MenuList = CreateMenuList(ViewModel.Regions);
+
+            ViewModel.ContentFrame = new Frame();
+
+            ViewModel.PaneFrame = new Frame
+            {
+                Content = CreateNavigationPaneContentGrid(),
+            };
+        }
+
+        private Grid CreateNavigationPaneContentGrid()
+        {
+            Grid paneRoot = GridFactory.CreateDefaultGrid();
+
+            paneRoot.RowDefinitions.Add(new RowDefinition {Height = new GridLength(1, GridUnitType.Star),});
+
+            paneRoot.RowDefinitions.Add(new RowDefinition {Height = GridLength.Auto,});
+
+            paneRoot.Background = new SolidColorBrush(Color.FromArgb(255, 32, 32, 32));
+            paneRoot.HorizontalAlignment = HorizontalAlignment.Stretch;
+            paneRoot.VerticalAlignment = VerticalAlignment.Stretch;
+            paneRoot.Margin = new Thickness(0);
+            paneRoot.Padding = new Thickness(0);
+
+            paneRoot.Children.Add(ViewModel.MenuList.SetRow(0));
+            paneRoot.Children.Add(CreateDownloadButton().SetRow(1));
+
+            return paneRoot;
+        }
+
+        private Button CreateDownloadButton()
+        {
+            var contentPanel = new StackPanel
+            {
+                Orientation = Orientation.Horizontal,
+                Spacing = 8,
+            };
+
+            contentPanel.Children.Add(new SymbolIcon(Symbol.Download));
+
+            contentPanel.Children.Add(new TextBlock
+            {
+                Text = "Download",
+                VerticalAlignment = VerticalAlignment.Center,
+            });
+
+            var button = new Button
+            {
+                Content = contentPanel,
+                Background = new SolidColorBrush(Colors.Transparent),
+                Foreground = new SolidColorBrush(Colors.White),
+                BorderThickness = new Thickness(0),
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalContentAlignment = HorizontalAlignment.Left,
+                Margin = new Thickness(5),
+                Padding = new Thickness(10, 5, 10, 5),
+            };
+
+            button.Click += Logic.DownloadButtonClicked;
+
+            return button;
+        }
+
+        private ListView CreateMenuList(IEnumerable<IPageRegion> regions)
+        {
+            var menuList = new ListView
+            {
+                Background = new SolidColorBrush(Colors.Transparent),
+                SelectionMode = ListViewSelectionMode.Single,
+                ItemsSource = regions,
+                ItemTemplate = CreateMenuItemTemplate(),
+                ItemContainerStyle = CreateMenuItemStyle(),
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Top,
+                Margin = new Thickness(5),
+                IsItemClickEnabled = true,
+            };
+
+            menuList.ItemClick += Logic.MenuListItemClicked;
+
+            return menuList;
+        }
+
+        private DataTemplate CreateMenuItemTemplate()
+        {
+            return new DataTemplate(() =>
+            {
+                Grid templateGrid = GridFactory.CreateDefaultGrid();
+
+                templateGrid.HorizontalAlignment = HorizontalAlignment.Stretch;
+                templateGrid.Margin = new Thickness(0);
+
+                templateGrid.ColumnDefinitions.Add(new ColumnDefinition
+                {
+                    Width = GridLength.Auto,
+                });
+
+                templateGrid.ColumnDefinitions.Add(new ColumnDefinition
+                {
+                    Width = new GridLength(1, GridUnitType.Star),
+                });
+
+                var iconPresenter = new ContentPresenter
+                {
+                    VerticalAlignment = VerticalAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                };
+
+                iconPresenter.SetBinding(ContentPresenter.ContentProperty, new Binding
+                {
+                    Path = new PropertyPath(nameof(IPageRegion.Icon)),
+                });
+
+                var text = new TextBlock
+                {
+                    Foreground = new SolidColorBrush(Colors.White),
+                    VerticalAlignment = VerticalAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    Margin = new Thickness(5, 0, 0, 0),
+                    TextWrapping = TextWrapping.NoWrap,
+                    TextTrimming = TextTrimming.CharacterEllipsis,
+                };
+
+                text.SetBinding(TextBlock.TextProperty, new Binding
+                {
+                    Path = new PropertyPath(nameof(IPageRegion.DisplayName)),
+                });
+
+                templateGrid.Children.Add(iconPresenter.SetColumn(0));
+                templateGrid.Children.Add(text.SetColumn(1));
+
+                return templateGrid;
+            });
+        }
+
+        private Style CreateMenuItemStyle()
+        {
+            var style = new Style(typeof(ListViewItem));
+
+            style.Setters.Add(new Setter(BackgroundProperty, new SolidColorBrush(Colors.Transparent)));
+
+            style.Setters.Add(new Setter(BorderThicknessProperty, new Thickness(0)));
+
+            style.Setters.Add(new Setter(PaddingProperty, new Thickness(4, 2, 4, 2)));
+
+            style.Setters.Add(new Setter(ForegroundProperty, new SolidColorBrush(Colors.White)));
+
+            style.Setters.Add(new Setter(HorizontalContentAlignmentProperty, HorizontalAlignment.Stretch));
+
+            return style;
+        }
+    }
+}
