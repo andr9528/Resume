@@ -11,6 +11,9 @@ public class Course : ICourse
     public DateTime? EndDate { get; set; }
 
     /// <inheritdoc />
+    public int? TotalHours { get; set; }
+
+    /// <inheritdoc />
     public string Name { get; set; }
 
     /// <inheritdoc />

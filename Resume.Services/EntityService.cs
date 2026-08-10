@@ -112,6 +112,22 @@ public class EntityService : IEntityService
                     localeService.GetLocalizedString(EmploymentKey.WORK_DESCRIPTION_FLOWPOINT_DEFENCE.ToKey()),
                 EmploymentType = localeService.GetLocalizedString(EmploymentKey.EMPLOYMENT_TYPE_INTERNSHIP.ToKey()),
             },
+            new Employment
+            {
+                City = "Odense",
+                Employer = localeService.GetLocalizedString(EmploymentKey.EMPLOYER_ODENSE_MOBIL_REP.ToKey()),
+                JobTitle = localeService.GetLocalizedString(EmploymentKey.JOB_TITLE_ODENSE_MOBIL_REP.ToKey()),
+                StartDate = new DateTime(2026, 5, 6),
+                EndDate = new DateTime(2026, 6, 19),
+                WorkDescription =
+                    localeService.GetLocalizedString(EmploymentKey.WORK_DESCRIPTION_ODENSE_MOBIL_REP.ToKey()),
+                EmploymentType = localeService.GetLocalizedString(EmploymentKey.EMPLOYMENT_TYPE_FREELANCE.ToKey()),
+                TotalHours = 54,
+                Links = new List<string>
+                {
+                    localeService.GetLocalizedString(LinkKey.ODENSE_MOBIL_REP_GITHUB_PROJECT.ToKey()),
+                },
+            },
         };
 
         employments.Sort();

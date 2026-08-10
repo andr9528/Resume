@@ -20,6 +20,7 @@ public static partial class Translations
             [LinkKey.PERSONAL_LINKEDIN.ToKey()] = "https://www.linkedin.com/in/andr%C3%A9-steenhoff-madsen-65a22698/",
             [LinkKey.PERSONAL_PAGE.ToKey()] = "https://andr9528.github.io/",
             [LinkKey.TV2_CLIPTOOL_GITHUB_PROJECT.ToKey()] = "https://github.com/tv2/casparcg-cliptool",
+            [LinkKey.ODENSE_MOBIL_REP_GITHUB_PROJECT.ToKey()] = "https://github.com/andr9528/Odense-Mobil-Reparation",
             [LinkKey.TITLE_GITHUB.ToKey()] = "GitHub",
             [LinkKey.TITLE_LINKEDIN.ToKey()] = "LinkedIn",
         };
@@ -36,6 +37,11 @@ public static partial class Translations
             [UserInterfaceKey.TITLE.ToKey()] = "Resume",
         };
 
-        public static Dictionary<string, string> All { get; } = Merge(Links, Profile, UserInterface);
+        private static Dictionary<string, string> Employment { get; } = new()
+        {
+            [EmploymentKey.EMPLOYMENT_TYPE_FREELANCE.ToKey()] = "Freelance",
+        };
+
+        public static Dictionary<string, string> All { get; } = Merge(Links, Profile, UserInterface, Employment);
     }
 }

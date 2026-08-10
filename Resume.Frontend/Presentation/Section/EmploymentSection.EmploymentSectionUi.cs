@@ -81,10 +81,16 @@ public partial class EmploymentSection
 
         private TextBlock BuildPieceSubHeader(IEmployment employment)
         {
-            string end = employment.EndDate != null ? $"{employment.EndDate:MMM yyyy}" : "TEMP";
+            string end = employment.EndDate.HasValue ? $"{employment.EndDate:MMM yyyy}" : "TEMP";
+
+            string totalHours = employment.TotalHours.HasValue
+                ? $", {employment.TotalHours} {localeService.GetLocalizedString(UserInterfaceKey.TOTAL_HOURS_LABEL.ToKey())}"
+                : string.Empty;
+
             return new TextBlock
             {
-                Text = $"{employment.City}, {employment.StartDate:MMM yyyy} - {end}, {employment.EmploymentType}",
+                Text =
+                    $"{employment.City}, {employment.StartDate:MMM yyyy} - {end}, {employment.EmploymentType}{totalHours}",
                 FontSize = 14,
                 Margin = new Thickness(0, 0, 0, 10),
             };

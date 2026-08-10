@@ -21,4 +21,5 @@ public enum UserInterfaceKey
     OF_LABEL,
     PROJECTS_HEADER,
     COURSES_HEADER,
+    TOTAL_HOURS_LABEL,
 }

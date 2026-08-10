@@ -4,6 +4,7 @@ public interface IPeriod : IComparable<IPeriod>
 {
     public DateTime StartDate { get; set; }
     public DateTime? EndDate { get; set; }
+    public int? TotalHours { get; set; }
 
     int IComparable<IPeriod>.CompareTo(IPeriod? other)
     {

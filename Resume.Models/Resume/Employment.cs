@@ -27,4 +27,7 @@ public class Employment : IEmployment
 
     /// <inheritdoc />
     public DateTime? EndDate { get; set; }
+
+    /// <inheritdoc />
+    public int? TotalHours { get; set; }
 }

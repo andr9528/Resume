@@ -11,6 +11,9 @@ public class Education : IEducation
     public DateTime? EndDate { get; set; }
 
     /// <inheritdoc />
+    public int? TotalHours { get; set; }
+
+    /// <inheritdoc />
     public string SchoolName { get; set; }
 
     /// <inheritdoc />

@@ -86,6 +86,13 @@ public static partial class Translations
                 "Jeg gik fra ingen TypeScript erfaring til at være næsten lige så komfortabel som i C#."),
             [EmploymentKey.WORK_DESCRIPTION_FLOWPOINT_DEFENCE.ToKey()] = Paragraphs(
                 "Da jeg er underlagt NDA, kan jeg kun nævne at jeg hjalp med udviklingen af software i C#, til at automatisere processer for flåden."),
+            [EmploymentKey.EMPLOYER_ODENSE_MOBIL_REP.ToKey()] = "Odense Mobil Rep",
+            [EmploymentKey.JOB_TITLE_ODENSE_MOBIL_REP.ToKey()] = "Software Udvikler",
+            [EmploymentKey.WORK_DESCRIPTION_ODENSE_MOBIL_REP.ToKey()] = Paragraphs(
+                "Udviklede et komplet desktopprogram til registrering af mobilreparationer på ca. 54 timer. Løsningen blev udviklet i C#/.NET 10 med Uno Platform og Entity Framework Core (SQLite).",
+                "",
+                "Benyttede AI - primært ChatGPT - som udviklingsassistent til sparring, kodegennemgang, idéudvikling og dele af implementeringsarbejdet, mens den overordnede arkitektur, tekniske beslutninger, integration, test og kvalitetssikring blev varetaget og verificeret manuelt.",
+                "", "Projektet er offentligt tilgængeligt på GitHub:"),
         };
 
         private static Dictionary<string, string> GeneralInformation { get; } = new()
@@ -170,6 +177,7 @@ public static partial class Translations
             [UserInterfaceKey.THE_LABEL.ToKey()] = "den",
             [UserInterfaceKey.OF_LABEL.ToKey()] = ".",
             [UserInterfaceKey.COURSES_HEADER.ToKey()] = "Kurser",
+            [UserInterfaceKey.TOTAL_HOURS_LABEL.ToKey()] = "Timer i alt",
         };
 
         public static Dictionary<string, string> All { get; } = Merge(Links, Profile, Education, Employment,

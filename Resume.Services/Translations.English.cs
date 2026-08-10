@@ -88,6 +88,13 @@ public static partial class Translations
                 "All in all, I went from never having touched or used TypeScript, to now feeling almost as comfortable in that as I am in C#."),
             [EmploymentKey.WORK_DESCRIPTION_FLOWPOINT_DEFENCE.ToKey()] = Paragraphs(
                 "Due to an NDA, I can only mention that I contributed to the development of C# software used to automate processes for the navy."),
+            [EmploymentKey.EMPLOYER_ODENSE_MOBIL_REP.ToKey()] = "Odense Mobil Rep",
+            [EmploymentKey.JOB_TITLE_ODENSE_MOBIL_REP.ToKey()] = "Software Developer",
+            [EmploymentKey.WORK_DESCRIPTION_ODENSE_MOBIL_REP.ToKey()] = Paragraphs(
+                "Developed a complete desktop application for registering mobile phone repairs in approximately 54 hours. The solution was built using C#/.NET 10, Uno Platform, and Entity Framework Core (SQLite).",
+                "",
+                "Used AI - primarily ChatGPT - as a development assistant for brainstorming, code reviews, ideation, and parts of the implementation work, while the overall architecture, technical decisions, integration, testing, and quality assurance were carried out and verified manually.",
+                "", "The project's source code is publicly available on GitHub:"),
         };
 
         private static Dictionary<string, string> GeneralInformation { get; } = new()
@@ -172,6 +179,7 @@ public static partial class Translations
             [UserInterfaceKey.OF_LABEL.ToKey()] = "of",
             [UserInterfaceKey.PROJECTS_HEADER.ToKey()] = "Projects",
             [UserInterfaceKey.COURSES_HEADER.ToKey()] = "Courses",
+            [UserInterfaceKey.TOTAL_HOURS_LABEL.ToKey()] = "Hours in total",
         };
 
         public static Dictionary<string, string> All { get; } = Merge(Links, Profile, Education, Employment,
