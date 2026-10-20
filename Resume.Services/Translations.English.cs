@@ -19,23 +19,22 @@ public static partial class Translations
         private static Dictionary<string, string> Profile { get; } = new()
         {
             [ProfileKey.DESCRIPTION.ToKey()] = Paragraphs(
-                "- Analytical, solution-oriented, and quality-focused developer with a Bachelor's degree in Software Development.",
-                "", "- Experienced in C#/.NET, TypeScript, and React.",
-                "- Experience working according to SCRUM principles during development.",
-                "- Focuses on DRY and SOLID principles during development.", "",
-                "- Uses Entity Framework Core and has gained a solid understanding of SQL through its use.",
-                "- Uses Git for development and keeps all previous code on GitHub.", "",
-                "- Interested in Cloud technologies, Azure, and Microservice architecture.",
-                "- Quick to understand new programming languages and capable of learning them quickly."),
+                "- Experience with C#/.NET and Entity Framework Core, including freelance work for Odense Mobil Rep and a project at Fashionhero.",
+                "- Experience with TypeScript and React from my employment at TV 2, developing and maintaining internal software tools.",
+                "- Solid understanding of SQL and databases through several years of working with Entity Framework Core.",
+                "- Experience with Scrum and collaboration in development teams, primarily from TV 2.",
+                "- Use Git for version control and have several publicly available projects on GitHub.",
+                "- Focus on code quality, readability, and maintainability, applying DRY and SOLID principles.",
+                "- Analytical and solution-oriented, with the ability to quickly learn new technologies and programming languages."),
         };
 
         private static Dictionary<string, string> Education { get; } = new()
         {
             [EducationKey.DESCRIPTION_BACHELOR.ToKey()] =
-                "Subjects I performed well in includes .Net Core, Database and Test.",
+                "I performed particularly well in .NET Core, Databases, and Testing.",
             [EducationKey.DESCRIPTION_HTX.ToKey()] = "Was part of a small class on the Technology and Design line.",
             [EducationKey.DESCRIPTION_SOFTWARE.ToKey()] =
-                "Learned about reading and creating a number of UML diagrams, in connection with learning to develop using SCRUM.",
+                "Learned to read and create various UML diagrams as part of training in Scrum-based software development.",
             [EducationKey.GRADE_BACHELOR.ToKey()] = "Bachelor in Software Development",
             [EducationKey.GRADE_HTX.ToKey()] = "Higher Technical Exam",
             [EducationKey.GRADE_SOFTWARE.ToKey()] = "Computer Science",
@@ -64,37 +63,35 @@ public static partial class Translations
                 "In addition to this, I also developed some Microservices to support the mobile applications.",
                 "The microservices were deployed to Google Cloud."),
             [EmploymentKey.WORK_DESCRIPTION_FASHIONHERO_INTERNSHIP.ToKey()] = Paragraphs(
-                "Using C#, I worked on developing a program to load their storage, exported to an Xml file, into a local database.",
-                "The loaded storage would then be export to a Xml in another format, for use by other sites to sell products from us.",
-                "", "During this work I made use of Entity Framework Core to write to a Sqlite database."),
+                "Developed a C# solution to convert XML inventory data into a new format for use in a sales portal. The solution used a local SQLite database with Entity Framework Core as an intermediary.",
+                "", "The project is publicly available on GitHub:"),
             [EmploymentKey.WORK_DESCRIPTION_NOERGAARD_MIKKELSEN_INTERNSHIP.ToKey()] = Paragraphs(
                 "Using C# and Uno Platform as the frontend framework, I developed a program to register prompts for AI's.",
                 "These Prompts were then able to be executed on registered AI's, starting with ChatGPT.",
                 "Afterwards the AI's response would be saved, for use to generate statistics with.", "",
                 "The aim of the program was to collect quantitative data on how AI's respond to the same Prompts, before Noergaard Mikkelsen starts to apply changes to their customers websites, in an attempt to influence AI's responses.",
                 "The program is open source, and a version of it can be found on my GitHub profile, through the link below."),
+
             [EmploymentKey.WORK_DESCRIPTION_TV2.ToKey()] = Paragraphs(
-                "I was part of a team of developers who by use of SCRUM, developed on a number of internal tools, some of which are Open Source projects.",
-                "Some of the projects I have contributed to have since my contract ran out been changed to be Closed Source.",
+                "As part of a Scrum team, I worked on developing and maintaining internal software tools supporting TV 2's sports and news coverage. " +
+                "I primarily worked with TypeScript and React, including further development and modernization of existing solutions.",
                 "",
-                "On the Cliptool project, I rewrote the frontend side of the application, mainly to limit the amount of components per file to one.",
-                "The rewrite was also done to apply a better file structure to the project, as it was difficult to know where different components were located beforehand.",
-                "I also rewrote parts of the backend of Cliptool in the process, mainly to save changes to settings for between sessions better than before.",
-                "During this rewrite, I managed to fix a number of smaller bugs, and introduce the ability to hide selected files from the GUI.",
+                "On the CasparCG ClipTool project, I rewrote the frontend to improve the project structure and limit components to one per file, making the code easier to navigate and maintain. " +
+                "I also improved the backend's handling of settings between sessions, fixed several bugs, and introduced the ability to hide selected files in the GUI.",
                 "",
-                "On the Sofie project, I helped with creating parts of the backend, related to interacting with the underlying Mongo database and the frontend-facing presentation layer.",
-                "I also helped with moving over parts of the company-specific code from the old repository, to the new structure.",
-                "",
-                "All in all, I went from never having touched or used TypeScript, to now feeling almost as comfortable in that as I am in C#."),
+                "On the Sofie project, I worked on backend functionality involving MongoDB integration and the frontend-facing presentation layer. " +
+                "I also helped migrate company-specific code from the old repository to the new structure.", "",
+                "During my employment, I gained experience with collaboration and planning tools such as Jira, Confluence, and Lucidchart. " +
+                "I also went from having no prior experience with TypeScript to becoming almost as comfortable with it as I am with C#."),
             [EmploymentKey.WORK_DESCRIPTION_FLOWPOINT_DEFENCE.ToKey()] = Paragraphs(
                 "Due to an NDA, I can only mention that I contributed to the development of C# software used to automate processes for the navy."),
             [EmploymentKey.EMPLOYER_ODENSE_MOBIL_REP.ToKey()] = "Odense Mobil Rep",
             [EmploymentKey.JOB_TITLE_ODENSE_MOBIL_REP.ToKey()] = "Software Developer",
             [EmploymentKey.WORK_DESCRIPTION_ODENSE_MOBIL_REP.ToKey()] = Paragraphs(
-                "Developed a complete desktop application for registering mobile phone repairs in approximately 54 hours. The solution was built using C#/.NET 10, Uno Platform, and Entity Framework Core (SQLite).",
+                "Developed a complete desktop application for managing mobile phone repairs in approximately 54 hours using C#/.NET 10, Uno Platform, and Entity Framework Core (SQLite).",
                 "",
-                "Used AI - primarily ChatGPT - as a development assistant for brainstorming, code reviews, ideation, and parts of the implementation work, while the overall architecture, technical decisions, integration, testing, and quality assurance were carried out and verified manually.",
-                "", "The project's source code is publicly available on GitHub:"),
+                "Used AI, primarily ChatGPT, for brainstorming, code reviews, and parts of the implementation, while taking responsibility for architecture, technical decisions, integration, testing, and quality assurance.",
+                "", "The project is publicly available on GitHub:"),
         };
 
         private static Dictionary<string, string> GeneralInformation { get; } = new()
@@ -155,11 +152,7 @@ public static partial class Translations
 
             [CourseKey.SPECIALISTERNE_ACADEMY_NAME.ToKey()] = "Specialisterne Academy • Kochsgade 31, 5000 Odense C",
             [CourseKey.SPECIALISTERNE_ACADEMY_DESCRIPTION.ToKey()] = Paragraphs(
-                "Strengthened my experience with C#, Entity Framework Core, and Uno Platform through a series of smaller projects. The projects included:",
-                "- A Wordle game.", "- A program for downloading primarily PDF files, with a focus on performance.",
-                "- Creation of an API for existing database data.",
-                "- A full-stack inventory management system developed as a group project.", "",
-                "The final part of the course included the opportunity to work on a range of self-selected projects, where I chose to complete a series of assignments focused on learning COBOL."),
+                "Strengthened my skills in C#, Entity Framework Core, and Uno Platform through several development projects, including REST APIs, a full-stack inventory management system, and smaller applications. Worked both independently and in groups and gained an introduction to COBOL."),
         };
 
         private static Dictionary<string, string> UserInterface { get; } = new()

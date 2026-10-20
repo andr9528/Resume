@@ -19,23 +19,22 @@ public static partial class Translations
         private static Dictionary<string, string> Profile { get; } = new()
         {
             [ProfileKey.DESCRIPTION.ToKey()] = Paragraphs(
-                "- Analytisk, løsningsorienteret og kvalitetsbevidst udvikler med Bachelor i Softwareudvikling.", "",
-                "- Erfaren i C#/.NET, TypeScript og React.",
-                "- Erfaring med arbejde efter SCRUM under softwareudvikling.",
-                "- Fokuserer på DRY og SOLID principper under udvikling.", "",
-                "- Har anvendt Entity Framework Core i flere år, og har i den forbindelse fået god forståelse for SQL.",
-                "- Gør brug af Git til udviklingsopgaver, og har alt tidligere kode på GitHub.", "",
-                "- Finder Cloud, Azure og Microservice Architecture interessant.",
-                "- Har nemt ved at forstå ukendte kodesprog, og lærer derved hurtigt nye sprog."),
+                "- Erfaring med C#/.NET og Entity Framework Core, blandt andet fra freelanceprojektet hos Odense Mobil Rep og arbejdet hos Fashionhero.",
+                "- Erfaring med TypeScript og React fra min ansættelse hos TV 2, hvor jeg arbejdede med udvikling og vedligeholdelse af interne værktøjer.",
+                "- God forståelse for SQL og databaser gennem flere års anvendelse af Entity Framework Core.",
+                "- Erfaring med Scrum og samarbejde i udviklingsteams, hovedsageligt fra TV 2.",
+                "- Anvender Git til versionsstyring og har flere offentligt tilgængelige projekter på GitHub.",
+                "- Fokus på kodekvalitet, læsbarhed og vedligeholdbarhed med anvendelse af DRY- og SOLID-principperne.",
+                "- Analytisk og løsningsorienteret med evnen til hurtigt at sætte mig ind i nye teknologier og programmeringssprog."),
         };
 
         private static Dictionary<string, string> Education { get; } = new()
         {
             [EducationKey.DESCRIPTION_BACHELOR.ToKey()] =
-                "Fag jeg præsterede specielt godt i inkluderer .Net Core, Database og Test.",
+                "Jeg klarede mig særligt godt i fagene .NET Core, Databaser og Test.",
             [EducationKey.DESCRIPTION_HTX.ToKey()] = "Var del af en lille klasse på Teknologi og Design linjen.",
             [EducationKey.DESCRIPTION_SOFTWARE.ToKey()] =
-                "Lærte at læse og skabe en længere række UML modeller i forbindelse med at blive oplært i udvikling ved brug af SCRUM.",
+                "Lærte at læse og skabe en længere række UML-modeller i forbindelse med at blive oplært i udvikling ved brug af Scrum.",
             [EducationKey.GRADE_BACHELOR.ToKey()] = "Professionsbachelor i Software Udvikling",
             [EducationKey.GRADE_HTX.ToKey()] = "Højere Teknisk Eksamen",
             [EducationKey.GRADE_SOFTWARE.ToKey()] = "Datamatiker",
@@ -64,34 +63,35 @@ public static partial class Translations
                 "Dertil udviklede jeg også nogle Microservices til at understøtte mobil applikationerne.",
                 "Microservicerne blev sat i funktion via Google Cloud."),
             [EmploymentKey.WORK_DESCRIPTION_FASHIONHERO_INTERNSHIP.ToKey()] = Paragraphs(
-                "Ved brug af C#, arbejdet jeg på at udvikle et program der kunne loade deres lagerdata, fra den eksporterede Xml fil, ind i en lokal database.",
-                "Det indlæste lager ville derefter kunne blive eksporteret til en Xml fil i et andet format, til brug for at få en anden side til at sælge vores produkter for os.",
-                "",
-                "Under dette arbejde gjorde jeg brug af Entity Framework Core til at skrive til den Sqlite database."),
+                "Udviklede i C# en løsning til at konvertere XML-lagerdata til et nyt format til brug i en salgsportal. Løsningen anvendte en lokal SQLite-database med Entity Framework Core som mellemled.",
+                "", "Projektet er offentligt tilgængeligt på GitHub:"),
             [EmploymentKey.WORK_DESCRIPTION_NOERGAARD_MIKKELSEN_INTERNSHIP.ToKey()] = Paragraphs(
                 "Ved brug af C# og Uno Platform som frontend framework, udviklede jeg et program til at registrere Prompts til AI's.",
                 "Disse prompts kunne så blive sendt til registrerede AI's, med udgangspunkt i OpenAI's ChatGPT, hvorefter deres svar bliver gemt til statistik.",
                 "",
                 "Programmets mål var at indsamle kvantitativ data på hvordan AI's svarer på den samme prompt, før Nørgård Mikkelsen forsøger at påvirke deres svar.",
                 "Projektet er Open Source, og kan findes på min GitHub profil."),
+
             [EmploymentKey.WORK_DESCRIPTION_TV2.ToKey()] = Paragraphs(
-                "Jeg deltog i et team af udviklere hvor vi ved brug af SCRUM udviklede interne værktøjer, hvor nogle er Open Source.",
-                "Siden min kontrakt udløb er nogle projekter blevet Closed Source.", "",
-                "På Cliptool projektet genskrev jeg frontend for at begrænse komponenter til én per fil.",
-                "Omskrivningen forbedrede også projektets struktur markant.",
-                "Jeg forbedrede også backend håndtering af settings mellem sessioner.",
-                "Jeg rettede flere fejl og introducerede muligheden for at skjule filer i GUI.", "",
-                "På Sofie projektet arbejdede jeg med backend og Mongo integration samt frontend præsentationslag.",
-                "Jeg hjalp også med migrering af virksomhedsspecifikt kode til ny struktur.", "",
-                "Jeg gik fra ingen TypeScript erfaring til at være næsten lige så komfortabel som i C#."),
+                "Som en del af et Scrum-team arbejdede jeg med udvikling og vedligeholdelse af interne softwareværktøjer til TV 2's sports- og nyhedsdækning. " +
+                "Jeg arbejdede primært med TypeScript og React, herunder videreudvikling og modernisering af eksisterende løsninger.",
+                "",
+                "På CasparCG ClipTool-projektet omskrev jeg frontend for at forbedre projektstrukturen og begrænse antallet af komponenter til én per fil, så koden blev lettere at navigere i og vedligeholde. " +
+                "Jeg forbedrede også backendens håndtering af indstillinger mellem sessioner, rettede flere fejl og introducerede muligheden for at skjule udvalgte filer i brugergrænsefladen.",
+                "",
+                "På Sofie-projektet arbejdede jeg med backendfunktionalitet, herunder integration med MongoDB og det præsentationslag, som frontend benyttede. " +
+                "Jeg hjalp også med at flytte virksomhedsspecifik kode fra det gamle repository til den nye struktur.",
+                "",
+                "Under min ansættelse fik jeg erfaring med samarbejds- og planlægningsværktøjer som Jira, Confluence og Lucidchart. " +
+                "Jeg gik desuden fra ingen erfaring med TypeScript til at være næsten lige så komfortabel med det som med C#."),
             [EmploymentKey.WORK_DESCRIPTION_FLOWPOINT_DEFENCE.ToKey()] = Paragraphs(
                 "Da jeg er underlagt NDA, kan jeg kun nævne at jeg hjalp med udviklingen af software i C#, til at automatisere processer for flåden."),
             [EmploymentKey.EMPLOYER_ODENSE_MOBIL_REP.ToKey()] = "Odense Mobil Rep",
             [EmploymentKey.JOB_TITLE_ODENSE_MOBIL_REP.ToKey()] = "Software Udvikler",
             [EmploymentKey.WORK_DESCRIPTION_ODENSE_MOBIL_REP.ToKey()] = Paragraphs(
-                "Udviklede et komplet desktopprogram til registrering af mobilreparationer på ca. 54 timer. Løsningen blev udviklet i C#/.NET 10 med Uno Platform og Entity Framework Core (SQLite).",
+                "Udviklede på ca. 54 timer et komplet desktopprogram til registrering af mobilreparationer i C#/.NET 10 med Uno Platform og Entity Framework Core (SQLite).",
                 "",
-                "Benyttede AI - primært ChatGPT - som udviklingsassistent til sparring, kodegennemgang, idéudvikling og dele af implementeringsarbejdet, mens den overordnede arkitektur, tekniske beslutninger, integration, test og kvalitetssikring blev varetaget og verificeret manuelt.",
+                "Benyttede AI, primært ChatGPT, til sparring, kodegennemgang og dele af implementeringen, mens jeg selv stod for arkitektur, tekniske beslutninger, integration, test og kvalitetssikring.",
                 "", "Projektet er offentligt tilgængeligt på GitHub:"),
         };
 
@@ -153,11 +153,7 @@ public static partial class Translations
 
             [CourseKey.SPECIALISTERNE_ACADEMY_NAME.ToKey()] = "Specialisterne Academy • Kochsgade 31, 5000 Odense C",
             [CourseKey.SPECIALISTERNE_ACADEMY_DESCRIPTION.ToKey()] = Paragraphs(
-                "Styrket min erfaring med C#, Entity Framework Core og Uno Platform under små projekter. Projekterne inkluderede følgende:",
-                "- Et Wordle spil.", "- Et program til download af hovedsageligt PDF-filer, med hastighed som fokus.",
-                "- Oprettelse af API til eksisterende database data.",
-                "- Et fullstack lagerstyringssystem som gruppeopgave.", "",
-                "Den afsluttende del af kurset inkluderede muligheden for en række selvvalgte projekter, hvoriblandt jeg valgte at løse en række opgaver fokuseret på at lære COBOL."),
+                "Styrkede mine kompetencer inden for C#, Entity Framework Core og Uno Platform gennem flere udviklingsprojekter, herunder REST API'er, et fullstack lagerstyringssystem og forskellige mindre applikationer. Arbejdede både selvstændigt og i grupper og fik desuden introduktion til COBOL."),
         };
 
         private static Dictionary<string, string> UserInterface { get; } = new()
@@ -169,7 +165,7 @@ public static partial class Translations
             [UserInterfaceKey.LANGUAGES_HEADER.ToKey()] = "Sprog",
             [UserInterfaceKey.PROFILE_HEADER.ToKey()] = "Profil",
             [UserInterfaceKey.PHONE_LABEL.ToKey()] = "Telefon",
-            [UserInterfaceKey.ADDRESS_LABEL.ToKey()] = "Addresse",
+            [UserInterfaceKey.ADDRESS_LABEL.ToKey()] = "Adresse",
             [UserInterfaceKey.GENERAL_HEADER.ToKey()] = "Generel Information",
             [UserInterfaceKey.PROJECTS_HEADER.ToKey()] = "Projekter",
             [UserInterfaceKey.DATE_OF_BIRTH_LABEL.ToKey()] = "Fødselsdag",
