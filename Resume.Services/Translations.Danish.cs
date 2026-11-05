@@ -19,13 +19,21 @@ public static partial class Translations
         private static Dictionary<string, string> Profile { get; } = new()
         {
             [ProfileKey.DESCRIPTION.ToKey()] = Paragraphs(
+                "Jeg er en analytisk og kvalitetsbevidst softwareudvikler, der arbejder struktureret med at finde løsninger på tekniske udfordringer. " +
+                "Jeg lægger vægt på at forstå de problemstillinger, jeg arbejder med, og finde gennemtænkte løsninger, der ikke blot fungerer her og nu, men også holder på længere sigt. " +
+                "Jeg lærer hurtigt nye teknologier og trives med både at udvikle nye løsninger og forbedre eksisterende systemer.",
+                "",
+                "Jeg arbejder godt både selvstændigt og i teams, hvor jeg bidrager med overblik, grundighed og en konstruktiv tilgang til samarbejdet. " +
+                "Det motiverer mig særligt at udvikle software, hvor jeg kan se, at mit arbejde skaber konkret værdi for brugerne.",
+                "",
+                "Ud over disse personlige egenskaber har jeg praktisk erfaring med en række teknologier, værktøjer og udviklingsmetoder:",
+                "",
                 "- Erfaring med C#/.NET og Entity Framework Core, blandt andet fra freelanceprojektet hos Odense Mobil Rep og arbejdet hos Fashionhero.",
                 "- Erfaring med TypeScript og React fra min ansættelse hos TV 2, hvor jeg arbejdede med udvikling og vedligeholdelse af interne værktøjer.",
                 "- God forståelse for SQL og databaser gennem flere års anvendelse af Entity Framework Core.",
                 "- Erfaring med Scrum og samarbejde i udviklingsteams, hovedsageligt fra TV 2.",
                 "- Anvender Git til versionsstyring og har flere offentligt tilgængelige projekter på GitHub.",
-                "- Fokus på kodekvalitet, læsbarhed og vedligeholdbarhed med anvendelse af DRY- og SOLID-principperne.",
-                "- Analytisk og løsningsorienteret med evnen til hurtigt at sætte mig ind i nye teknologier og programmeringssprog."),
+                "- Fokus på kodekvalitet, læsbarhed og vedligeholdbarhed med anvendelse af DRY- og SOLID-principperne."),
         };
 
         private static Dictionary<string, string> Education { get; } = new()

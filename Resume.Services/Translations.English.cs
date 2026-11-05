@@ -19,13 +19,21 @@ public static partial class Translations
         private static Dictionary<string, string> Profile { get; } = new()
         {
             [ProfileKey.DESCRIPTION.ToKey()] = Paragraphs(
+                "I am an analytical and quality-conscious software developer who takes a structured approach to solving technical challenges. " +
+                "I believe in thoroughly understanding the problems I work on and developing well-considered solutions that not only work in the short term but also stand the test of time. " +
+                "I quickly adapt to new technologies and enjoy both developing new solutions and improving existing systems.",
+                "",
+                "I work well both independently and as part of a team, contributing with a clear overview, attention to detail, and a constructive approach to collaboration. " +
+                "I am particularly motivated by developing software where I can see that my work makes a tangible difference for its users.",
+                "",
+                "In addition to these personal qualities, I bring practical experience with a range of technologies, tools, and development practices:",
+                "",
                 "- Experience with C#/.NET and Entity Framework Core, including freelance work for Odense Mobil Rep and a project at Fashionhero.",
                 "- Experience with TypeScript and React from my employment at TV 2, developing and maintaining internal software tools.",
                 "- Solid understanding of SQL and databases through several years of working with Entity Framework Core.",
                 "- Experience with Scrum and collaboration in development teams, primarily from TV 2.",
                 "- Use Git for version control and have several publicly available projects on GitHub.",
-                "- Focus on code quality, readability, and maintainability, applying DRY and SOLID principles.",
-                "- Analytical and solution-oriented, with the ability to quickly learn new technologies and programming languages."),
+                "- Focus on code quality, readability, and maintainability, applying DRY and SOLID principles."),
         };
 
         private static Dictionary<string, string> Education { get; } = new()
