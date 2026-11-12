@@ -101,6 +101,11 @@ public static partial class Translations
                 "",
                 "Benyttede AI, primært ChatGPT, til sparring, kodegennemgang og dele af implementeringen, mens jeg selv stod for arkitektur, tekniske beslutninger, integration, test og kvalitetssikring.",
                 "", "Projektet er offentligt tilgængeligt på GitHub:"),
+            [EmploymentKey.EMPLOYER_MIITECH.ToKey()] = "MiiTech",
+            [EmploymentKey.JOB_TITLE_MIITECH.ToKey()] = "Softwareudvikler",
+            [EmploymentKey.WORK_DESCRIPTION_MIITECH.ToKey()] = Paragraphs(
+                "Virksomhedspraktik med fokus på softwareudvikling og vedligeholdelse af eksisterende løsninger. " +
+                "Arbejdsopgaverne forventes blandt andet at involvere PHP, Python og WordPress."),
         };
 
         private static Dictionary<string, string> GeneralInformation { get; } = new()

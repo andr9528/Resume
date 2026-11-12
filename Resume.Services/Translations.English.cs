@@ -100,6 +100,11 @@ public static partial class Translations
                 "",
                 "Used AI, primarily ChatGPT, for brainstorming, code reviews, and parts of the implementation, while taking responsibility for architecture, technical decisions, integration, testing, and quality assurance.",
                 "", "The project is publicly available on GitHub:"),
+            [EmploymentKey.EMPLOYER_MIITECH.ToKey()] = "MiiTech",
+            [EmploymentKey.JOB_TITLE_MIITECH.ToKey()] = "Software Developer",
+            [EmploymentKey.WORK_DESCRIPTION_MIITECH.ToKey()] = Paragraphs(
+                "Internship focused on software development and maintenance of existing solutions. " +
+                "The responsibilities are expected to involve technologies such as PHP, Python, and WordPress."),
         };
 
         private static Dictionary<string, string> GeneralInformation { get; } = new()

@@ -128,6 +128,16 @@ public class EntityService : IEntityService
                     localeService.GetLocalizedString(LinkKey.ODENSE_MOBIL_REP_GITHUB_PROJECT.ToKey()),
                 },
             },
+            new Employment
+            {
+                City = "Odense",
+                Employer = localeService.GetLocalizedString(EmploymentKey.EMPLOYER_MIITECH.ToKey()),
+                JobTitle = localeService.GetLocalizedString(EmploymentKey.JOB_TITLE_MIITECH.ToKey()),
+                StartDate = new DateTime(2026, 11, 23),
+                EndDate = new DateTime(2026, 12, 21),
+                WorkDescription = localeService.GetLocalizedString(EmploymentKey.WORK_DESCRIPTION_MIITECH.ToKey()),
+                EmploymentType = localeService.GetLocalizedString(EmploymentKey.EMPLOYMENT_TYPE_INTERNSHIP.ToKey()),
+            },
         };
 
         employments.Sort();
